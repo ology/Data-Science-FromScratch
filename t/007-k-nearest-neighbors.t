@@ -39,8 +39,8 @@ for my $i (@$test) {
         if $predicted eq $actual;
     $confusion_matrix{"$predicted,$actual"}++;
 }
-my $pct_correct = $num_correct / @$test;
-ok 0.90 < $pct_correct, 'pct_correct';
+my $got = $num_correct / @$test;
+ok 0.90 < $got, 'percent correct';
 is scalar(keys %confusion_matrix), 4, 'confusion_matrix';
 
 done_testing();
