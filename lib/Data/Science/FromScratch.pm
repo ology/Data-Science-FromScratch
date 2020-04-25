@@ -14,6 +14,7 @@ with 'Data::Science::FromScratch::Probability';
 with 'Data::Science::FromScratch::Inference';
 with 'Data::Science::FromScratch::GradientDescent';
 with 'Data::Science::FromScratch::MachineLearning';
+with 'Data::Science::FromScratch::KNearestNeighbors';
 
 =head1 SYNOPSIS
 
@@ -48,5 +49,7 @@ L<Data::Science::FromScratch::Inference>
 L<Data::Science::FromScratch::GradientDescent>
 
 L<Data::Science::FromScratch::MachineLearning>
+
+L<Data::Science::FromScratch::KNearestNeighbors>
 
 =cut
