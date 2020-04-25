@@ -41,6 +41,6 @@ for my $i (@$test) {
 }
 my $got = $num_correct / @$test;
 ok 0.90 < $got, 'percent correct';
-is scalar(keys %confusion_matrix), 4, 'confusion_matrix';
+ok scalar(keys %confusion_matrix) > 3, 'confusion_matrix';
 
 done_testing();
