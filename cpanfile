@@ -1,3 +1,4 @@
+requires "Data::Dataset::Classic::Iris";
 requires "Iterator::Simple";
 requires "List::Util";
 requires "Math::Erf::Approx";
