@@ -14,6 +14,7 @@ my @labels = qw(a b c b a);
 
 is $ds->majority_vote(@labels), 'b', 'majority_vote';
 
+# Create [ { point => [sepal_length, sepal_width, petal_length, petal_width], label => species } ] array rows
 my $iris = Data::Dataset::Classic::Iris::get();
 my @iris_data;
 for my $i (0 .. @{ $iris->{species} } - 1) {
