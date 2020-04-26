@@ -28,7 +28,7 @@ with 'Data::Science::FromScratch::NaiveBayes';
 C<Data::Science::FromScratch> is a perl implementation of the python code from
 L<the book|https://www.oreilly.com/library/view/data-science-from/9781492041122/>.
 
-Please see individual role documentation for available methods.
+Please see individual role documentation for available methods and attributes.
 
 =cut
 
