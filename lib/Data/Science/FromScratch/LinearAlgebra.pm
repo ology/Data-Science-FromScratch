@@ -109,6 +109,8 @@ sub scalar_multiply {
 
   $v = $ds->vector_mean(@vectors);
 
+Compute the componentwise means of a list of vectors.
+
 =cut
 
 sub vector_mean {
