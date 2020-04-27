@@ -8,34 +8,38 @@ use_ok 'Data::Science::FromScratch';
 
 my $ds = new_ok 'Data::Science::FromScratch';
 
-my $got = $ds->lr_predict(0.5, 0.5, 0.5);
+my ($x, $y) = (0.5, 0.5);
+my @data1 = (0.1, 0.5, 0.8);
+my @data2 = (0.2, 0.4, 0.7);
+
+my $got = $ds->lr_predict($x, $y, 0.5);
 is $got, 0.75, 'lr_predict';
 
-$got = $ds->error(0.5, 0.5, 0.5, 0.4);
+$got = $ds->error($x, $y, 0.5, 0.4);
 is $got, 0.35, 'error';
 
-$got = $ds->sum_of_sqerrors(0.5, 0.5, [0.1, 0.5, 0.8], [0.2, 0.4, 0.7]);
+$got = $ds->sum_of_sqerrors($x, $y, \@data1, \@data2);
 is $got, 0.285, 'sum_of_sqerrors';
-
-my ($x, $y) = $ds->least_squares_fit([0.1, 0.5, 0.8], [0.2, 0.4, 0.7]);
-is sprintf('%.4f', $x), '0.1054', 'least_squares_fit';
-is sprintf('%.4f', $y), '0.7027', 'least_squares_fit';
-
-my @data1;
-for (my $i = -100; $i <= 110; $i += 10) {
-    push @data1, $i;
-}
-my @data2 = map { 3 * $_ - 5 } @data1;
-
-($x, $y) = $ds->least_squares_fit(\@data1, \@data2);
-is $x, -5, 'least_squares_fit';
-is $y, 3, 'least_squares_fit';
 
 $got = $ds->total_sum_of_squares([1 .. 10]);
 is $got, 82.5, 'total_sum_of_squares';
 
-$got = $ds->r_squared(0.5, 0.5, [0.1, 0.5, 0.8], [0.2, 0.4, 0.7]);
+$got = $ds->r_squared($x, $y, \@data1, \@data2);
 is $got, -1.25, 'r_squared';
+
+($x, $y) = $ds->least_squares_fit(\@data1, \@data2);
+is sprintf('%.4f', $x), '0.1054', 'least_squares_fit';
+is sprintf('%.4f', $y), '0.7027', 'least_squares_fit';
+
+@data1;
+for (my $i = -100; $i <= 110; $i += 10) {
+    push @data1, $i;
+}
+@data2 = map { 3 * $_ - 5 } @data1;
+
+($x, $y) = $ds->least_squares_fit(\@data1, \@data2);
+is sprintf('%.4f', $x), '-5.0000', 'least_squares_fit';
+is sprintf('%.4f', $y), '3.0000', 'least_squares_fit';
 
 # num_friends_good from the book
 @data1 = (49,41,40,25,21,21,19,19,18,18,16,15,15,15,15,14,14,13,13,13,13,12,12,11,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,8,8,8,8,8,8,8,8,8,8,8,8,8,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
