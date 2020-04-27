@@ -14,7 +14,7 @@ use strictures 2;
 
   $ds->train(@messages);
 
-  my $x = $ds->predict('little lamb');
+  my $x = $ds->nb_predict('little lamb');
 
 =head1 ATTRIBUTES
 
@@ -131,13 +131,13 @@ sub _probabilities {
     return $p_token_spam, $p_token_ham;
 }
 
-=head2 predict
+=head2 nb_predict
 
-  $x = $ds->predict($text);
+  $x = $ds->nb_predict($text);
 
 =cut
 
-sub predict {
+sub nb_predict {
     my ($self, $text) = @_;
     my %text_tokens;
     @text_tokens{ @{ $self->tokenize($text) } } = undef;

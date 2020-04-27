@@ -42,7 +42,7 @@ my @probs_if_ham = (
 my $p_if_spam = exp sum(map { log $_ } @probs_if_spam);
 my $p_if_ham = exp sum(map { log $_ } @probs_if_ham);
 
-$got = $ds->predict('hello spam');
-is $got, $p_if_spam / ($p_if_spam + $p_if_ham), 'predict';
+$got = $ds->nb_predict('hello spam');
+is $got, $p_if_spam / ($p_if_spam + $p_if_ham), 'nb_predict';
 
 done_testing();
