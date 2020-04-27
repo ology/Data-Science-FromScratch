@@ -118,9 +118,9 @@ sub vector_mean {
     return $self->scalar_multiply($n, $sum);
 }
 
-=head2 vector_mean
+=head2 vector_dot
 
-  $x = $ds->vector_mean($n, $vector);
+  $x = $ds->vector_dot($n, $vector);
 
 =cut
 
