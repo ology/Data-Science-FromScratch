@@ -5,6 +5,7 @@ requires "List::Util";
 requires "Math::Erf::Approx";
 requires "Math::Trig";
 requires "Moo";
+requires "Statistics::Basic";
 requires "Statistics::Distribution::Generator";
 requires "namespace::clean";
 requires "strictures";
