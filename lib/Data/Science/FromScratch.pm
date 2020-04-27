@@ -16,6 +16,7 @@ with 'Data::Science::FromScratch::GradientDescent';
 with 'Data::Science::FromScratch::MachineLearning';
 with 'Data::Science::FromScratch::KNearestNeighbors';
 with 'Data::Science::FromScratch::NaiveBayes';
+with 'Data::Science::FromScratch::SimpleLinearRegression';
 
 =head1 SYNOPSIS
 
@@ -54,5 +55,7 @@ L<Data::Science::FromScratch::MachineLearning>
 L<Data::Science::FromScratch::KNearestNeighbors>
 
 L<Data::Science::FromScratch::NaiveBayes>
+
+L<Data::Science::FromScratch::SimpleLinearRegression>
 
 =cut
