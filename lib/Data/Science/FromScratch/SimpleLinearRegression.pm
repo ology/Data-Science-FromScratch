@@ -109,6 +109,10 @@ L<Data::Science::FromScratch>
 
 F<t/009-simple-linear-regression.t>
 
+L<List::Util>
+
 L<Moo::Role>
+
+L<Statistics::Basic>
 
 =cut
