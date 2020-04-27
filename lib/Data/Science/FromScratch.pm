@@ -40,6 +40,8 @@ __END__
 
 L<https://www.oreilly.com/library/view/data-science-from/9781492041122/>
 
+L<https://github.com/joelgrus/data-science-from-scratch>
+
 L<Data::Science::FromScratch::LinearAlgebra>
 
 L<Data::Science::FromScratch::Statistics>
