@@ -107,7 +107,7 @@ sub scalar_multiply {
 
 =head2 vector_mean
 
-  $v = $ds->vector_mean($n, $vector);
+  $v = $ds->vector_mean(@vectors);
 
 =cut
 
@@ -120,7 +120,7 @@ sub vector_mean {
 
 =head2 vector_dot
 
-  $x = $ds->vector_dot($n, $vector);
+  $x = $ds->vector_dot(@vectors);
 
 =cut
 
