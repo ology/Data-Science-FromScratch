@@ -13,7 +13,7 @@ use Statistics::Basic qw(mean);
 
   my $x = $ds->lr_predict(0.5, 0.5, 0.5); # 0.75
 
-  $x = $ds->error(0.5, 0.5, 0.5, 0.4); # 0.35
+  $x = $ds->lr_error(0.5, 0.5, 0.5, 0.4); # 0.35
 
   $x = $ds->sum_of_sqerrors(0.5, 0.5,
     [0.1, 0.5, 0.8], [0.2, 0.4, 0.7]); # 0.285
@@ -38,15 +38,15 @@ sub lr_predict {
     return $beta * $x_i + $alpha;
 }
 
-=head2 error
+=head2 lr_error
 
-  $x = $ds->error($alpha, $beta, $x_i, $y_i);
+  $x = $ds->lr_error($alpha, $beta, $x_i, $y_i);
 
 Actual value: B<y_i>
 
 =cut
 
-sub error {
+sub lr_error {
     my ($self, $alpha, $beta, $x_i, $y_i) = @_;
     return $self->lr_predict($alpha, $beta, $x_i) - $y_i;
 }
@@ -59,7 +59,7 @@ sub error {
 
 sub sum_of_sqerrors {
     my ($self, $alpha, $beta, $x, $y) = @_;
-    my @errors = map { $self->error($alpha, $beta, $x->[$_], $y->[$_]) ** 2 } 0 .. @$x - 1;
+    my @errors = map { $self->lr_error($alpha, $beta, $x->[$_], $y->[$_]) ** 2 } 0 .. @$x - 1;
     return sum(@errors);
 }
 

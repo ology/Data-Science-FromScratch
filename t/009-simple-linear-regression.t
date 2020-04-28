@@ -15,8 +15,8 @@ my @data2 = (0.2, 0.4, 0.7);
 my $got = $ds->lr_predict($x, $y, 0.5);
 is $got, 0.75, 'lr_predict';
 
-$got = $ds->error($x, $y, 0.5, 0.4);
-is $got, 0.35, 'error';
+$got = $ds->lr_error($x, $y, 0.5, 0.4);
+is $got, 0.35, 'lr_error';
 
 $got = $ds->sum_of_sqerrors($x, $y, \@data1, \@data2);
 is $got, 0.285, 'sum_of_sqerrors';
