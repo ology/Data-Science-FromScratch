@@ -51,7 +51,7 @@ sub doubled_gradient {
 
 =head2 linear_gradient
 
-  $v = $ds->linear_gradient($vector, $gradient, $step_size);
+  $v = $ds->linear_gradient($x, $y, $theta);
 
 =cut
 
