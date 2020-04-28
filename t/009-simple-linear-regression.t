@@ -4,6 +4,8 @@ use warnings;
 
 use Test::More;
 
+use List::Util qw(sum);
+
 use_ok 'Data::Science::FromScratch';
 
 my $ds = new_ok 'Data::Science::FromScratch';
@@ -31,7 +33,7 @@ is $got, -1.25, 'r_squared';
 is sprintf('%.4f', $x), '0.1054', 'least_squares_fit';
 is sprintf('%.4f', $y), '0.7027', 'least_squares_fit';
 
-@data1;
+@data1 = ();
 for (my $i = -100; $i <= 110; $i += 10) {
     push @data1, $i;
 }
@@ -52,5 +54,23 @@ is sprintf('%.4f', $y), '0.9039', 'least_squares_fit';
 
 $got = $ds->r_squared($x, $y, \@data1, \@data2);
 is sprintf('%.4f', $got), '0.3291', 'r_squared';
+
+my $epochs = 10000;
+my $rate = 0.00001;
+my $guess = [rand, rand];
+
+for my $t (0 .. $epochs) {
+    ($x, $y) = @$guess;
+    my @loss_a = map { 2 * $ds->lr_error($x, $y, $data1[$_], $data2[$_]) } 0 .. @data1 - 1;
+    my $grad_a = sum(@loss_a);
+    my @loss_b = map { 2 * $ds->lr_error($x, $y, $data1[$_], $data2[$_]) * $data1[$_] } 0 .. @data1 - 1;
+    my $grad_b = sum(@loss_b);
+#    my $loss = $ds->sum_of_sqerrors($x, $y, \@data1, \@data2);
+    $guess = $ds->gradient_step($guess, [$grad_a, $grad_b], -$rate);
+}
+
+($x, $y) = @$guess;
+is sprintf('%.4f', $x), '22.9476', 'gradient descent';
+is sprintf('%.4f', $y), '0.9039', 'gradient descent';
 
 done_testing();
