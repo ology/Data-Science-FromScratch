@@ -18,7 +18,7 @@ use Statistics::Basic qw(mean);
   $x = $ds->sum_of_sqerrors(0.5, 0.5,
     [0.1, 0.5, 0.8], [0.2, 0.4, 0.7]); # 0.285
 
-  my ($alpha, $beta) = $ds->least_squares_fit(
+  my ($alpha, $beta) = $ds->lr_least_squares_fit(
     [0.1, 0.5, 0.8], [0.2, 0.4, 0.7]); # 0.1054, 0.7027
 
   $x = $ds->total_sum_of_squares([1 .. 10]); # 82.5
@@ -63,13 +63,13 @@ sub sum_of_sqerrors {
     return sum(@errors);
 }
 
-=head2 least_squares_fit
+=head2 lr_least_squares_fit
 
-  ($alpha, $beta) = $ds->least_squares_fit($x, $y);
+  ($alpha, $beta) = $ds->lr_least_squares_fit($x, $y);
 
 =cut
 
-sub least_squares_fit {
+sub lr_least_squares_fit {
     my ($self, $x, $y) = @_;
     my $beta = $self->correlation($x, $y) * $self->standard_deviation(@$y) / $self->standard_deviation(@$x);
     my $alpha = mean($y) - $beta * mean($x);
