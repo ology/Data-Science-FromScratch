@@ -11,8 +11,11 @@ use strictures 2;
   my $ds = Data::Science::FromScratch->new;
 
   my $v = $ds->gradient_step(); # 
+
   $v = $ds->doubled_gradient(); # 
+
   $v = $ds->linear_gradient(); # 
+
   $v = $ds->minibatches(); # 
 
 =head1 METHODS
