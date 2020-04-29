@@ -39,7 +39,7 @@ use strictures 2;
 
   $v = $ds->least_squares_fit_ridge(); # 
 
-  $x = $ds->lasso_penalty(); # 
+  $x = $ds->lasso_penalty([1,2,3,4,5], 0.5); # 7
 
 =head1 METHODS
 
