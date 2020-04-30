@@ -220,7 +220,7 @@ sub sqerror_ridge_gradient {
 
   $v = $ds->least_squares_fit_ridge($x, $y, $alpha, $rate, $num_steps, $batch_size);
 
-This method is suspect...
+This method is suspect because the python results from the book code are different.
 
 =cut
 
