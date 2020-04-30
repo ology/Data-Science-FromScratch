@@ -66,7 +66,7 @@ __END__
 
 L<Data::Science::FromScratch>
 
-F<t/007-k-nearest-neighbors.t>
+F<t/008-k-nearest-neighbors.t>
 
 L<Moo::Role>
 
