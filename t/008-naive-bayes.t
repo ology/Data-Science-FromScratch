@@ -4,7 +4,7 @@ use warnings;
 
 use Test::More;
 
-use List::Util qw(sum);
+use List::Util qw(sum0);
 
 use_ok 'Data::Science::FromScratch';
 
@@ -39,8 +39,8 @@ my @probs_if_ham = (
     (1 + 0.5) / (2 + 2 * 0.5),      # "hello" (present)
 );
 
-my $p_if_spam = exp sum(map { log $_ } @probs_if_spam);
-my $p_if_ham = exp sum(map { log $_ } @probs_if_ham);
+my $p_if_spam = exp sum0(map { log $_ } @probs_if_spam);
+my $p_if_ham = exp sum0(map { log $_ } @probs_if_ham);
 
 $got = $ds->nb_predict('hello spam');
 is $got, $p_if_spam / ($p_if_spam + $p_if_ham), 'nb_predict';

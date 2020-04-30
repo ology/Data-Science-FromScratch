@@ -1,6 +1,6 @@
 package Data::Science::FromScratch::SimpleLinearRegression;
 
-use List::Util qw(sum);
+use List::Util qw(sum0);
 use Moo::Role;
 use strictures 2;
 use Statistics::Basic qw(mean);
@@ -60,7 +60,7 @@ sub lr_error {
 sub sum_of_sqerrors {
     my ($self, $alpha, $beta, $x, $y) = @_;
     my @errors = map { $self->lr_error($alpha, $beta, $x->[$_], $y->[$_]) ** 2 } 0 .. @$x - 1;
-    return sum(@errors);
+    return sum0(@errors);
 }
 
 =head2 lr_least_squares_fit
@@ -84,7 +84,7 @@ sub lr_least_squares_fit {
 
 sub total_sum_of_squares {
     my ($self, $v) = @_;
-    return sum(map { $_ ** 2 } @{ $self->de_mean(@$v) });
+    return sum0(map { $_ ** 2 } @{ $self->de_mean(@$v) });
 }
 
 =head2 r_squared

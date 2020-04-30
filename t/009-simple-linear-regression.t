@@ -4,7 +4,7 @@ use warnings;
 
 use Test::More;
 
-use List::Util qw(sum);
+use List::Util qw(sum0);
 
 use_ok 'Data::Science::FromScratch';
 
@@ -63,9 +63,9 @@ my $guess = [rand, rand];
 for my $t (0 .. $epochs) {
     ($x, $y) = @$guess;
     my @loss = map { 2 * $ds->lr_error($x, $y, $data1[$_], $data2[$_]) } 0 .. @data1 - 1;
-    my $grad_a = sum(@loss);
+    my $grad_a = sum0(@loss);
     @loss = map { 2 * $ds->lr_error($x, $y, $data1[$_], $data2[$_]) * $data1[$_] } 0 .. @data1 - 1;
-    my $grad_b = sum(@loss);
+    my $grad_b = sum0(@loss);
 #    my $loss = $ds->sum_of_sqerrors($x, $y, \@data1, \@data2);
     $guess = $ds->gradient_step($guess, [$grad_a, $grad_b], -$rate);
 }

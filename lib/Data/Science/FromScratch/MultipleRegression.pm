@@ -1,6 +1,6 @@
 package Data::Science::FromScratch::MultipleRegression;
 
-use List::Util qw(sum);
+use List::Util qw(sum0);
 use Moo::Role;
 use Statistics::Basic qw(median);
 use strictures 2;
@@ -128,7 +128,7 @@ sub mr_least_squares_fit {
 sub multiple_r_squared {
     my ($self, $u, $v, $beta) = @_;
     my @squared_errors = map { $self->mr_error($u->[$_], $v->[$_], $beta) ** 2 } 0 .. @$u - 1;
-    return 1 - sum(@squared_errors) / $self->total_sum_of_squares($v);
+    return 1 - sum0(@squared_errors) / $self->total_sum_of_squares($v);
 }
 
 =head2 bootstrap_sample
@@ -255,7 +255,7 @@ sub least_squares_fit_ridge {
 
 sub lasso_penalty {
     my ($self, $u, $alpha) = @_;
-    return $alpha * sum(map { abs $_ } @$u[1 .. @$u - 1]);
+    return $alpha * sum0(map { abs $_ } @$u[1 .. @$u - 1]);
 }
 
 1;
