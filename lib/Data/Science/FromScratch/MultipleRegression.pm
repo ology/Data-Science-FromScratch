@@ -212,7 +212,6 @@ sub ridge_penalty_gradient {
 
 sub sqerror_ridge_gradient {
     my ($self, $u, $y, $beta, $alpha) = @_;
-#use Data::Dumper;warn(__PACKAGE__,' ',__LINE__," MARK: ",Dumper$beta);
     return $self->vector_sum(
         $self->sqerror_gradient($u, $y, $beta),
         $self->ridge_penalty_gradient($beta, $alpha)
