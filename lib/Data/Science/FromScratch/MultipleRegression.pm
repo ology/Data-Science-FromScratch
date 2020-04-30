@@ -190,7 +190,7 @@ sub ridge_penalty {
 
 sub squared_error_ridge {
     my ($self, $u, $v, $beta, $alpha) = @_;
-    return $self->mr_error($u, $v, $beta) ** 2 + $self->ridge_penalty($beta, $alpha);
+    return $self->squared_error($u, $v, $beta) + $self->ridge_penalty($beta, $alpha);
 }
 
 =head2 ridge_penalty_gradient
