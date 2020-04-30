@@ -13,11 +13,13 @@ with 'Data::Science::FromScratch::Statistics';
 with 'Data::Science::FromScratch::Probability';
 with 'Data::Science::FromScratch::Inference';
 with 'Data::Science::FromScratch::GradientDescent';
+with 'Data::Science::FromScratch::WorkingWithData';
 with 'Data::Science::FromScratch::MachineLearning';
 with 'Data::Science::FromScratch::KNearestNeighbors';
 with 'Data::Science::FromScratch::NaiveBayes';
 with 'Data::Science::FromScratch::SimpleLinearRegression';
 with 'Data::Science::FromScratch::MultipleRegression';
+with 'Data::Science::FromScratch::LogisticRegression';
 
 =head1 SYNOPSIS
 
@@ -53,6 +55,8 @@ L<Data::Science::FromScratch::Inference>
 
 L<Data::Science::FromScratch::GradientDescent>
 
+L<Data::Science::FromScratch::WorkingWithData>
+
 L<Data::Science::FromScratch::MachineLearning>
 
 L<Data::Science::FromScratch::KNearestNeighbors>
@@ -62,5 +66,7 @@ L<Data::Science::FromScratch::NaiveBayes>
 L<Data::Science::FromScratch::SimpleLinearRegression>
 
 L<Data::Science::FromScratch::MultipleRegression>
+
+L<Data::Science::FromScratch::LogisticRegression>
 
 =cut
