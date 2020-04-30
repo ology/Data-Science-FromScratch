@@ -62,7 +62,7 @@ sub mr_predict {
 
 sub mr_error {
     my ($self, $v, $y, $beta) = @_;
-    return $self->predict($v, $beta) - $y;
+    return $self->mr_predict($v, $beta) - $y;
 }
 
 =head2 squared_error
