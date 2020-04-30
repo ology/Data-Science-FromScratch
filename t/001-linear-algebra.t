@@ -19,6 +19,7 @@ is_deeply $ds->vector_subtract([5,7,9], [4,5,6]), [1,2,3], 'vector_subtract';
 is_deeply $ds->scalar_multiply(2, [1,2,3]), [2,4,6], 'scalar_multiply';
 
 is_deeply $ds->vector_mean([1,2], [3,4], [5,6]), [3,4], 'vector_mean';
+is_deeply $ds->vector_mean([2,4], [6,8]), [4,6], 'vector_mean';
 
 is $ds->vector_dot([1,2,3], [4,5,6]), 32, 'vector_dot';
 
