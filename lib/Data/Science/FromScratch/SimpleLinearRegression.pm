@@ -67,8 +67,6 @@ sub sum_of_sqerrors {
 
   ($alpha, $beta) = $ds->lr_least_squares_fit($x, $y);
 
-This method is suspect because the python results from the book code are different.
-
 =cut
 
 sub lr_least_squares_fit {
