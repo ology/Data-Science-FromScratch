@@ -265,7 +265,7 @@ __END__
 
 L<Data::Science::FromScratch>
 
-F<t/010-multiple-regression.t>
+F<t/011-multiple-regression.t>
 
 L<List::Util>
 
