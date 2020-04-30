@@ -94,6 +94,8 @@ sub sqerror_gradient {
 
 "In practice, you wouldn't estimate a linear regression using gradient descent..."
 
+This method is suspect because the python results from the book code are different.
+
 =cut
 
 sub mr_least_squares_fit {
