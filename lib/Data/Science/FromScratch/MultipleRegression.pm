@@ -62,7 +62,7 @@ sub mr_predict {
 
 sub mr_error {
     my ($self, $v, $y, $beta) = @_;
-    return $self->vector_dot($v, $beta) - $y;
+    return $self->predict($v, $beta) - $y;
 }
 
 =head2 squared_error
@@ -212,6 +212,7 @@ sub ridge_penalty_gradient {
 
 sub sqerror_ridge_gradient {
     my ($self, $u, $y, $beta, $alpha) = @_;
+#use Data::Dumper;warn(__PACKAGE__,' ',__LINE__," MARK: ",Dumper$beta);
     return $self->vector_sum(
         $self->sqerror_gradient($u, $y, $beta),
         $self->ridge_penalty_gradient($beta, $alpha)
