@@ -110,7 +110,7 @@ __END__
 
 L<Data::Science::FromScratch>
 
-F<t/006-machine-learning.t>
+F<t/007-machine-learning.t>
 
 L<List::Util>
 
