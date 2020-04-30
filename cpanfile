@@ -8,4 +8,5 @@ requires "Moo";
 requires "Statistics::Basic";
 requires "Statistics::Distribution::Generator";
 requires "namespace::clean";
+requires "Storable";
 requires "strictures";
