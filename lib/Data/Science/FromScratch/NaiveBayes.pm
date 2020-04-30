@@ -166,7 +166,7 @@ __END__
 
 L<Data::Science::FromScratch>
 
-F<t/008-naive-bayes.t>
+F<t/009-naive-bayes.t>
 
 L<Lingua::EN::Tokenizer::Offsets>
 
