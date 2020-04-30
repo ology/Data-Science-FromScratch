@@ -55,10 +55,11 @@ is sprintf('%.4f', $y), '0.9039', 'lr_least_squares_fit';
 $got = $ds->r_squared($x, $y, \@data1, \@data2);
 is sprintf('%.4f', $got), '0.3291', 'r_squared';
 
+SKIP: {
+skip 'long running test', 2;
 my $epochs = 10000;
 my $rate = 0.00001;
 my $guess = [rand, rand];
-
 for my $t (0 .. $epochs) {
     ($x, $y) = @$guess;
     my @loss = map { 2 * $ds->lr_error($x, $y, $data1[$_], $data2[$_]) } 0 .. @data1 - 1;
@@ -68,9 +69,16 @@ for my $t (0 .. $epochs) {
 #    my $loss = $ds->sum_of_sqerrors($x, $y, \@data1, \@data2);
     $guess = $ds->gradient_step($guess, [$grad_a, $grad_b], -$rate);
 }
-
 ($x, $y) = @$guess;
 is sprintf('%.4f', $x), '22.9476', 'gradient descent';
 is sprintf('%.4f', $y), '0.9039', 'gradient descent';
+}
+
+# https://online.stat.psu.edu/stat462/node/101/
+@data1 = qw(20.1  7.1 16.1 14.9 16.7  8.8  9.7 10.3 22.0 16.2 12.1 10.3 14.5 12.4  9.6 12.2 10.8 14.7 19.7 11.2 10.1 11.0 12.2  9.2 23.5  9.4 15.3  9.6 11.1  5.3  7.8 25.3 16.5 12.6 12.0 11.5 17.1 11.2 12.2 10.6 19.9 14.5 15.5 17.4  8.4 10.3 10.2 12.5 16.7  8.5 12.2);
+@data2 = qw(31.5 18.9 35.0 31.6 22.6 26.2 14.1 24.7 44.8 23.2 31.4 17.7 18.4 23.4 22.6 16.4 21.4 26.5 31.7 11.9 20.0 12.5 18.0 14.2 37.6 22.2 17.8 18.3 28.0  8.1 14.7 37.8 15.7 28.6 11.7 20.1 30.1 18.2 17.2 19.6 29.2 17.3 28.2 38.2 17.8 10.4 19.0 16.8 21.5 15.9 17.7);
+($x, $y) = $ds->lr_least_squares_fit(\@data1, \@data2);
+is sprintf('%.4f', $x), '4.2673', 'lr_least_squares_fit';
+is sprintf('%.4f', $y), '1.3733', 'lr_least_squares_fit';
 
 done_testing();
