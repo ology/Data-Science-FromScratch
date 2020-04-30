@@ -1,7 +1,7 @@
 package Data::Science::FromScratch::WorkingWithData;
 
-use Storable qw(dclone);
 use Moo::Role;
+use Storable qw(dclone);
 use strictures 2;
 
 =head1 SYNOPSIS
