@@ -107,7 +107,7 @@ __END__
 
 L<Data::Science::FromScratch>
 
-F<t/009-simple-linear-regression.t>
+F<t/010-simple-linear-regression.t>
 
 L<List::Util>
 
