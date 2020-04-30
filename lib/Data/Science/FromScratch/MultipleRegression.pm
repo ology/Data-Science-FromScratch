@@ -109,7 +109,7 @@ sub mr_least_squares_fit {
             $end = $end < @$x ? $end : @$x - 1;
             my @batch_xs = @$x[$i .. $end];
             my @batch_ys = @$y[$i .. $end];
-            my @error_grad = map { $self->sqerror_gradient($batch_xs[$_], $batch_ys[$_], $guess) } 0 .. @$x - 1;
+            my @error_grad = map { $self->sqerror_gradient($batch_xs[$_], $batch_ys[$_], $guess) } 0 .. @batch_xs - 1;
             my $gradient = $self->vector_mean(@error_grad);
             $guess = $self->gradient_step($guess, $gradient, -$rate);
         }
@@ -237,7 +237,7 @@ sub least_squares_fit_ridge {
             $end = $end < @$x ? $end : @$x - 1;
             my @batch_xs = @$x[$i .. $end];
             my @batch_ys = @$y[$i .. $end];
-            my @error_grad = map { $self->sqerror_ridge_gradient($batch_xs[$_], $batch_ys[$_], $guess, $alpha) } 0 .. @$x - 1;
+            my @error_grad = map { $self->sqerror_ridge_gradient($batch_xs[$_], $batch_ys[$_], $guess, $alpha) } 0 .. @batch_xs - 1;
             my $gradient = $self->vector_mean(@error_grad);
             $guess = $self->gradient_step($guess, $gradient, -$rate);
         }
