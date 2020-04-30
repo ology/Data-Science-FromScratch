@@ -18,7 +18,7 @@ use strictures 2;
 
 =head2 scale
 
-  $v = $ds->scale(@data);
+  ($means, $stddevs) = $ds->scale(@data);
 
 =cut
 
