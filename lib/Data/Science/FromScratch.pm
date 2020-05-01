@@ -20,6 +20,7 @@ with 'Data::Science::FromScratch::NaiveBayes';
 with 'Data::Science::FromScratch::SimpleLinearRegression';
 with 'Data::Science::FromScratch::MultipleRegression';
 with 'Data::Science::FromScratch::LogisticRegression';
+with 'Data::Science::FromScratch::DecisionTrees';
 
 =head1 SYNOPSIS
 
@@ -68,5 +69,7 @@ L<Data::Science::FromScratch::SimpleLinearRegression>
 L<Data::Science::FromScratch::MultipleRegression>
 
 L<Data::Science::FromScratch::LogisticRegression>
+
+L<Data::Science::FromScratch::DecisionTrees>
 
 =cut
