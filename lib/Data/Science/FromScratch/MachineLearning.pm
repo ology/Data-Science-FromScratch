@@ -13,10 +13,10 @@ use strictures 2;
   my @x_data = (1,2,3,4,5,6);
   my @y_data = (2,4,6,8,10,12);
 
-  my ($train, $test) = $ds->split_data(0.5, @x_data); # 3 element vectors
+  my ($train, $test) = $ds->split_data(0.5, @x_data); # 3-element vectors
 
-  my ($x_train, $x_test, $y_train, $y_test) = $ds->train_test_split(0.5, \@x_data, \@y_data);
-    # 3 element vectors
+  my ($x_train, $x_test, $y_train, $y_test) = $ds->train_test_split(\@x_data, \@y_data, 0.5);
+    # 3-element vectors
 
   my $x = $ds->accuracy(70, 4930, 13930, 981070); # 0.9811
   my $x = $ds->precision(70, 4930, 13930, 981070); # 0.0140
@@ -40,12 +40,12 @@ sub split_data {
 
 =head2 train_test_split
 
-  ($x_train, $x_test, $y_train, $y_test) = $ds->train_test_split($probability, \@x_data, \@y_data);
+  ($x_train, $x_test, $y_train, $y_test) = $ds->train_test_split(\@x_data, \@y_data, $probability);
 
 =cut
 
 sub train_test_split {
-    my ($self, $probability, $x_data, $y_data) = @_;
+    my ($self, $x_data, $y_data, $probability) = @_;
     my @indices = (0 .. @$x_data - 1);
     my ($train_idx, $test_idx) = $self->split_data(1 - $probability, @indices);
     my @x_train = map { $x_data->[$_] } @$train_idx;
