@@ -76,6 +76,8 @@ sub grads {
 
 =head1 SEE ALSO
 
+F<t/015-deep-learning.t>
+
 L<Data::Science::FromScratch::NNSigmoid>
 
 L<Data::Science::FromScratch::NNLinear>
