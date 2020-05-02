@@ -9,19 +9,34 @@ use strictures 2;
 
   my $ds = Data::Science::FromScratch->new;
 
-  $x = $ds->step_function(); #
+  my $x = $ds->step_function(-1); # 0
+  $x = $ds->step_function(1); # 1
+
+  $x = $ds->perceptron_output(); #
 
 =head1 METHODS
 
 =head2 step_function
 
-  $x = $ds->step_function($x); #
+  $x = $ds->step_function($x);
 
 =cut
 
 sub step_function {
     my ($self, $x) = @_;
     return $x >= 0 ? 1 : 0;
+}
+
+=head2 perceptron_output
+
+  $x = $ds->perceptron_output($weights, $bias, $u);
+
+=cut
+
+sub perceptron_output {
+    my ($self, $weights, $bias, $u) = @_;
+    my $calculation = $self->vector_dot($weights, $u) + $bias;
+    return $self->step_function($calculation);
 }
 
 1;
