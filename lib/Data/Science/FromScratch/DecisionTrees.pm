@@ -1,6 +1,6 @@
 package Data::Science::FromScratch::DecisionTrees;
 
-use List::Util qw(sum0);
+use List::Util qw(min sum0);
 use Moo::Role;
 use strictures 2;
 
@@ -135,6 +135,34 @@ TODO
 
 sub build_tree_id3 {
     my ($self, $inputs, $split_attributes, $target_attribute) = @_;
+    my %label_counts;
+    for my $input (@$inputs) {
+        $label_counts{ $input->{$target_attribute} }++;
+    }
+    my $most_common_label = (sort { $label_counts{$b} <=> $label_counts{$a} } keys %label_counts)[0];
+    if (keys(%label_counts) == 1 || !@$split_attributes) {
+        return { value => $most_common_label };
+    }
+    my $split_entropy = sub {
+        my ($attr) = @_;
+        return $self->partition_entropy_by($inputs, $attr, $target_attribute);
+    };
+    my %attributes;
+    for my $x (@$split_attributes) {
+        $attributes{ $split_entropy->($x) } = $x;
+    }
+    my $min__attribute = min(keys %attributes);
+    my $best_attribute = $attributes{$min__attribute};
+    my %partitions = $self->partition_by($inputs, $best_attribute);
+    my @new_attributes = map { $_ } grep { $_ ne $best_attribute } @$split_attributes;
+    my $subtrees = {
+        map { $_ => $self->build_tree_id3($partitions{$_}, \@new_attributes, $target_attribute) } keys %partitions
+    };
+    return {
+        attribute     => $best_attribute,
+        subtrees      => $subtrees,
+        default_value => $most_common_label,
+    };
 }
 
 1;
