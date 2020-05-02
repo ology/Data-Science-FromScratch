@@ -27,6 +27,8 @@ use strictures 2;
 
   $v = $ds->random_normal(); #
 
+  $v = $ds->random_tensor(); #
+
 =head1 METHODS
 
 =head2 tensor_shape
