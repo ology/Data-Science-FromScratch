@@ -40,11 +40,11 @@ is_deeply $sigmoid->backward([1,2,3]), [0.25,0.5,0.75], 'backward';
 use_ok 'Data::Science::FromScratch::NNLinear';
 
 my $linear = new_ok 'Data::Science::FromScratch::NNLinear' => [
-    output_dim => 3,
-    input_dim  => 3,
+    input_dim  => 2,
+    output_dim => 1,
 ];
 
-my $got = $linear->forward([0,0,0]);
-is scalar(@$got), 3, 'forward';
+my $got = $linear->forward([0,0]);
+is scalar(@$got), $linear->output_dim, 'forward';
 
 done_testing();
