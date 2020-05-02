@@ -23,7 +23,7 @@ use strictures 2;
 
   $y = $ds->tensor_sum([1,2,3]); # 6
 
-  $v = $ds->tensor_apply(); #
+  $v = $ds->tensor_apply(sub { shift() + 1 }, [1,2,3]); # [2,3,4]
 
   $v = $ds->zeros_like([1,2,3]); # [0,0,0]
 
