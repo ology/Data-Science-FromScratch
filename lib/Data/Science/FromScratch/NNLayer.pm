@@ -74,4 +74,12 @@ sub grads {
     return ();
 }
 
+=head1 SEE ALSO
+
+L<Data::Science::FromScratch::NNSigmoid>
+
+L<Data::Science::FromScratch::NNLinear>
+
+L<Data::Science::FromScratch::NNSequential>
+
 1;
