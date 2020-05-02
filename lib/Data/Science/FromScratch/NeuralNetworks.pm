@@ -12,7 +12,8 @@ use strictures 2;
   my $x = $ds->step_function(-1); # 0
   $x = $ds->step_function(1); # 1
 
-  $x = $ds->perceptron_output(); #
+  $x = $ds->perceptron_output([2,2], -3, [0,1]); # 0
+  $x = $ds->perceptron_output([2,2], -3, [1,1]); # 1
 
 =head1 METHODS
 
