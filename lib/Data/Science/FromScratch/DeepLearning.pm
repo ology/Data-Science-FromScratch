@@ -23,6 +23,10 @@ use strictures 2;
 
   $v = $ds->tensor_combine(sub { shift() * shift() }, [1,2,3], [4,5,6]); # [4,10,18]
 
+  $v = $ds->random_uniform(); #
+
+  $v = $ds->random_normal(); #
+
 =head1 METHODS
 
 =head2 tensor_shape
@@ -109,6 +113,63 @@ sub tensor_combine {
     }
     else {
         return [map { $self->tensor_combine($fn, $t1->[$_], $t2->[$_]) } 0 .. @$t1 - 1];
+    }
+}
+
+=head2 random_uniform
+
+  $v = $ds->random_uniform($dims);
+
+=cut
+
+sub random_uniform {
+    my ($self, $dims) = @_;
+    if (@$dims == 1) {
+        return [map { rand } 0 .. $dims->[0] - 1];
+    }
+    else {
+        return [map { $self->random_uniform([ @$dims[1 .. @$dims - 1] ]) } 0 .. $dims->[0] - 1];
+    }
+}
+
+=head2 random_normal
+
+  $v = $ds->random_normal($dims, $mean, $variance);
+
+=cut
+
+sub random_normal {
+    my ($self, $dims, $mean, $variance) = @_;
+    $mean ||= 0;
+    $variance ||= 1;
+    if (@$dims == 1) {
+        return [map { $mean + $variance * $self->inverse_normal_cdf(rand) } 0 .. $dims->[0] - 1];
+    }
+    else {
+        return [map { $self->random_normal([ @$dims[1 .. @$dims - 1] ], $mean, $variance) } 0 .. $dims->[0] - 1];
+    }
+}
+
+=head2 random_tensor
+
+  $v = $ds->random_tensor($dims, $init);
+
+=cut
+
+sub random_tensor {
+    my ($self, $dims, $init) = @_;
+    if ($init eq 'normal') {
+        return $self->random_normal($dims);
+    }
+    elsif ($init eq 'uniform') {
+        return $self->random_uniform($dims);
+    }
+    elsif ($init eq 'xavier') {
+        my $variance = @$dims / sum0(@$dims);
+        return $self->random_normal($dims, 0, $variance);
+    }
+    else {
+        die "Unknown init: $init";
     }
 }
 
