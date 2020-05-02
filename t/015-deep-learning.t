@@ -26,6 +26,9 @@ is_deeply $ds->zeros_like([[1,2],[3,4]]), [[0,0],[0,0]], 'zeros_like';
 is_deeply $ds->tensor_combine(sub { shift() + shift() }, [1,2,3], [4,5,6]), [5,7,9], 'tensor_combine';
 is_deeply $ds->tensor_combine(sub { shift() * shift() }, [1,2,3], [4,5,6]), [4,10,18], 'tensor_combine';
 
+is_deeply $ds->tensor_shape($ds->random_uniform([2,3,4])), [2,3,4], 'random_uniform';
+is_deeply $ds->tensor_shape($ds->random_normal([5,6], 10)), [5,6], 'random_normal';
+
 use_ok 'Data::Science::FromScratch::NNSigmoid';
 
 my $sigmoid = new_ok 'Data::Science::FromScratch::NNSigmoid';
@@ -33,9 +36,6 @@ my $sigmoid = new_ok 'Data::Science::FromScratch::NNSigmoid';
 is_deeply $sigmoid->forward([0,0,0]), [0.5,0.5,0.5], 'forward';
 is_deeply $sigmoid->backward([0,0,0]), [0,0,0], 'backward';
 is_deeply $sigmoid->backward([1,2,3]), [0.25,0.5,0.75], 'backward';
-
-is_deeply $ds->tensor_shape($ds->random_uniform([2,3,4])), [2,3,4], 'random_uniform';
-is_deeply $ds->tensor_shape($ds->random_normal([5,6], 10)), [5,6], 'random_normal';
 
 use_ok 'Data::Science::FromScratch::NNLinear';
 
