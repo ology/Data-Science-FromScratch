@@ -23,6 +23,8 @@ use strictures 2;
 
   my $v = $ds->feed_forward(); #
 
+  $v = $ds->sqerror_gradients(); #
+
 =head1 METHODS
 
 =head2 step_function
@@ -87,6 +89,42 @@ sub feed_forward {
         $inputs = \@output;
     }
     return \@outputs;
+}
+
+=head2 sqerror_gradients
+
+  $y = $ds->sqerror_gradients($network, $input_vector, $target_vector);
+
+=cut
+
+sub sqerror_gradients {
+    my ($self, $network, $input_vector, $target_vector) = @_;
+    # forward pass
+    my ($hidden_outputs, $outputs) = @{ $self->feed_forward($network, $input_vector) };
+    # gradients with respect to output neuron pre-activation outputs
+    my @output_deltas = map {
+        $outputs->[$_] * (1 - $outputs->[$_]) * ($outputs->[$_] - $target_vector->[$_])
+    } 0 .. @$outputs - 1;
+    # gradients with respect to output neuron weights
+    my @output_grads;
+    for my $i (0 .. @{ $network->[-1] } - 1) {
+        my @grad = map { $output_deltas[$i] * $_ } @$hidden_outputs, 1;
+        push @output_grads, [\@grad];
+    }
+    # gradients with respect to hidden neuron pre-activation outputs
+    my @hidden_deltas;
+    for my $i (0 .. @$hidden_outputs - 1) {
+        my $x = $hidden_outputs->[$i] * (1 - $hidden_outputs->[$i])
+            * $self->vector_dot(\@output_deltas, [ map { $_->[$i] } @{ $network->[-1] } ]);
+        push @hidden_deltas, $x;
+    }
+    # gradients with respect to hidden neuron weights
+    my @hidden_grads;
+    for my $i (0 .. @{ $network->[0] } - 1) {
+        my @grads = map { $hidden_deltas[$i] * $_ } @$input_vector, 1;
+        push @hidden_grads, \@grads;
+    }
+    return \@hidden_grads, \@output_grads;
 }
 
 1;
