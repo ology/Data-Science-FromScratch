@@ -42,6 +42,7 @@ my $linear = new_ok 'Data::Science::FromScratch::NNLinear' => [
 ];
 my $got = $linear->forward([0,0]);
 is scalar(@$got), $linear->output_dim, 'forward';
+is_deeply $linear->backward([0,0]), [[0], [0]], 'backward';
 
 use_ok 'Data::Science::FromScratch::NNSequential';
 my $seq = new_ok 'Data::Science::FromScratch::NNSequential' => [
@@ -52,5 +53,7 @@ my $seq = new_ok 'Data::Science::FromScratch::NNSequential' => [
         Data::Science::FromScratch::NNSigmoid->new,
     ],
 ];
+$got = $seq->forward([0,0]);
+is scalar(@$got), 1, 'forward';
 
 done_testing();
