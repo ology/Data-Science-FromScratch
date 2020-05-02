@@ -84,8 +84,8 @@ $expect = {
     attribute => 'level',
     default_value => 1,
 };
-$got = $ds->build_tree_id3(\@inputs, ['level', 'lang', 'tweets', 'phd'], 'did_well');
-is_deeply $got, $expect, 'build_tree_id3';
+my $tree = $ds->build_tree_id3(\@inputs, ['level', 'lang', 'tweets', 'phd'], 'did_well');
+is_deeply $tree, $expect, 'build_tree_id3';
 
 # TODO
 #ok $ds->classify($tree, {level => 'Junior', lang => 'Java', tweets => 1, phd => 0}), 'classify';
