@@ -8,13 +8,13 @@ extends 'Data::Science::FromScratch::NNLayer';
 
 =head1 SYNOPSIS
 
-  use Data::Science::FromScratch::Linear;
+  use Data::Science::FromScratch::NNLinear;
 
-  my $linear = Data::Science::FromScratch::Linear->new;
+  my $linear = Data::Science::FromScratch::NNLinear->new;
 
 =head1 DESCRIPTION
 
-A C<Data::Science::FromScratch::Linear> is a class for building neural networks.
+A C<Data::Science::FromScratch::NNLinear> is a class for building neural networks.
 
 =head1 ATTRIBUTES
 
