@@ -4,7 +4,6 @@ use warnings;
 
 use Test::More;
 
-use Data::Dataset::Classic::Iris;
 use List::MoreUtils qw(zip6);
 
 use_ok 'Data::Science::FromScratch';
