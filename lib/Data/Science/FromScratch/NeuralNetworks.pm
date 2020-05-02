@@ -138,4 +138,6 @@ F<t/014-neural-networks.t>
 
 L<Moo::Role>
 
+L<Storable>
+
 =cut
