@@ -24,7 +24,7 @@ use strictures 2;
 
   $v = $ds->classify($tree, $input); # TODO
 
-  $x = $ds->build_tree_id3(); # TODO
+  my $h = $ds->build_tree_id3(); # 
 
 =head1 METHODS
 
@@ -127,9 +127,7 @@ sub classify {
 
 =head2 build_tree_id3
 
-  $x = $ds->build_tree_id3($inputs, $split_attributes, $target_attribute);
-
-TODO
+  $h = $ds->build_tree_id3($inputs, $split_attributes, $target_attribute);
 
 =cut
 
