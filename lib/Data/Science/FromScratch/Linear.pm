@@ -74,6 +74,7 @@ Weights
 
 has w => (
     is      => 'ro',
+    lazy    => 1,
     builder => 1,
 );
 
@@ -102,6 +103,7 @@ Bias
 
 has b => (
     is      => 'ro',
+    lazy    => 1,
     builder => 1,
 );
 
