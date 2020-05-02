@@ -51,7 +51,7 @@ sub perceptron_output {
 
 sub sigmoid {
     my ($self, $t) = @_;
-    return 1 / (1 + exp(-$t));
+    return $self->logistic($t);
 }
 
 1;
