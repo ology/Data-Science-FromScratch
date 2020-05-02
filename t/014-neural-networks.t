@@ -72,6 +72,7 @@ ok $got->[-1][0] > 0 && $got->[-1][0] < 0.001, 'feed_forward';
 
 SKIP: {
 skip 'Long running test', 4;
+# XXX This test passes and fails intermittently. :\
 $network = [
     [
         [ rand, rand, rand ],
