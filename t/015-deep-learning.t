@@ -22,4 +22,7 @@ is $ds->tensor_sum([[1,2],[3,4]]), 10, 'tensor_sum';
 is_deeply $ds->tensor_apply(sub { shift() + 1 }, [1,2,3]), [2,3,4], 'tensor_apply';
 is_deeply $ds->tensor_apply(sub { 2 * shift() }, [[1,2],[3,4]]), [[2,4], [6,8]], 'tensor_apply';
 
+is_deeply $ds->zeros_like([1,2,3]), [0,0,0], 'zeros_like';
+is_deeply $ds->zeros_like([[1,2],[3,4]]), [[0,0],[0,0]], 'zeros_like';
+
 done_testing();
