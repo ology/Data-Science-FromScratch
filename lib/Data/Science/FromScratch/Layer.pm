@@ -27,6 +27,7 @@ C<Data::Science::FromScratch> object
 
 has ds => (
     is        => 'ro',
+    lazy      => 1,
     init_args => undef,
     default   => sub { Data::Science::FromScratch->new },
 );
@@ -157,7 +158,7 @@ A C<Data::Science::FromScratch::Linear> is a class for building neural networks.
 
 =head2 input_dim
 
-  $v = $linear->input_dim;
+  $x = $linear->input_dim;
 
 =cut
 
@@ -167,7 +168,7 @@ has input_dim => (
 
 =head2 output_dim
 
-  $v = $linear->output_dim;
+  $x = $linear->output_dim;
 
 =cut
 
@@ -185,6 +186,7 @@ Default: C<xavier>
 
 has init => (
     is      => 'ro',
+    lazy    => 1,
     default => sub { 'xavier' },
 );
 
