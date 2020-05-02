@@ -1,5 +1,6 @@
 package Data::Science::FromScratch::DeepLearning;
 
+use List::Util qw(sum0);
 use Moo::Role;
 use Storable qw(dclone);
 use strictures 2;
@@ -16,19 +17,50 @@ use strictures 2;
 
 =head2 dl_shape
 
-  $v = $ds->dl_shape($u); #
+  my $v = $ds->dl_shape([1,2,3]); # [3]
+
+  my $y = $ds->is_1d([1,2,3]); # 1
+
+  $y = $ds->tensor_sum([1,2,3]); # 6
 
 =cut
 
 sub dl_shape {
-    my ($self, $u) = @_;
-    my $v = dclone $u;
+    my ($self, $tensor) = @_;
+    my $v = dclone $tensor;
     my @sizes;
     while (ref $v) {
         push @sizes, scalar @$v;
         $v = $v->[0];
     }
     return \@sizes;
+}
+
+=head2 is_1d
+
+  $y = $ds->is_1d($tensor);
+
+=cut
+
+sub is_1d {
+    my ($self, $tensor) = @_;
+    return ref $tensor->[0] ? 0 : 1;
+}
+
+=head2 tensor_sum
+
+  $y = $ds->tensor_sum($tensor);
+
+=cut
+
+sub tensor_sum {
+    my ($self, $tensor) = @_;
+    if ($self->is_1d($tensor)) {
+        return sum0(@$tensor);
+    }
+    else {
+        return sum0(map { $self->tensor_sum($_) } @$tensor);
+    }
 }
 
 1;
@@ -40,6 +72,10 @@ L<Data::Science::FromScratch>
 
 F<t/015-deep-learning.t>
 
+L<List::Util>
+
 L<Moo::Role>
+
+L<Storable>
 
 =cut
