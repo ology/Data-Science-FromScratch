@@ -27,6 +27,8 @@ use strictures 2;
 
   $v = $ds->zeros_like([1,2,3]); # [0,0,0]
 
+  $v = $ds->tensor_combine(); #
+
 =cut
 
 sub dl_shape {
@@ -92,6 +94,22 @@ sub tensor_apply {
 sub zeros_like {
     my ($self, $tensor) = @_;
     return $self->tensor_apply(sub { 0 }, $tensor);
+}
+
+=head2 tensor_combine
+
+  $v = $ds->tensor_combine($fn, $t1, $t2);
+
+=cut
+
+sub tensor_combine {
+    my ($self, $fn, $t1, $t2) = @_;
+    if ($self->is_1d($t1)) {
+        return [map { $fn->($t1->[$_], $t2->[$_]) } 0 .. @$t1 - 1];
+    }
+    else {
+        return [map { $self->tensor_combine($fn, $t1->[$_], $t2->[$_]) } 0 .. @$t1 - 1];
+    }
 }
 
 1;
