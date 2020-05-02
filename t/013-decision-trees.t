@@ -67,13 +67,29 @@ is sprintf('%.4f', $got), '0.0000', 'partition_entropy_by';
 $got = $ds->partition_entropy_by(\@senior_inputs, 'phd', 'did_well');
 is sprintf('%.4f', $got), '0.9510', 'partition_entropy_by';
 
+$expect = {
+    subtrees => {
+        Senior => {
+            attribute => 'tweets',
+            subtrees => { 0 => { value => 0 }, 1 => { value => 1 } },
+            default_value => 0,
+        },
+        Mid => { value => 1 },
+        Junior => {
+            attribute => 'phd',
+            subtrees => { 0 => { value => 1 }, 1 => { value => 0 } },
+            default_value => 1,
+        }
+    },
+    attribute => 'level',
+    default_value => 1,
+};
+$got = $ds->build_tree_id3(\@inputs, ['level', 'lang', 'tweets', 'phd'], 'did_well');
+is_deeply $got, $expect, 'build_tree_id3';
+
 # TODO
-#my $tree = $ds->build_tree_id3(\@inputs, ['level', 'lang', 'tweets', 'phd'], 'did_well');
 #ok $ds->classify($tree, {level => 'Junior', lang => 'Java', tweets => 1, phd => 0}), 'classify';
 #ok ! $ds->classify($tree, {level => 'Junior', lang => 'Java', tweets => 1, phd => 1}), 'classify';
 #ok $ds->classify($tree, {level => 'Intern', lang => 'Java', tweets => 1, phd => 1}), 'classify';
-
-$got = $ds->build_tree_id3(\@inputs, ['level', 'lang', 'tweets', 'phd'], 'did_well');
-use Data::Dumper;warn(__PACKAGE__,' ',__LINE__," MARK: ",Dumper$got);
 
 done_testing();
