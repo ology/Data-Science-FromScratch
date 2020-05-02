@@ -49,7 +49,7 @@ is sprintf('%.4f', $got), '0.9933', 'sigmoid';
 $got = $ds->sigmoid(10);
 is sprintf('%.4f', $got), '1.0000', 'sigmoid';
 
-my $xor_network = [
+my $network = [
     [ # Hidden layer
         [20,20,-30], # AND neuron
         [20,20,-10], # OR neuron
@@ -59,13 +59,14 @@ my $xor_network = [
     ],
 ];
 
-$got = $ds->feed_forward($xor_network, [0,0]);
+# XOR gate
+$got = $ds->feed_forward($network, [0,0]);
 ok $got->[-1][0] > 0 && $got->[-1][0] < 0.001, 'feed_forward';
-$got = $ds->feed_forward($xor_network, [1,0]);
+$got = $ds->feed_forward($network, [1,0]);
 ok $got->[-1][0] > 0.999 && $got->[-1][0] < 1, 'feed_forward';
-$got = $ds->feed_forward($xor_network, [0,1]);
+$got = $ds->feed_forward($network, [0,1]);
 ok $got->[-1][0] > 0.999 && $got->[-1][0] < 1, 'feed_forward';
-$got = $ds->feed_forward($xor_network, [1,1]);
+$got = $ds->feed_forward($network, [1,1]);
 ok $got->[-1][0] > 0 && $got->[-1][0] < 0.001, 'feed_forward';
 
 done_testing();
