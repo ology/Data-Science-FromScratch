@@ -25,6 +25,8 @@ use strictures 2;
 
   $v = $ds->tensor_apply(); #
 
+  $v = $ds->zeros_like([1,2,3]); # [0,0,0]
+
 =cut
 
 sub dl_shape {
@@ -79,6 +81,17 @@ sub tensor_apply {
     else {
         return [map { $self->tensor_apply($fn, $_) } @$tensor];
     }
+}
+
+=head2 zeros_like
+
+  $v = $ds->zeros_like($tensor);
+
+=cut
+
+sub zeros_like {
+    my ($self, $tensor) = @_;
+    return $self->tensor_apply(sub { 0 }, $tensor);
 }
 
 1;
