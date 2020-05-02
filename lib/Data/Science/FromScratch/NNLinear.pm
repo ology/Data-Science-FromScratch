@@ -146,12 +146,12 @@ sub backward {
     my ($self, $gradient) = @_;
     $self->b_grad($gradient);
     my @w_grad;
-    for my $i (0 .. $self->output_dim) {
+    for my $i (0 .. $self->output_dim - 1) {
         push @w_grad, [map { $self->input->[$_] * $gradient->[$i] } 0 .. $self->input_dim - 1];
     }
     $self->w_grad(\@w_grad);
     my @sum;
-    for my $i (0 .. $self->input_dim) {
+    for my $i (0 .. $self->input_dim - 1) {
         push @sum, [map { $self->w->[$_][$i] * $gradient->[$_] } 0 .. $self->output_dim - 1];
     }
     return \@sum;
