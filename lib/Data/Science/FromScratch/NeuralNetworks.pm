@@ -109,7 +109,7 @@ sub sqerror_gradients {
     my @output_grads;
     for my $i (0 .. @{ $network->[-1] } - 1) {
         my @grad = map { $output_deltas[$i] * $_ } @$hidden_outputs, 1;
-        push @output_grads, [\@grad];
+        push @output_grads, \@grad;
     }
     # gradients with respect to hidden neuron pre-activation outputs
     my @hidden_deltas;
