@@ -1,6 +1,7 @@
 package Data::Science::FromScratch::NeuralNetworks;
 
 use Moo::Role;
+use Storable qw(dclone);
 use strictures 2;
 
 =head1 SYNOPSIS
@@ -17,6 +18,10 @@ use strictures 2;
   $y = $ds->perceptron_output([-2], 1, [0]); # 1
 
   $y = $ds->sigmoid(-5); # 0.0067
+
+  $y = $ds->neuron_output(); #
+
+  my $v = $ds->feed_forward(); #
 
 =head1 METHODS
 
@@ -52,6 +57,36 @@ sub perceptron_output {
 sub sigmoid {
     my ($self, $t) = @_;
     return $self->logistic($t);
+}
+
+=head2 neuron_output
+
+  $y = $ds->neuron_output($weights, $inputs);
+
+=cut
+
+sub neuron_output {
+    my ($self, $weights, $inputs) = @_;
+    return $self->sigmoid($self->vector_dot($weights, $inputs));
+}
+
+=head2 feed_forward
+
+  $v = $ds->feed_forward($neural_network, $input_vector);
+
+=cut
+
+sub feed_forward {
+    my ($self, $neural_network, $input_vector) = @_;
+    my @outputs;
+    my $inputs = dclone $input_vector;
+    for my $layer (@$neural_network) {
+        my @input_with_bias = ( @$inputs, 1 );
+        my @output = map { $self->neuron_output($_, \@input_with_bias) } @$layer;
+        push @outputs, \@output;
+        $inputs = \@output;
+    }
+    return \@outputs;
 }
 
 1;
