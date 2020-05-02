@@ -11,7 +11,7 @@ use strictures 2;
 
   my $x = $ds->majority_vote(qw(a b c b a)); # b
 
-  $x = $ds->knn_classify(); # 
+  $x = $ds->knn_classify(); #
 
 =head1 METHODS
 

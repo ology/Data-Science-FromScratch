@@ -14,9 +14,9 @@ use strictures 2;
 
   $x = $ds->logistic_prime(0); 0.25
 
-  $x = $ds->negative_log_likelihood(); # 
+  $x = $ds->negative_log_likelihood(); #
 
-  $v = $ds->negative_log_gradient(); # 
+  $v = $ds->negative_log_gradient(); #
 
 =head1 METHODS
 

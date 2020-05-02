@@ -19,9 +19,9 @@ use strictures 2;
 
   my $v = $ds->sqerror_gradient([1,2,3], 30, [4,4,4]); # [-12, -24, -36]
 
-  $v = $ds->mr_least_squares_fit(); # 
+  $v = $ds->mr_least_squares_fit(); #
 
-  $x = $ds->multiple_r_squared(); # 
+  $x = $ds->multiple_r_squared(); #
 
   $v = $ds->bootstrap_sample([1,2,3,4,5]); # [5,2,4,2,5] for example
 
@@ -31,13 +31,13 @@ use strictures 2;
 
   $x = $ds->ridge_penalty([1,2,3,4,5], 0.5); # 27
 
-  $x = $ds->squared_error_ridge(); # 
+  $x = $ds->squared_error_ridge(); #
 
-  $v = $ds->ridge_penalty_gradient(); # 
+  $v = $ds->ridge_penalty_gradient(); #
 
-  $v = $ds->sqerror_ridge_gradient(); # 
+  $v = $ds->sqerror_ridge_gradient(); #
 
-  $v = $ds->least_squares_fit_ridge(); # 
+  $v = $ds->least_squares_fit_ridge(); #
 
   $x = $ds->lasso_penalty([1,2,3,4,5], 0.5); # 7
 

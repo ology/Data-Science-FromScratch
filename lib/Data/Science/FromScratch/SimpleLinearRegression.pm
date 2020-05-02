@@ -23,7 +23,7 @@ use Statistics::Basic qw(mean);
 
   $x = $ds->total_sum_of_squares([1 .. 10]); # 82.5
 
-  $x = $ds->r_squared(); # 
+  $x = $ds->r_squared(); #
 
 =head1 METHODS
 
