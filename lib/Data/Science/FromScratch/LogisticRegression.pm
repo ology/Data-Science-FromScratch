@@ -68,6 +68,8 @@ sub _negative_log_likelihood {
 
   $v = $ds->negative_log_gradient($u, $y, $beta);
 
+This method is suspect because the results from the book code are different.
+
 =cut
 
 sub negative_log_gradient {
