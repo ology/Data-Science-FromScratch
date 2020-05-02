@@ -21,7 +21,7 @@ use strictures 2;
 
   $v = $ds->zeros_like([1,2,3]); # [0,0,0]
 
-  $v = $ds->tensor_combine(sub { shift() * shift() }, [1,2,3], [4,5,6]); # [5,7,9]
+  $v = $ds->tensor_combine(sub { shift() * shift() }, [1,2,3], [4,5,6]); # [4,10,18]
 
 =head1 METHODS
 
