@@ -5,6 +5,7 @@ use warnings;
 use Test::More;
 
 use Data::Dataset::Classic::Iris;
+use List::MoreUtils qw(zip6);
 
 use_ok 'Data::Science::FromScratch';
 
@@ -68,5 +69,43 @@ $got = $ds->feed_forward($network, [0,1]);
 ok $got->[-1][0] > 0.999 && $got->[-1][0] < 1, 'feed_forward';
 $got = $ds->feed_forward($network, [1,1]);
 ok $got->[-1][0] > 0 && $got->[-1][0] < 0.001, 'feed_forward';
+
+$network = [
+    [
+        [ rand, rand, rand ],
+        [ rand, rand, rand ],
+    ],
+    [
+        [ rand, rand, rand ],
+    ],
+];
+
+my $xs = [[0,0], [0,1], [1,0], [1,1]];
+my $ys = [ [0],   [1],   [1],   [0]];
+
+for my $i (1 .. 20_000) {
+    for my $j (0 .. @$xs - 1) {
+        my $gradients = [ $ds->sqerror_gradients($network, $xs->[$j], $ys->[$j]) ];
+        my @step;
+        for my $k (0 .. @$network - 1) {
+            my @x;
+            my @z = zip6(@{ $network->[$k] }, @{ $gradients->[$k] });
+            for my $y (@z) {
+                push @x, $ds->gradient_step($y->[0], $y->[1], -1);
+            }
+            push @step, \@x;
+        }
+        $network = \@step;
+    }
+}
+
+$got = $ds->feed_forward($network, [0,0]);
+ok $got->[-1][0] < 0.01, 'feed_forward';
+$got = $ds->feed_forward($network, [0,1]);
+ok $got->[-1][0] > 0.99, 'feed_forward';
+$got = $ds->feed_forward($network, [1,0]);
+ok $got->[-1][0] > 0.99, 'feed_forward';
+$got = $ds->feed_forward($network, [1,1]);
+ok $got->[-1][0] < 0.01, 'feed_forward';
 
 done_testing();
