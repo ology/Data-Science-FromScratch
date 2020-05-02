@@ -92,9 +92,9 @@ for my $i (1 .. 20_000) {
         my @step;
         for my $k (0 .. @$network - 1) {
             my @x;
-            my @z = zip6(@{ $network->[$k] }, @{ $gradients->[$k] });
-            for my $y (@z) {
-                push @x, $ds->gradient_step($y->[0], $y->[1], -1);
+            my @zipped = zip6(@{ $network->[$k] }, @{ $gradients->[$k] });
+            for my $z (@zipped) {
+                push @x, $ds->gradient_step($z->[0], $z->[1], -1);
             }
             push @step, \@x;
         }
