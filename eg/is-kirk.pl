@@ -60,5 +60,5 @@ for my $text (
     "He's dead, Jim.",                                          # Fake McCoy
 ) {
     my $prediction = $ds->nb_predict($text);
-    printf qq/\t"%s" = %.4f\n/, $text, $prediction;
+    printf qq/\t%.4f <= "%s"\n/, $prediction, $text;
 }
