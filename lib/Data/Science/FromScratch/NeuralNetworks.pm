@@ -14,6 +14,7 @@ use strictures 2;
 
   $x = $ds->perceptron_output([2,2], -3, [0,1]); # 0
   $x = $ds->perceptron_output([2,2], -1, [0,1]); # 1
+  $x = $ds->perceptron_output([-2], 1, [0]); # 1
 
 =head1 METHODS
 
