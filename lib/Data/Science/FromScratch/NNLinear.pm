@@ -179,8 +179,10 @@ sub grads {
     return [$self->w_grad, $self->b_grad];
 }
 
+1;
+
 =head1 SEE ALSO
 
 L<Data::Science::FromScratch::NNLayer>
 
-1;
+=cut

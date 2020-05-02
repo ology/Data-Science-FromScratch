@@ -58,8 +58,10 @@ sub backward {
     );
 }
 
+1;
+
 =head1 SEE ALSO
 
 L<Data::Science::FromScratch::NNLayer>
 
-1;
+=cut

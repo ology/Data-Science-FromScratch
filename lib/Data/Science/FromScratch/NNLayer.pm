@@ -74,6 +74,8 @@ sub grads {
     return ();
 }
 
+1;
+
 =head1 SEE ALSO
 
 F<t/015-deep-learning.t>
@@ -84,4 +86,4 @@ L<Data::Science::FromScratch::NNLinear>
 
 L<Data::Science::FromScratch::NNSequential>
 
-1;
+=cut
