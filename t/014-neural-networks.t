@@ -70,6 +70,8 @@ ok $got->[-1][0] > 0.999 && $got->[-1][0] < 1, 'feed_forward';
 $got = $ds->feed_forward($network, [1,1]);
 ok $got->[-1][0] > 0 && $got->[-1][0] < 0.001, 'feed_forward';
 
+SKIP: {
+skip 'Long running test', 4;
 $network = [
     [
         [ rand, rand, rand ],
@@ -107,5 +109,6 @@ $got = $ds->feed_forward($network, [1,0]);
 ok $got->[-1][0] > 0.99, 'feed_forward';
 $got = $ds->feed_forward($network, [1,1]);
 ok $got->[-1][0] < 0.01, 'feed_forward';
+}
 
 done_testing();
