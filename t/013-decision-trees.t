@@ -87,9 +87,8 @@ $expect = {
 my $tree = $ds->build_tree_id3(\@inputs, ['level', 'lang', 'tweets', 'phd'], 'did_well');
 is_deeply $tree, $expect, 'build_tree_id3';
 
-# TODO
-#ok $ds->classify($tree, {level => 'Junior', lang => 'Java', tweets => 1, phd => 0}), 'classify';
-#ok ! $ds->classify($tree, {level => 'Junior', lang => 'Java', tweets => 1, phd => 1}), 'classify';
-#ok $ds->classify($tree, {level => 'Intern', lang => 'Java', tweets => 1, phd => 1}), 'classify';
+ok $ds->classify($tree, {level => 'Junior', lang => 'Java', tweets => 1, phd => 0}), 'classify';
+ok ! $ds->classify($tree, {level => 'Junior', lang => 'Java', tweets => 1, phd => 1}), 'classify';
+ok $ds->classify($tree, {level => 'Intern', lang => 'Java', tweets => 1, phd => 1}), 'classify';
 
 done_testing();
