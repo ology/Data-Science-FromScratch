@@ -43,4 +43,14 @@ my $linear = new_ok 'Data::Science::FromScratch::NNLinear' => [
 my $got = $linear->forward([0,0]);
 is scalar(@$got), $linear->output_dim, 'forward';
 
+use_ok 'Data::Science::FromScratch::NNSequential';
+my $seq = new_ok 'Data::Science::FromScratch::NNSequential' => [
+    layers => [
+        Data::Science::FromScratch::NNLinear->new(input_dim => 2, output_dim => 2),
+        Data::Science::FromScratch::NNSigmoid->new,
+        Data::Science::FromScratch::NNLinear->new(input_dim => 2, output_dim => 1),
+        Data::Science::FromScratch::NNSigmoid->new,
+    ],
+];
+
 done_testing();
