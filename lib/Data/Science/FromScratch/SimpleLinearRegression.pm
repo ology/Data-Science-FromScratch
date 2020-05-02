@@ -11,25 +11,25 @@ use Statistics::Basic qw(mean);
 
   my $ds = Data::Science::FromScratch->new;
 
-  my $x = $ds->lr_predict(0.5, 0.5, 0.5); # 0.75
+  my $y = $ds->lr_predict(0.5, 0.5, 0.5); # 0.75
 
-  $x = $ds->lr_error(0.5, 0.5, 0.5, 0.4); # 0.35
+  $y = $ds->lr_error(0.5, 0.5, 0.5, 0.4); # 0.35
 
-  $x = $ds->sum_of_sqerrors(0.5, 0.5,
+  $y = $ds->sum_of_sqerrors(0.5, 0.5,
     [0.1, 0.5, 0.8], [0.2, 0.4, 0.7]); # 0.285
 
   my ($alpha, $beta) = $ds->lr_least_squares_fit(
     [0.1, 0.5, 0.8], [0.2, 0.4, 0.7]); # 0.1054, 0.7027
 
-  $x = $ds->total_sum_of_squares([1 .. 10]); # 82.5
+  $y = $ds->total_sum_of_squares([1 .. 10]); # 82.5
 
-  $x = $ds->r_squared(); #
+  $y = $ds->r_squared(); #
 
 =head1 METHODS
 
 =head2 lr_predict
 
-  $x = $ds->lr_predict($alpha, $beta, $x_i);
+  $y = $ds->lr_predict($alpha, $beta, $x_i);
 
 =cut
 
@@ -40,7 +40,7 @@ sub lr_predict {
 
 =head2 lr_error
 
-  $x = $ds->lr_error($alpha, $beta, $x_i, $y_i);
+  $y = $ds->lr_error($alpha, $beta, $x_i, $y_i);
 
 Actual value: B<y_i>
 
@@ -53,7 +53,7 @@ sub lr_error {
 
 =head2 sum_of_sqerrors
 
-  $x = $ds->sum_of_sqerrors($alpha, $beta, $x, $y);
+  $y = $ds->sum_of_sqerrors($alpha, $beta, $x, $y);
 
 =cut
 
@@ -78,7 +78,7 @@ sub lr_least_squares_fit {
 
 =head2 total_sum_of_squares
 
-  $x = $ds->total_sum_of_squares($v);
+  $y = $ds->total_sum_of_squares($v);
 
 =cut
 
@@ -89,7 +89,7 @@ sub total_sum_of_squares {
 
 =head2 r_squared
 
-  $x = $ds->r_squared($alpha, $beta, $x, $y);
+  $y = $ds->r_squared($alpha, $beta, $x, $y);
 
 "Coefficient of determination"
 

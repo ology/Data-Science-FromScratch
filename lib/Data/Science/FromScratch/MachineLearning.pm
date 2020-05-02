@@ -18,10 +18,10 @@ use strictures 2;
   my ($x_train, $x_test, $y_train, $y_test) = $ds->train_test_split(\@x_data, \@y_data, 0.5);
     # 3-element vectors
 
-  my $x = $ds->accuracy(70, 4930, 13930, 981070); # 0.9811
-  my $x = $ds->precision(70, 4930, 13930, 981070); # 0.0140
-  my $x = $ds->recall(70, 4930, 13930, 981070); # 0.0050
-  my $x = $ds->f1_score(70, 4930, 13930, 981070); # 0.0074
+  my $y = $ds->accuracy(70, 4930, 13930, 981070); # 0.9811
+  $y = $ds->precision(70, 4930, 13930, 981070); # 0.0140
+  $y = $ds->recall(70, 4930, 13930, 981070); # 0.0050
+  $y = $ds->f1_score(70, 4930, 13930, 981070); # 0.0074
 
 =head1 METHODS
 
@@ -57,7 +57,7 @@ sub train_test_split {
 
 =head2 accuracy
 
-  $x = $ds->accuracy($true_pos, $false_pos, $false_neg, $true_neg);
+  $y = $ds->accuracy($true_pos, $false_pos, $false_neg, $true_neg);
 
 =cut
 
@@ -70,7 +70,7 @@ sub accuracy {
 
 =head2 precision
 
-  $x = $ds->precision($true_pos, $false_pos, $false_neg, $true_neg);
+  $y = $ds->precision($true_pos, $false_pos, $false_neg, $true_neg);
 
 =cut
 
@@ -81,7 +81,7 @@ sub precision {
 
 =head2 recall
 
-  $x = $ds->recall($true_pos, $false_pos, $false_neg, $true_neg);
+  $y = $ds->recall($true_pos, $false_pos, $false_neg, $true_neg);
 
 =cut
 
@@ -92,7 +92,7 @@ sub recall {
 
 =head2 f1_score
 
-  $x = $ds->f1_score($true_pos, $false_pos, $false_neg, $true_neg);
+  $y = $ds->f1_score($true_pos, $false_pos, $false_neg, $true_neg);
 
 =cut
 

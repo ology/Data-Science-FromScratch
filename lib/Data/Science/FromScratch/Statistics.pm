@@ -10,41 +10,41 @@ use strictures 2;
 
   my $ds = Data::Science::FromScratch->new;
 
-  my $x = $ds->mean(1,2,3); # 6 / 3
+  my $y = $ds->mean(1,2,3); # 6 / 3
 
-  $x = $ds->median(1,10,2,9,5); # 5
-  $x = $ds->median(1,9,2,10); # (2 + 9) / 2
+  $y = $ds->median(1,10,2,9,5); # 5
+  $y = $ds->median(1,9,2,10); # (2 + 9) / 2
 
   my @data = (1,1, 2,2,2, 3,3,3,3, 4,4,4,4,4, 5,5,5,5,5,5, 6,6,6,6,6,6);
   my @data2 = (4,4, 5,5,5, 6,6,6,6, 7,7,7,7,7, 8,8,8,8,8,8, 9,9,9,9,9,9);
 
-  $x = $ds->quantile(0.10, @data); # 2
-  $x = $ds->quantile(0.25, @data); # 3
-  $x = $ds->quantile(0.50, @data); # 4 (median)
-  $x = $ds->quantile(0.75, @data); # 5
-  $x = $ds->quantile(0.90, @data); # 6
+  $y = $ds->quantile(0.10, @data); # 2
+  $y = $ds->quantile(0.25, @data); # 3
+  $y = $ds->quantile(0.50, @data); # 4 (median)
+  $y = $ds->quantile(0.75, @data); # 5
+  $y = $ds->quantile(0.90, @data); # 6
 
   my $v = $ds->mode(@data); # [5,6]
 
-  $x = $ds->data_range(@data); # 5
+  $y = $ds->data_range(@data); # 5
 
   $v = $ds->de_mean(1,2,3); # [-1,0,1]
 
-  $x = $ds->variance(@data); # 2.5538
+  $y = $ds->variance(@data); # 2.5538
 
-  $x = $ds->standard_deviation(@data); # 1.5981
+  $y = $ds->standard_deviation(@data); # 1.5981
 
-  $x = $ds->interquartile_range(@data); # 2
+  $y = $ds->interquartile_range(@data); # 2
 
-  $x = $ds->covariance(\@data, \@data2); # 2.5538
+  $y = $ds->covariance(\@data, \@data2); # 2.5538
 
-  $x = $ds->correlation(\@data, \@data2); # 0.2474
+  $y = $ds->correlation(\@data, \@data2); # 0.2474
 
 =head1 METHODS
 
 =head2 mean
 
-  $x = $ds->mean(@data);
+  $y = $ds->mean(@data);
 
 =cut
 
@@ -55,7 +55,7 @@ sub mean {
 
 =head2 median
 
-  $x = $ds->median(@data);
+  $y = $ds->median(@data);
 
 =cut
 
@@ -75,7 +75,7 @@ sub median {
 
 =head2 quantile
 
-  $x = $ds->quantile($percentile, @data);
+  $y = $ds->quantile($percentile, @data);
 
 =cut
 
@@ -103,7 +103,7 @@ sub mode {
 
 =head2 data_range
 
-  $x = $ds->data_range(@data);
+  $y = $ds->data_range(@data);
 
 =cut
 
@@ -128,7 +128,7 @@ sub de_mean {
 
 =head2 variance
 
-  $x = $ds->variance(@data);
+  $y = $ds->variance(@data);
 
 =cut
 
@@ -142,7 +142,7 @@ sub variance {
 
 =head2 standard_deviation
 
-  $x = $ds->standard_deviation(@data);
+  $y = $ds->standard_deviation(@data);
 
 =cut
 
@@ -153,7 +153,7 @@ sub standard_deviation {
 
 =head2 interquartile_range
 
-  $x = $ds->interquartile_range(@data);
+  $y = $ds->interquartile_range(@data);
 
 =cut
 
@@ -164,7 +164,7 @@ sub interquartile_range {
 
 =head2 covariance
 
-  $x = $ds->covariance(\@data1, \@data2);
+  $y = $ds->covariance(\@data1, \@data2);
 
 =cut
 
@@ -179,7 +179,7 @@ sub covariance {
 
 =head2 correlation
 
-  $x = $ds->correlation(\@data1, \@data2);
+  $y = $ds->correlation(\@data1, \@data2);
 
 =cut
 

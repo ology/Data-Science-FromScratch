@@ -11,29 +11,29 @@ use strictures 2;
 
   my $ds = Data::Science::FromScratch->new;
 
-  my $x = $ds->uniform_cdf(0); # 0
-  $x = $ds->uniform_cdf(0.5); # 0.5
-  $x = $ds->uniform_cdf(1); # 1
+  my $y = $ds->uniform_cdf(0); # 0
+  $y = $ds->uniform_cdf(0.5); # 0.5
+  $y = $ds->uniform_cdf(1); # 1
 
-  $x = $ds->normal_pdf(-1, 0, 1); # 0.2420
-  $x = $ds->normal_pdf(0, 0, 1); # 0.3989
-  $x = $ds->normal_pdf(1, 0, 1); # 0.2420
+  $y = $ds->normal_pdf(-1, 0, 1); # 0.2420
+  $y = $ds->normal_pdf(0, 0, 1); # 0.3989
+  $y = $ds->normal_pdf(1, 0, 1); # 0.2420
 
-  $x = $ds->normal_cdf(-1, 0, 1); # 0.1589
-  $x = $ds->normal_cdf(0, 0, 1); # 0.5
-  $x = $ds->normal_cdf(1, 0, 1); # 0.8411
+  $y = $ds->normal_cdf(-1, 0, 1); # 0.1589
+  $y = $ds->normal_cdf(0, 0, 1); # 0.5
+  $y = $ds->normal_cdf(1, 0, 1); # 0.8411
 
-  #$x = inverse_normal_cdf($n, $mu, $sigma, $tolerance); # TODO
+  #$y = inverse_normal_cdf($n, $mu, $sigma, $tolerance); # TODO
 
-  $x = $ds->bernouli_trial(0.5); # 0 or 1
+  $y = $ds->bernouli_trial(0.5); # 0 or 1
 
-  $x = $ds->binomial(100, 0.5); # Greater than or equal to 0
+  $y = $ds->binomial(100, 0.5); # Greater than or equal to 0
 
 =head1 METHODS
 
 =head2 uniform_cdf
 
-  $x = $ds->uniform_cdf($n);
+  $y = $ds->uniform_cdf($n);
 
 "Cumulative distribution function"
 
@@ -48,7 +48,7 @@ sub uniform_cdf {
 
 =head2 normal_pdf
 
-  $x = $ds->normal_pdf($n, $mu, $sigma);
+  $y = $ds->normal_pdf($n, $mu, $sigma);
 
 "Probability density function"
 
@@ -65,7 +65,7 @@ sub normal_pdf {
 
 =head2 normal_cdf
 
-  $x = $ds->normal_cdf($n, $mu, $sigma);
+  $y = $ds->normal_cdf($n, $mu, $sigma);
 
 =cut
 
@@ -78,7 +78,7 @@ sub normal_cdf {
 
 =head2 inverse_normal_cdf
 
-  $x = $ds->inverse_normal_cdf($n, $mu, $sigma, $tolerance);
+  $y = $ds->inverse_normal_cdf($n, $mu, $sigma, $tolerance);
 
 =cut
 
@@ -109,7 +109,7 @@ sub inverse_normal_cdf {
 
 =head2 bernouli_trial
 
-  $x = $ds->bernouli_trial($n);
+  $y = $ds->bernouli_trial($n);
 
 =cut
 
@@ -120,7 +120,7 @@ sub bernouli_trial {
 
 =head2 binomial
 
-  $x = $ds->binomial($n, $p);
+  $y = $ds->binomial($n, $p);
 
 B<$n> C<bernouli_trial>s of B<$p>.
 

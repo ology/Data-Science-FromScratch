@@ -9,15 +9,15 @@ use strictures 2;
 
   my $ds = Data::Science::FromScratch->new;
 
-  my $x = $ds->majority_vote(qw(a b c b a)); # b
+  my $y = $ds->majority_vote(qw(a b c b a)); # b
 
-  $x = $ds->knn_classify(); #
+  $y = $ds->knn_classify(); #
 
 =head1 METHODS
 
 =head2 majority_vote
 
-  $x = $ds->majority_vote(@labels);
+  $y = $ds->majority_vote(@labels);
 
 =cut
 
@@ -39,7 +39,7 @@ sub majority_vote {
 
 =head2 knn_classify
 
-  $x = $ds->knn_classify($k, $labeled_points, $new_point);
+  $y = $ds->knn_classify($k, $labeled_points, $new_point);
 
 Where B<k> is an integer, B<labeled_points> is a list of hash
 references,

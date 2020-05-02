@@ -10,17 +10,17 @@ use strictures 2;
 
   my $ds = Data::Science::FromScratch->new;
 
-  my $x = $ds->entropy([0.25, 0.75]); # 0.8113
+  my $y = $ds->entropy([0.25, 0.75]); # 0.8113
 
   my $v = $ds->class_probablities(['a','b']); # [0.5, 0.5]
 
-  $x = $ds->data_entropy([0,1]); # 1
+  $y = $ds->data_entropy([0,1]); # 1
 
-  $x = $ds->partition_entropy(); #
+  $y = $ds->partition_entropy(); #
 
   my %h = $ds->partition_by(); #
 
-  $x = $ds->partition_entropy_by(); #
+  $y = $ds->partition_entropy_by(); #
 
   $v = $ds->classify($tree, $input); #
 
@@ -30,7 +30,7 @@ use strictures 2;
 
 =head2 entropy
 
-  $x = $ds->entropy($probablities);
+  $y = $ds->entropy($probablities);
 
 =cut
 
@@ -46,7 +46,7 @@ sub _log2 {
 
 =head2 class_probablities
 
-  $x = $ds->class_probablities($labels);
+  $y = $ds->class_probablities($labels);
 
 =cut
 
@@ -61,7 +61,7 @@ sub class_probablities {
 
 =head2 data_entropy
 
-  $x = $ds->data_entropy($labels);
+  $y = $ds->data_entropy($labels);
 
 =cut
 
@@ -72,7 +72,7 @@ sub data_entropy {
 
 =head2 partition_entropy
 
-  $x = $ds->partition_entropy($subsets);
+  $y = $ds->partition_entropy($subsets);
 
 =cut
 
@@ -99,7 +99,7 @@ sub partition_by {
 
 =head2 partition_entropy_by
 
-  $x = $ds->partition_entropy_by($inputs, $attribute, $label_attr);
+  $y = $ds->partition_entropy_by($inputs, $attribute, $label_attr);
 
 =cut
 
@@ -115,7 +115,7 @@ sub partition_entropy_by {
 
 =head2 classify
 
-  $x = $ds->classify($tree, $input);
+  $y = $ds->classify($tree, $input);
 
 =cut
 

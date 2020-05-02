@@ -14,7 +14,7 @@ use strictures 2;
 
   $ds->train(@messages);
 
-  my $x = $ds->nb_predict('little lamb');
+  my $y = $ds->nb_predict('little lamb');
 
 =head1 ATTRIBUTES
 
@@ -133,7 +133,7 @@ sub _probabilities {
 
 =head2 nb_predict
 
-  $x = $ds->nb_predict($text);
+  $y = $ds->nb_predict($text);
 
 =cut
 

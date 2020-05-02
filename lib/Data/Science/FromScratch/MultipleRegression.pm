@@ -11,27 +11,27 @@ use strictures 2;
 
   my $ds = Data::Science::FromScratch->new;
 
-  my $x = $ds->mr_predict([1,2,3], [4,4,4]); # 24
+  my $y = $ds->mr_predict([1,2,3], [4,4,4]); # 24
 
-  $x = $ds->mr_error([1,2,3], 30, [4,4,4]); # -6
+  $y = $ds->mr_error([1,2,3], 30, [4,4,4]); # -6
 
-  $x = $ds->squared_error([1,2,3], 30, [4,4,4]); # 36
+  $y = $ds->squared_error([1,2,3], 30, [4,4,4]); # 36
 
   my $v = $ds->sqerror_gradient([1,2,3], 30, [4,4,4]); # [-12, -24, -36]
 
   $v = $ds->mr_least_squares_fit(); #
 
-  $x = $ds->multiple_r_squared(); #
+  $y = $ds->multiple_r_squared(); #
 
   $v = $ds->bootstrap_sample([1,2,3,4,5]); # [5,2,4,2,5] for example
 
   $v = $ds->bootstrap_statistic([1,2,3,4,5], 100); # [4,3,5,2,...
 
-  $x = $ds->p_value(30.58, 1.27); # < 0.001
+  $y = $ds->p_value(30.58, 1.27); # < 0.001
 
-  $x = $ds->ridge_penalty([1,2,3,4,5], 0.5); # 27
+  $y = $ds->ridge_penalty([1,2,3,4,5], 0.5); # 27
 
-  $x = $ds->squared_error_ridge(); #
+  $y = $ds->squared_error_ridge(); #
 
   $v = $ds->ridge_penalty_gradient(); #
 
@@ -39,13 +39,13 @@ use strictures 2;
 
   $v = $ds->least_squares_fit_ridge(); #
 
-  $x = $ds->lasso_penalty([1,2,3,4,5], 0.5); # 7
+  $y = $ds->lasso_penalty([1,2,3,4,5], 0.5); # 7
 
 =head1 METHODS
 
 =head2 mr_predict
 
-  $x = $ds->mr_predict($v, $beta);
+  $y = $ds->mr_predict($v, $beta);
 
 =cut
 
@@ -56,7 +56,7 @@ sub mr_predict {
 
 =head2 mr_error
 
-  $x = $ds->mr_error($v, $y, $beta);
+  $y = $ds->mr_error($v, $y, $beta);
 
 =cut
 
@@ -67,7 +67,7 @@ sub mr_error {
 
 =head2 squared_error
 
-  $x = $ds->squared_error($v, $y, $beta);
+  $y = $ds->squared_error($v, $y, $beta);
 
 =cut
 
@@ -121,7 +121,7 @@ sub mr_least_squares_fit {
 
 =head2 multiple_r_squared
 
-  $x = $ds->multiple_r_squared($u, $v, $beta);
+  $y = $ds->multiple_r_squared($u, $v, $beta);
 
 =cut
 
@@ -157,7 +157,7 @@ sub bootstrap_statistic {
 
 =head2 p_value
 
-  $x = $ds->p_value($beta_hat_j, $sigma_hat_j);
+  $y = $ds->p_value($beta_hat_j, $sigma_hat_j);
 
 =cut
 
@@ -173,7 +173,7 @@ sub p_value {
 
 =head2 ridge_penalty
 
-  $x = $ds->ridge_penalty($u, $alpha);
+  $y = $ds->ridge_penalty($u, $alpha);
 
 =cut
 
@@ -184,7 +184,7 @@ sub ridge_penalty {
 
 =head2 squared_error_ridge
 
-  $x = $ds->squared_error_ridge($u, $v, $beta, $alpha);
+  $y = $ds->squared_error_ridge($u, $v, $beta, $alpha);
 
 =cut
 
@@ -249,7 +249,7 @@ sub least_squares_fit_ridge {
 
 =head2 lasso_penalty
 
-  $x = $ds->lasso_penalty($u, $alpha);
+  $y = $ds->lasso_penalty($u, $alpha);
 
 =cut
 
