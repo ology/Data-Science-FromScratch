@@ -1,6 +1,7 @@
 requires "Data::Dataset::Classic::Iris";
 requires "Iterator::Simple";
 requires "Lingua::EN::Tokenizer::Offsets";
+requires "List::MoreUtils";
 requires "List::Util";
 requires "Math::Erf::Approx";
 requires "Math::Trig";
