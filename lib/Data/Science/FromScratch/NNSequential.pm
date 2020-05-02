@@ -2,6 +2,7 @@ package Data::Science::FromScratch::NNSequential;
 
 use Moo;
 use strictures 2;
+use Storable qw(dclone);
 use namespace::clean;
 
 =head1 SYNOPSIS
@@ -23,19 +24,25 @@ A C<Data::Science::FromScratch::NNSequential> is a class for building neural net
 =cut
 
 has layers => (
-    is => 'rw',
+    is       => 'rw',
+    required => 1,
 );
 
 =head1 METHODS
 
 =head2 forward
 
-  $v = $layer->forward($input);
+  $v = $seq->forward($input);
 
 =cut
 
 sub forward {
     my ($self, $input) = @_;
+    my $in = dclone $input;
+    for my $layer (@{ $self->layers }) {
+        $in = $layer->forward($in);
+    }
+    return $in;
 }
 
 =head2 backward
@@ -46,6 +53,11 @@ sub forward {
 
 sub backward {
     my ($self, $gradient) = @_;
+    my $grad = dclone $gradient;
+    for my $layer (reverse @{ $self->layers }) {
+        $grad = $layer->backward($grad);
+    }
+    return $grad;
 }
 
 =head2 params
@@ -56,7 +68,11 @@ sub backward {
 
 sub params {
     my ($self) = @_;
-    return ();
+    my @params;
+    for my $layer (reverse @{ $self->layers }) {
+        push @params, @{ $layer->params };
+    }
+    return \@params;
 }
 
 =head2 grads
@@ -67,11 +83,17 @@ sub params {
 
 sub grads {
     my ($self) = @_;
-    return ();
+    my @grads;
+    for my $layer (reverse @{ $self->layers }) {
+        push @grads, @{ $layer->grads };
+    }
+    return \@grads;
 }
+
+1;
 
 =head1 SEE ALSO
 
 L<Data::Science::FromScratch::NNLayer>
 
-1;
+=cut
