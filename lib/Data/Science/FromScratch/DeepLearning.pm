@@ -11,13 +11,7 @@ use strictures 2;
 
   my $ds = Data::Science::FromScratch->new;
 
-  my $v = $ds->dl_shape(); #
-
-=head1 METHODS
-
-=head2 dl_shape
-
-  my $v = $ds->dl_shape([1,2,3]); # [3]
+  my $v = $ds->tensor_shape([1,2,3]); # [3]
 
   my $y = $ds->is_1d([1,2,3]); # 1
 
@@ -29,9 +23,15 @@ use strictures 2;
 
   $v = $ds->tensor_combine(); #
 
+=head1 METHODS
+
+=head2 tensor_shape
+
+  $v = $ds->tensor_shape($tensor);
+
 =cut
 
-sub dl_shape {
+sub tensor_shape {
     my ($self, $tensor) = @_;
     my $v = dclone $tensor;
     my @sizes;
