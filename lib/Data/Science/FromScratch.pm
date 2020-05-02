@@ -21,6 +21,7 @@ with 'Data::Science::FromScratch::SimpleLinearRegression';
 with 'Data::Science::FromScratch::MultipleRegression';
 with 'Data::Science::FromScratch::LogisticRegression';
 with 'Data::Science::FromScratch::DecisionTrees';
+with 'Data::Science::FromScratch::NeuralNetworks';
 
 =head1 SYNOPSIS
 
@@ -71,5 +72,7 @@ L<Data::Science::FromScratch::MultipleRegression>
 L<Data::Science::FromScratch::LogisticRegression>
 
 L<Data::Science::FromScratch::DecisionTrees>
+
+L<Data::Science::FromScratch::NeuralNetworks>
 
 =cut
