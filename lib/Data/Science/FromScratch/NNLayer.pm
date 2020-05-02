@@ -7,9 +7,7 @@ use namespace::clean;
 
 =head1 SYNOPSIS
 
-  use Data::Science::FromScratch::Layer;
-
-  my $layer = Data::Science::FromScratch::Layer->new;
+  # This module is a base class and should not be used directly.
 
 =head1 DESCRIPTION
 
