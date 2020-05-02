@@ -1,10 +1,10 @@
-package Data::Science::FromScratch::Sigmoid;
+package Data::Science::FromScratch::NNSigmoid;
 
 use Moo;
 use strictures 2;
 use namespace::clean;
 
-extends 'Data::Science::FromScratch::Layer';
+extends 'Data::Science::FromScratch::NNLayer';
 
 =head1 SYNOPSIS
 

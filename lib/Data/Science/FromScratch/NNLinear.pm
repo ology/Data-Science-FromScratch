@@ -1,10 +1,10 @@
-package Data::Science::FromScratch::Linear;
+package Data::Science::FromScratch::NNLinear;
 
 use Moo;
 use strictures 2;
 use namespace::clean;
 
-extends 'Data::Science::FromScratch::Layer';
+extends 'Data::Science::FromScratch::NNLayer';
 
 =head1 SYNOPSIS
 

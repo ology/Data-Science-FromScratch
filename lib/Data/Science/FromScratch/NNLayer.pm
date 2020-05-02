@@ -1,4 +1,4 @@
-package Data::Science::FromScratch::Layer;
+package Data::Science::FromScratch::NNLayer;
 
 use Data::Science::FromScratch;
 use Moo;
