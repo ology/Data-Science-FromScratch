@@ -4,8 +4,6 @@ use warnings;
 
 use Test::More;
 
-use Data::Dataset::Classic::Iris;
-
 use_ok 'Data::Science::FromScratch';
 
 my $ds = new_ok 'Data::Science::FromScratch';
