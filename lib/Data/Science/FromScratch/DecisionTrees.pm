@@ -16,15 +16,15 @@ use strictures 2;
 
   $x = $ds->data_entropy([0,1]); # 1
 
-  $x = $ds->partition_entropy(); # 
+  $x = $ds->partition_entropy(); #
 
-  my %h = $ds->partition_by(); # 
+  my %h = $ds->partition_by(); #
 
-  $x = $ds->partition_entropy_by(); # 
+  $x = $ds->partition_entropy_by(); #
 
-  $v = $ds->classify($tree, $input); # TODO
+  $v = $ds->classify($tree, $input); #
 
-  my $h = $ds->build_tree_id3(); # 
+  my $h = $ds->build_tree_id3(); #
 
 =head1 METHODS
 
@@ -117,12 +117,19 @@ sub partition_entropy_by {
 
   $x = $ds->classify($tree, $input);
 
-TODO
-
 =cut
 
 sub classify {
     my ($self, $tree, $input) = @_;
+    if (exists $tree->{value}) {
+        return $tree->{value};
+    }
+    my $subtree_key = $input->{ $tree->{attribute} };
+    if (!grep { $_ eq $subtree_key } keys %{ $tree->{subtrees} }) {
+        return $tree->{default_value};
+    }
+    my $subtree = $tree->{subtrees}{$subtree_key};
+    return $self->classify($subtree, $input);
 }
 
 =head2 build_tree_id3
