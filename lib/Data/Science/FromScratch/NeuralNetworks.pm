@@ -9,18 +9,20 @@ use strictures 2;
 
   my $ds = Data::Science::FromScratch->new;
 
-  my $x = $ds->step_function(-1); # 0
-  $x = $ds->step_function(1); # 1
+  my $y = $ds->step_function(-1); # 0
+  $y = $ds->step_function(1); # 1
 
-  $x = $ds->perceptron_output([2,2], -3, [0,1]); # 0
-  $x = $ds->perceptron_output([2,2], -1, [0,1]); # 1
-  $x = $ds->perceptron_output([-2], 1, [0]); # 1
+  $y = $ds->perceptron_output([2,2], -3, [0,1]); # 0
+  $y = $ds->perceptron_output([2,2], -1, [0,1]); # 1
+  $y = $ds->perceptron_output([-2], 1, [0]); # 1
+
+  $y = $ds->sigmoid(-5); # 0.0067
 
 =head1 METHODS
 
 =head2 step_function
 
-  $x = $ds->step_function($x);
+  $y = $ds->step_function($x);
 
 =cut
 
@@ -31,7 +33,7 @@ sub step_function {
 
 =head2 perceptron_output
 
-  $x = $ds->perceptron_output($weights, $bias, $u);
+  $y = $ds->perceptron_output($weights, $bias, $u);
 
 =cut
 
@@ -39,6 +41,17 @@ sub perceptron_output {
     my ($self, $weights, $bias, $u) = @_;
     my $calculation = $self->vector_dot($weights, $u) + $bias;
     return $self->step_function($calculation);
+}
+
+=head2 sigmoid
+
+  $y = $ds->sigmoid($t);
+
+=cut
+
+sub sigmoid {
+    my ($self, $t) = @_;
+    return 1 / (1 + exp(-$t));
 }
 
 1;
