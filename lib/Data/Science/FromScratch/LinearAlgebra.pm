@@ -18,13 +18,13 @@ use strictures 2;
 
   $v = $ds->vector_mean([1,2], [3,4], [5,6]); # [3,4]
 
-  my $x = $ds->vector_dot([1,2,3], [4,5,6]); # 32
+  my $y = $ds->vector_dot([1,2,3], [4,5,6]); # 32
 
-  $x = $ds->sum_of_squares([1,2,3]); # 14
+  $y = $ds->sum_of_squares([1,2,3]); # 14
 
-  $x = $ds->magnitude([3,4]); # 5
+  $y = $ds->magnitude([3,4]); # 5
 
-  $x = $ds->distance([0,1], [1,1]); # 1
+  $y = $ds->distance([0,1], [1,1]); # 1
 
   $v = $ds->shape([[1,2,3], [4,5,6]]); # [2,3]
 
@@ -122,7 +122,7 @@ sub vector_mean {
 
 =head2 vector_dot
 
-  $x = $ds->vector_dot(@vectors);
+  $y = $ds->vector_dot(@vectors);
 
 =cut
 
@@ -148,7 +148,7 @@ sub vector_dot {
 
 =head2 sum_of_squares
 
-  $x = $ds->sum_of_squares($vector);
+  $y = $ds->sum_of_squares($vector);
 
 =cut
 
@@ -159,7 +159,7 @@ sub sum_of_squares {
 
 =head2 magnitude
 
-  $x = $ds->magnitude($vector);
+  $y = $ds->magnitude($vector);
 
 =cut
 
@@ -170,7 +170,7 @@ sub magnitude {
 
 =head2 distance
 
-  $x = $ds->distance($vector1, $vector2);
+  $y = $ds->distance($vector1, $vector2);
 
 =cut
 
