@@ -10,11 +10,11 @@ use strictures 2;
 
   my $ds = Data::Science::FromScratch->new;
 
-  $x = $ds->logistic(0); # 0.5
+  $y = $ds->logistic(0); # 0.5
 
-  $x = $ds->logistic_prime(0); 0.25
+  $y = $ds->logistic_prime(0); 0.25
 
-  $x = $ds->negative_log_likelihood(); #
+  $y = $ds->negative_log_likelihood(); #
 
   $v = $ds->negative_log_gradient(); #
 
@@ -22,41 +22,41 @@ use strictures 2;
 
 =head2 logistic
 
-  $x = $ds->logistic($y);
+  $y = $ds->logistic($x);
 
 =cut
 
 sub logistic {
-    my ($self, $y) = @_;
-    return 1 / (1 + exp(-$y));
+    my ($self, $x) = @_;
+    return 1 / (1 + exp(-$x));
 }
 
 =head2 logistic_prime
 
-  $x = $ds->logistic_prime($y);
+  $y = $ds->logistic_prime($x);
 
 =cut
 
 sub logistic_prime {
-    my ($self, $y) = @_;
-    $y = $self->logistic($y);
-    return $y * (1 - $y);
+    my ($self, $x) = @_;
+    $x = $self->logistic($x);
+    return $x * (1 - $x);
 }
 
 =head2 negative_log_likelihood
 
-  $x = $ds->negative_log_likelihood($u, $y, $beta);
+  $y = $ds->negative_log_likelihood($u, $x, $beta);
 
 =cut
 
 sub negative_log_likelihood {
-    my ($self, $u, $y, $beta) = @_;
-    return sum0(map { $self->_negative_log_likelihood($u->[$_], $y->[$_], $beta) } 0 .. @$u - 1);
+    my ($self, $u, $x, $beta) = @_;
+    return sum0(map { $self->_negative_log_likelihood($u->[$_], $x->[$_], $beta) } 0 .. @$u - 1);
 }
 
 sub _negative_log_likelihood {
-    my ($self, $u, $y, $beta) = @_;
-    if ($y == 1) {
+    my ($self, $u, $x, $beta) = @_;
+    if ($x == 1) {
         return - log($self->logistic($self->vector_dot($u, $beta)))
     }
     else {
@@ -66,26 +66,26 @@ sub _negative_log_likelihood {
 
 =head2 negative_log_gradient
 
-  $v = $ds->negative_log_gradient($u, $y, $beta);
+  $v = $ds->negative_log_gradient($u, $x, $beta);
 
 This method is suspect because the results from the book code are different.
 
 =cut
 
 sub negative_log_gradient {
-    my ($self, $u, $y, $beta) = @_;
-    my @nlg = map { $self->_negative_log_gradient($u->[$_], $y->[$_], $beta) } 0 .. @$u - 1;
+    my ($self, $u, $x, $beta) = @_;
+    my @nlg = map { $self->_negative_log_gradient($u->[$_], $x->[$_], $beta) } 0 .. @$u - 1;
     return $self->vector_sum(@nlg);
 }
 
 sub _negative_log_partial {
-    my ($self, $u, $y, $beta, $j) = @_;
-    return -($y - $self->logistic($self->vector_dot($u, $beta))) * $u->[$j];
+    my ($self, $u, $x, $beta, $j) = @_;
+    return -($x - $self->logistic($self->vector_dot($u, $beta))) * $u->[$j];
 }
 
 sub _negative_log_gradient {
-    my ($self, $u, $y, $beta) = @_;
-    return [ map { $self->_negative_log_partial($u, $y, $beta, $_) } 0 .. @$beta - 1 ];
+    my ($self, $u, $x, $beta) = @_;
+    return [ map { $self->_negative_log_partial($u, $x, $beta, $_) } 0 .. @$beta - 1 ];
 }
 
 1;
