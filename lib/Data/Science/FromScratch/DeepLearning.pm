@@ -23,6 +23,8 @@ use strictures 2;
 
   $y = $ds->tensor_sum([1,2,3]); # 6
 
+  $v = $ds->tensor_apply(); #
+
 =cut
 
 sub dl_shape {
@@ -60,6 +62,22 @@ sub tensor_sum {
     }
     else {
         return sum0(map { $self->tensor_sum($_) } @$tensor);
+    }
+}
+
+=head2 tensor_apply
+
+  $v = $ds->tensor_apply($fn, $tensor);
+
+=cut
+
+sub tensor_apply {
+    my ($self, $fn, $tensor) = @_;
+    if ($self->is_1d($tensor)) {
+        return [map { $fn->($_) } @$tensor];
+    }
+    else {
+        return [map { $self->tensor_apply($fn, $_) } @$tensor];
     }
 }
 
