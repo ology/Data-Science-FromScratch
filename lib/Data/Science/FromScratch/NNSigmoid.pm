@@ -8,13 +8,13 @@ extends 'Data::Science::FromScratch::NNLayer';
 
 =head1 SYNOPSIS
 
-  use Data::Science::FromScratch::Sigmoid;
+  use Data::Science::FromScratch::NNSigmoid;
 
-  my $sigmoid = Data::Science::FromScratch::Sigmoid->new;
+  my $sigmoid = Data::Science::FromScratch::NNSigmoid->new;
 
 =head1 DESCRIPTION
 
-A C<Data::Science::FromScratch::Sigmoid> is a class for building neural networks.
+A C<Data::Science::FromScratch::NNSigmoid> is a class for building neural networks.
 
 =head1 ATTRIBUTES
 
