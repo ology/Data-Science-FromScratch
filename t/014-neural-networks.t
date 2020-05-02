@@ -38,4 +38,15 @@ $bias = 1;
 is $ds->perceptron_output($weights, $bias, [0]), 1, 'perceptron_output';
 is $ds->perceptron_output($weights, $bias, [1]), 0, 'perceptron_output';
 
+my $got = $ds->sigmoid(-10);
+is sprintf('%.4f', $got), '0.0000', 'sigmoid';
+$got = $ds->sigmoid(-5);
+is sprintf('%.4f', $got), '0.0067', 'sigmoid';
+$got = $ds->sigmoid(0);
+is sprintf('%.4f', $got), '0.5000', 'sigmoid';
+$got = $ds->sigmoid(5);
+is sprintf('%.4f', $got), '0.9933', 'sigmoid';
+$got = $ds->sigmoid(10);
+is sprintf('%.4f', $got), '1.0000', 'sigmoid';
+
 done_testing();
