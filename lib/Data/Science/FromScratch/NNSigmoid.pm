@@ -58,4 +58,8 @@ sub backward {
     );
 }
 
+=head1 SEE ALSO
+
+L<Data::Science::FromScratch::NNLayer>
+
 1;
