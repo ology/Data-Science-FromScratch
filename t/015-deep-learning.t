@@ -41,7 +41,10 @@ use_ok 'Data::Science::FromScratch::NNLinear';
 
 my $linear = new_ok 'Data::Science::FromScratch::NNLinear' => [
     output_dim => 3,
-    input_dim  => 2,
+    input_dim  => 3,
 ];
+
+my $got = $linear->forward([0,0,0]);
+is scalar(@$got), 3, 'forward';
 
 done_testing();
