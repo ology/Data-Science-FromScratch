@@ -144,6 +144,7 @@ sub forward {
 
 sub backward {
     my ($self, $gradient) = @_;
+    die 'No forward inputs' unless $self->input;
     $self->b_grad($gradient);
     my @w_grad;
     for my $i (0 .. $self->output_dim - 1) {
