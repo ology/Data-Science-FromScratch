@@ -7,10 +7,15 @@ use warnings;
 # Star Trek scripts used:
 # https://github.com/ology/Machine-Learning/blob/master/Kirk-Spock-McCoy.zip
 
+use Data::Dumper;
 use Data::Science::FromScratch;
 use File::Slurper qw(read_text);
 use Lingua::EN::Sentence qw(get_sentences);
 
+# How big should the traing set be?
+my $split = shift || 0.33;
+# Probability threshold (confidence) that Kirk said it
+my $threshold = shift || .8;
 # Provide a custom statement to process
 my $statement = shift || 'To be or not to be. That is the question.';
 
@@ -47,7 +52,7 @@ for my $name (qw(kirk spock mccoy)) {
 # Invoke the data science library
 my $ds = Data::Science::FromScratch->new;
 
-my ($train, $test) = $ds->split_data(0.33, @messages);
+my ($train, $test) = $ds->split_data($split, @messages);
 
 print "Training on messages...\n";
 $ds->train(@$train);
@@ -69,3 +74,26 @@ for my $text (
     my $prediction = $ds->nb_predict($text);
     printf qq/\t%.4f <= "%s"\n/, $prediction, $text;
 }
+
+print "Computing accuracy, etc...\n";
+my ($tp, $fp, $fn, $tn) = (0,0,0,0);
+my %confusion_matrix;
+for my $i (@$test) {
+    my $predicted = $ds->nb_predict($i->{text});
+    my $true_pos  =  $i->{is_spam} && $predicted >= $threshold ? 1 : 0;
+    my $false_pos = !$i->{is_spam} && $predicted >= $threshold ? 1 : 0;
+    my $false_neg =  $i->{is_spam} && $predicted <  $threshold ? 1 : 0;
+    my $true_neg  = !$i->{is_spam} && $predicted <  $threshold ? 1 : 0;
+    $confusion_matrix{"$true_pos,$false_pos,$false_neg,$true_neg"}++;
+    $tp += $true_pos;
+    $fp += $false_pos;
+    $fn += $false_neg;
+    $tn += $true_neg;
+}
+print "Confusion matrix:\n";
+print Dumper \%confusion_matrix;
+printf "Accuracy = %.4f\nPrecision = %.4f\nRecall = %.4f\nf1_score = %.4f\n",
+    $ds->accuracy($tp, $fp, $fn, $tn),
+    $ds->precision($tp, $fp, $fn, $tn),
+    $ds->recall($tp, $fp, $fn, $tn),
+    $ds->f1_score($tp, $fp, $fn, $tn);
