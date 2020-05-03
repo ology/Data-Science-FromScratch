@@ -14,7 +14,6 @@ use Lingua::EN::Sentence qw(get_sentences);
 my $path = $ENV{HOME} . '/Documents/lit/Kirk-Spock-McCoy/';
 
 print "Gathering messages...\n";
-
 my @messages;
 
 # Process the lines of each file
@@ -48,7 +47,7 @@ print "Training on messages...\n";
 $ds->train(@messages);
 
 print 'Kirk said ', $ds->spam_messages, " words.\n";
-print 'Spock or McCoy said ', $ds->ham_messages, " words.\n";
+print 'Spock and McCoy said ', $ds->ham_messages, " words.\n";
 
 print "Probability that Kirk said,\n";
 for my $text (
