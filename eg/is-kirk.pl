@@ -71,7 +71,7 @@ for my $text (
 ) {
     next unless $text;
     my $prediction = $ds->nb_predict($text);
-    printf qq/\t%.4f <- "%s"\n/, $prediction, $text;
+    printf qq/\t%.4f = "%s"\n/, $prediction, $text;
 }
 
 print "Computing accuracy, etc...\n";
@@ -90,7 +90,7 @@ for my $i (@$test) {
     $tn += $true_neg;
 }
 print "Confusion matrix:\n";
-print join "\n", map { "\t$_ => $confusion_matrix{$_}" } sort keys %confusion_matrix;
+print join("\n", map { "\t$_ => $confusion_matrix{$_}" } sort keys %confusion_matrix), "\n";
 printf "Accuracy = %.4f\nPrecision = %.4f\nRecall = %.4f\nf1_score = %.4f\n",
     $ds->accuracy($tp, $fp, $fn, $tn),
     $ds->precision($tp, $fp, $fn, $tn),
