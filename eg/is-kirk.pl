@@ -77,20 +77,25 @@ for my $text (
 print "Computing accuracy, etc...\n";
 my ($tp, $fp, $fn, $tn) = (0,0,0,0);
 my %confusion_matrix;
+
 for my $i (@$test) {
     my $predicted = $ds->nb_predict($i->{text});
+
     my $true_pos  =  $i->{is_spam} && $predicted >= $threshold ? 1 : 0;
     my $false_pos = !$i->{is_spam} && $predicted >= $threshold ? 1 : 0;
     my $false_neg =  $i->{is_spam} && $predicted <  $threshold ? 1 : 0;
     my $true_neg  = !$i->{is_spam} && $predicted <  $threshold ? 1 : 0;
+
     $confusion_matrix{"$true_pos,$false_pos,$false_neg,$true_neg"}++;
+
     $tp += $true_pos;
     $fp += $false_pos;
     $fn += $false_neg;
     $tn += $true_neg;
 }
-print "Confusion matrix:\n";
-print join("\n", map { "\t$_ => $confusion_matrix{$_}" } sort keys %confusion_matrix), "\n";
+print "Confusion matrix:\n",
+    join("\n", map { "\t$_ => $confusion_matrix{$_}" } sort keys %confusion_matrix),
+    "\n";
 printf "Accuracy = %.4f\nPrecision = %.4f\nRecall = %.4f\nf1_score = %.4f\n",
     $ds->accuracy($tp, $fp, $fn, $tn),
     $ds->precision($tp, $fp, $fn, $tn),
