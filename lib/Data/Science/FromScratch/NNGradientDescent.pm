@@ -34,7 +34,7 @@ has lr => (
 
 =head2 step
 
-  $x = $gd->step($layer);
+  $gd->step($layer);
 
 =cut
 
