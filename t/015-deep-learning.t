@@ -105,4 +105,10 @@ use Data::Dumper;warn(__PACKAGE__,' ',__LINE__," MARK: ",Dumper$param);
 }
 }
 
+is $ds->tanh(-111), -1, 'tanh';
+is $ds->tanh(0), 0, 'tanh';
+is $ds->tanh(111), 1, 'tanh';
+$got = $ds->tanh(1);
+is sprintf('%.4f', $got), '0.7616', 'tanh';
+
 done_testing();
