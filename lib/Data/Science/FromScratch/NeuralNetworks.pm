@@ -140,4 +140,20 @@ L<Moo::Role>
 
 L<Storable>
 
+L<Data::Science::FromScratch::NeuralNetworks::Layer>
+
+L<Data::Science::FromScratch::NeuralNetworks::Linear>
+
+L<Data::Science::FromScratch::NeuralNetworks::Sigmoid>
+
+L<Data::Science::FromScratch::NeuralNetworks::Sequential>
+
+L<Data::Science::FromScratch::NeuralNetworks::Loss>
+
+L<Data::Science::FromScratch::NeuralNetworks::SSE>
+
+L<Data::Science::FromScratch::NeuralNetworks::Optimizer>
+
+L<Data::Science::FromScratch::NeuralNetworks::GradientDescent>
+
 =cut
