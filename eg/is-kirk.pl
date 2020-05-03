@@ -3,7 +3,7 @@ use strict;
 use warnings;
 
 # Did Kirk say it? - Naive Bayes analysis of Kirk, Spock and McCoy lines.
-# spam = is kirk. ham = is not kirk
+# Where spam is kirk and ham is not kirk.
 # Star Trek scripts used:
 # https://github.com/ology/Machine-Learning/blob/master/Kirk-Spock-McCoy.zip
 
