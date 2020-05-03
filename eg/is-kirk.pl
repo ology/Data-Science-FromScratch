@@ -95,6 +95,7 @@ for my $i (@$test) {
     $fn += $false_neg;
     $tn += $true_neg;
 }
+
 print "Confusion matrix (true_pos,false_pos,false_neg,true_neg):\n",
     join("\n", map { "\t$_ => $confusion_matrix{$_}" } sort keys %confusion_matrix),
     "\n";
