@@ -86,7 +86,7 @@ my $optimizer = new_ok 'Data::Science::FromScratch::NeuralNetworks::GradientDesc
 ];
 
 my @xs = ([0,0], [0,1], [1,0], [1,1]);
-my @ys = ( [0],   [1],   [1],   [0]);
+my @ys = ( [0],   [1],   [1],   [0] );
 
 for my $i (1 .. 3000) {
     my $epoch_loss = 0;
