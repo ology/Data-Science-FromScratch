@@ -30,37 +30,45 @@ is_deeply $ds->tensor_shape($ds->random_uniform([2,3,4])), [2,3,4], 'random_unif
 is_deeply $ds->tensor_shape($ds->random_normal([5,6], 10)), [5,6], 'random_normal';
 
 use_ok 'Data::Science::FromScratch::NeuralNetworks::Sigmoid';
-my $sigmoid = new_ok 'Data::Science::FromScratch::NeuralNetworks::Sigmoid';
-is_deeply $sigmoid->forward([0,0,0]), [0.5,0.5,0.5], 'forward';
-is_deeply $sigmoid->backward([0,0,0]), [0,0,0], 'backward';
-is_deeply $sigmoid->backward([1,2,3]), [0.25,0.5,0.75], 'backward';
+my $net = new_ok 'Data::Science::FromScratch::NeuralNetworks::Sigmoid';
+is_deeply $net->forward([0,0,0]), [0.5,0.5,0.5], 'forward';
+is_deeply $net->backward([0,0,0]), [0,0,0], 'backward';
+is_deeply $net->backward([1,2,3]), [0.25,0.5,0.75], 'backward';
 
 use_ok 'Data::Science::FromScratch::NeuralNetworks::Linear';
-my $linear = new_ok 'Data::Science::FromScratch::NeuralNetworks::Linear' => [
+$net = new_ok 'Data::Science::FromScratch::NeuralNetworks::Linear' => [
     input_dim  => 2,
     output_dim => 1,
 ];
-my $got = $linear->forward([0,0]);
-is scalar(@$got), $linear->output_dim, 'forward';
-is_deeply $linear->backward([0,0]), [[0], [0]], 'backward';
+my $got = $net->forward([0,0]);
+is scalar(@$got), $net->output_dim, 'forward';
+is_deeply $net->backward([0,0]), [[0], [0]], 'backward';
 
 use_ok 'Data::Science::FromScratch::NeuralNetworks::Sequential';
-my $seq = new_ok 'Data::Science::FromScratch::NeuralNetworks::Sequential' => [
+
+$net = new_ok 'Data::Science::FromScratch::NeuralNetworks::Sequential' => [
     layers => [
         Data::Science::FromScratch::NeuralNetworks::Sigmoid->new,
     ],
 ];
-is_deeply $seq->forward([0,0]), [0.5,0.5], 'forward';
-is_deeply $seq->backward([0,0]), [0,0], 'backward';
+is_deeply $net->forward([0,0]), [0.5,0.5], 'forward';
+is_deeply $net->backward([0,0]), [0,0], 'backward';
 
-use_ok 'Data::Science::FromScratch::NeuralNetworks::Sequential';
-$seq = new_ok 'Data::Science::FromScratch::NeuralNetworks::Sequential' => [
+$net = new_ok 'Data::Science::FromScratch::NeuralNetworks::Sequential' => [
     layers => [
         Data::Science::FromScratch::NeuralNetworks::Linear->new(input_dim => 2, output_dim => 1),
     ],
 ];
-$got = $seq->forward([0,0]);
+$got = $net->forward([0,0]);
 is scalar(@$got), 1, 'forward';
-is_deeply $seq->backward([0,0]), [[0], [0]], 'backward';
+is_deeply $net->backward([0,0]), [[0], [0]], 'backward';
+
+$net = new_ok 'Data::Science::FromScratch::NeuralNetworks::Sequential' => [
+    layers => [
+        Data::Science::FromScratch::NeuralNetworks::Linear->new(input_dim => 2, output_dim => 2),
+        Data::Science::FromScratch::NeuralNetworks::Sigmoid->new,
+        Data::Science::FromScratch::NeuralNetworks::Linear->new(input_dim => 2, output_dim => 1),
+    ],
+];
 
 done_testing();
