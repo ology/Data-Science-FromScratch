@@ -29,14 +29,14 @@ is_deeply $ds->tensor_combine(sub { shift() * shift() }, [1,2,3], [4,5,6]), [4,1
 is_deeply $ds->tensor_shape($ds->random_uniform([2,3,4])), [2,3,4], 'random_uniform';
 is_deeply $ds->tensor_shape($ds->random_normal([5,6], 10)), [5,6], 'random_normal';
 
-use_ok 'Data::Science::FromScratch::NNSigmoid';
-my $sigmoid = new_ok 'Data::Science::FromScratch::NNSigmoid';
+use_ok 'Data::Science::FromScratch::NeuralNetworks::Sigmoid';
+my $sigmoid = new_ok 'Data::Science::FromScratch::NeuralNetworks::Sigmoid';
 is_deeply $sigmoid->forward([0,0,0]), [0.5,0.5,0.5], 'forward';
 is_deeply $sigmoid->backward([0,0,0]), [0,0,0], 'backward';
 is_deeply $sigmoid->backward([1,2,3]), [0.25,0.5,0.75], 'backward';
 
-use_ok 'Data::Science::FromScratch::NNLinear';
-my $linear = new_ok 'Data::Science::FromScratch::NNLinear' => [
+use_ok 'Data::Science::FromScratch::NeuralNetworks::Linear';
+my $linear = new_ok 'Data::Science::FromScratch::NeuralNetworks::Linear' => [
     input_dim  => 2,
     output_dim => 1,
 ];
@@ -44,19 +44,19 @@ my $got = $linear->forward([0,0]);
 is scalar(@$got), $linear->output_dim, 'forward';
 is_deeply $linear->backward([0,0]), [[0], [0]], 'backward';
 
-use_ok 'Data::Science::FromScratch::NNSequential';
-my $seq = new_ok 'Data::Science::FromScratch::NNSequential' => [
+use_ok 'Data::Science::FromScratch::NeuralNetworks::Sequential';
+my $seq = new_ok 'Data::Science::FromScratch::NeuralNetworks::Sequential' => [
     layers => [
-        Data::Science::FromScratch::NNSigmoid->new,
+        Data::Science::FromScratch::NeuralNetworks::Sigmoid->new,
     ],
 ];
 is_deeply $seq->forward([0,0]), [0.5,0.5], 'forward';
 is_deeply $seq->backward([0,0]), [0,0], 'backward';
 
-use_ok 'Data::Science::FromScratch::NNSequential';
-$seq = new_ok 'Data::Science::FromScratch::NNSequential' => [
+use_ok 'Data::Science::FromScratch::NeuralNetworks::Sequential';
+$seq = new_ok 'Data::Science::FromScratch::NeuralNetworks::Sequential' => [
     layers => [
-        Data::Science::FromScratch::NNLinear->new(input_dim => 2, output_dim => 1),
+        Data::Science::FromScratch::NeuralNetworks::Linear->new(input_dim => 2, output_dim => 1),
     ],
 ];
 $got = $seq->forward([0,0]);
