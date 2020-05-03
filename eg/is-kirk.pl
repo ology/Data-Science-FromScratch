@@ -13,7 +13,7 @@ use Lingua::EN::Sentence qw(get_sentences);
 
 my $statement = shift || 'To be or not to be. That is the question.';
 
-# Unzip Star Trek scripts into this location
+# Unziped Star Trek scripts in this location
 my $path = $ENV{HOME} . '/Documents/lit/Kirk-Spock-McCoy/';
 
 print "Gathering messages...\n";
