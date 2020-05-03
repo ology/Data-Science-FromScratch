@@ -13,9 +13,9 @@ use File::Slurper qw(read_text);
 use Lingua::EN::Sentence qw(get_sentences);
 
 # How big should the traing set be?
-my $split = shift || 0.33;
+my $split = shift || 0.4;
 # Probability threshold (confidence) that Kirk said it
-my $threshold = shift || .8;
+my $threshold = shift || .7;
 # Provide a custom statement to process
 my $statement = shift || 'To be or not to be. That is the question.';
 
