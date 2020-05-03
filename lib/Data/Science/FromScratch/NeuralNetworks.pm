@@ -136,10 +136,6 @@ L<Data::Science::FromScratch>
 
 F<t/014-neural-networks.t>
 
-L<Moo::Role>
-
-L<Storable>
-
 L<Data::Science::FromScratch::NeuralNetworks::Layer>
 
 L<Data::Science::FromScratch::NeuralNetworks::Linear>
@@ -155,5 +151,9 @@ L<Data::Science::FromScratch::NeuralNetworks::SSE>
 L<Data::Science::FromScratch::NeuralNetworks::Optimizer>
 
 L<Data::Science::FromScratch::NeuralNetworks::GradientDescent>
+
+L<Moo::Role>
+
+L<Storable>
 
 =cut
