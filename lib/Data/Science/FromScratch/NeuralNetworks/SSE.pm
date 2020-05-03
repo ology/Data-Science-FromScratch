@@ -43,7 +43,7 @@ sub loss {
 sub gradient {
     my ($self, $predicted, $actual) = @_;
     return $self->ds->tensor_combine(
-        sub { my ($x, $y) = @_; return 2 * ($x - $y) },
+        sub { 2 * ($predicted - $actual) },
         $predicted,
         $actual
     );
