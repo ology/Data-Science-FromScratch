@@ -53,4 +53,14 @@ my $seq = new_ok 'Data::Science::FromScratch::NNSequential' => [
 is_deeply $seq->forward([0,0]), [0.5,0.5], 'forward';
 is_deeply $seq->backward([0,0]), [0,0], 'backward';
 
+use_ok 'Data::Science::FromScratch::NNSequential';
+$seq = new_ok 'Data::Science::FromScratch::NNSequential' => [
+    layers => [
+        Data::Science::FromScratch::NNLinear->new(input_dim => 2, output_dim => 1),
+    ],
+];
+$got = $seq->forward([0,0]);
+is scalar(@$got), 1, 'forward';
+is_deeply $seq->backward([0,0]), [[0], [0]], 'backward';
+
 done_testing();
