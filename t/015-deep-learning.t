@@ -71,4 +71,38 @@ $net = new_ok 'Data::Science::FromScratch::NeuralNetworks::Sequential' => [
     ],
 ];
 
+use_ok 'Data::Science::FromScratch::NeuralNetworks::GradientDescent';
+my $optimizer = new_ok 'Data::Science::FromScratch::NeuralNetworks::GradientDescent' => [
+    lr => 0.1,
+];
+
+use_ok 'Data::Science::FromScratch::NeuralNetworks::SSE';
+my $loss = new_ok 'Data::Science::FromScratch::NeuralNetworks::SSE';
+
+is $loss->loss([1,2,3], [10,20,30]), 9 ** 2 + 18 ** 2 + 27 ** 2, 'loss';
+is_deeply $loss->gradient([1,2,3], [10,20,30]), [-18,-36,-54], 'gradient';
+
+SKIP: {
+skip 'Incorrect results! What the?', 0;
+
+my @xs = ([0,0], [0,1], [1,0], [1,1]);
+my @ys = ( [0],   [1],   [1],   [0]);
+
+for my $i (1 .. 3000) {
+    my $epoch_loss = 0;
+    for my $j (0 .. @xs - 1) {
+        my $predicted = $net->forward($xs[$j]);
+        $epoch_loss += $loss->loss($predicted, $ys[$j]);
+#warn(__PACKAGE__,' ',__LINE__," MARK: ",$epoch_loss,"\n");
+        my $gradient = $loss->gradient($predicted, $ys[$j]);
+        $net->backward($gradient);
+        $optimizer->step($net);
+    }
+}
+
+for my $param (@{ $net->params }) {
+use Data::Dumper;warn(__PACKAGE__,' ',__LINE__," MARK: ",Dumper$param);
+}
+}
+
 done_testing();
