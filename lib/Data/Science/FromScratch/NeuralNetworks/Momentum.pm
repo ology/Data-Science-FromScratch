@@ -10,7 +10,7 @@ extends 'Data::Science::FromScratch::NeuralNetworks::Optimizer';
 
   use Data::Science::FromScratch::NeuralNetworks::Momentum;
 
-  my $mo = Data::Science::FromScratch::NeuralNetworks::Momentum->new;
+  my $optimizer = Data::Science::FromScratch::NeuralNetworks::Momentum->new;
 
 =head1 DESCRIPTION
 
@@ -20,7 +20,7 @@ A C<Data::Science::FromScratch::NeuralNetworks::Momentum> is an class for updati
 
 =head2 lr
 
-  $rate = $mo->lr;
+  $rate = $optimizer->lr;
 
 Learning rate
 
@@ -32,7 +32,7 @@ has lr => (
 
 =head2 mo
 
-  $momentum = $mo->mo;
+  $momentum = $optimizer->mo;
 
 Momentum
 
@@ -44,7 +44,7 @@ has mo => (
 
 =head2 updates
 
-  $avg = $mo->updates;
+  $avg = $optimizer->updates;
 
 Running average
 
@@ -58,7 +58,7 @@ has updates => (
 
 =head2 step
 
-  $mo->step($layer);
+  $optimizer->step($layer);
 
 =cut
 

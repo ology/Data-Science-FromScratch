@@ -9,7 +9,7 @@ use namespace::clean;
 
   use Data::Science::FromScratch::NeuralNetworks::Sequential;
 
-  my $seq = Data::Science::FromScratch::NeuralNetworks::Sequential->new;
+  my $layer = Data::Science::FromScratch::NeuralNetworks::Sequential->new;
 
 =head1 DESCRIPTION
 
@@ -19,7 +19,7 @@ A C<Data::Science::FromScratch::NeuralNetworks::Sequential> is a class for build
 
 =head2 layers
 
-  $obj = $seq->layers;
+  $obj = $layer->layers;
 
 =cut
 
@@ -32,7 +32,7 @@ has layers => (
 
 =head2 forward
 
-  $v = $seq->forward($input);
+  $v = $layer->forward($input);
 
 =cut
 

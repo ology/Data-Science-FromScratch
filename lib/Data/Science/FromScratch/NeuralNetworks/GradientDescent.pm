@@ -10,7 +10,7 @@ extends 'Data::Science::FromScratch::NeuralNetworks::Optimizer';
 
   use Data::Science::FromScratch::NeuralNetworks::GradientDescent;
 
-  my $gd = Data::Science::FromScratch::NeuralNetworks::GradientDescent->new;
+  my $optimizer = Data::Science::FromScratch::NeuralNetworks::GradientDescent->new;
 
 =head1 DESCRIPTION
 
@@ -20,7 +20,7 @@ A C<Data::Science::FromScratch::NeuralNetworks::GradientDescent> is an class for
 
 =head2 lr
 
-  $rate = $gd->lr;
+  $rate = $optimizer->lr;
 
 Learning rate
 
@@ -35,7 +35,7 @@ has lr => (
 
 =head2 step
 
-  $gd->step($layer);
+  $optimizer->step($layer);
 
 =cut
 

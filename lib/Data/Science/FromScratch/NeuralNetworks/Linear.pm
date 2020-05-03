@@ -11,7 +11,7 @@ extends 'Data::Science::FromScratch::NeuralNetworks::Layer';
 
   use Data::Science::FromScratch::NeuralNetworks::Linear;
 
-  my $linear = Data::Science::FromScratch::NeuralNetworks::Linear->new;
+  my $layer = Data::Science::FromScratch::NeuralNetworks::Linear->new;
 
 =head1 DESCRIPTION
 
@@ -21,7 +21,7 @@ A C<Data::Science::FromScratch::NeuralNetworks::Linear> is a class for building 
 
 =head2 input_dim
 
-  $x = $linear->input_dim;
+  $x = $layer->input_dim;
 
 =cut
 
@@ -32,7 +32,7 @@ has input_dim => (
 
 =head2 output_dim
 
-  $x = $linear->output_dim;
+  $x = $layer->output_dim;
 
 =cut
 
@@ -43,7 +43,7 @@ has output_dim => (
 
 =head2 init
 
-  $x = $linear->init;
+  $x = $layer->init;
 
 Default: C<xavier>
 
@@ -57,7 +57,7 @@ has init => (
 
 =head2 input
 
-  $v = $linear->input;
+  $v = $layer->input;
 
 =cut
 
@@ -67,7 +67,7 @@ has input => (
 
 =head2 w
 
-  $v = $linear->w;
+  $v = $layer->w;
 
 Weights
 
@@ -86,7 +86,7 @@ sub _build_w {
 
 =head2 w_grad
 
-  $v = $linear->w_grad;
+  $v = $layer->w_grad;
 
 =cut
 
@@ -96,7 +96,7 @@ has w_grad => (
 
 =head2 b
 
-  $v = $linear->b;
+  $v = $layer->b;
 
 Bias
 
@@ -115,7 +115,7 @@ sub _build_b {
 
 =head2 b_grad
 
-  $v = $linear->b_grad;
+  $v = $layer->b_grad;
 
 =cut
 
@@ -127,7 +127,7 @@ has b_grad => (
 
 =head2 forward
 
-  $v = $linear->forward($input);
+  $v = $layer->forward($input);
 
 =cut
 
@@ -139,7 +139,7 @@ sub forward {
 
 =head2 backward
 
-  $v = $linear->backward($gradient);
+  $v = $layer->backward($gradient);
 
 =cut
 
@@ -161,7 +161,7 @@ sub backward {
 
 =head2 params
 
-  $v = $linear->params;
+  $v = $layer->params;
 
 =cut
 
@@ -172,7 +172,7 @@ sub params {
 
 =head2 grads
 
-  $v = $linear->grads;
+  $v = $layer->grads;
 
 =cut
 

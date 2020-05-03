@@ -17,7 +17,7 @@ A C<Data::Science::FromScratch::NeuralNetworks::Optimizer> is a class for updati
 
 =head2 ds
 
-  $obj = $opt->ds;
+  $obj = $optimizer->ds;
 
 C<Data::Science::FromScratch> object
 
@@ -34,7 +34,7 @@ has ds => (
 
 =head2 step
 
-  $opt->step($layer);
+  $optimizer->step($layer);
 
 =cut
 

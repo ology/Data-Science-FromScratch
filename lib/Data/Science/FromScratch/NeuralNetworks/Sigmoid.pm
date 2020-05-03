@@ -10,7 +10,7 @@ extends 'Data::Science::FromScratch::NeuralNetworks::Layer';
 
   use Data::Science::FromScratch::NeuralNetworks::Sigmoid;
 
-  my $sigmoid = Data::Science::FromScratch::NeuralNetworks::Sigmoid->new;
+  my $layer = Data::Science::FromScratch::NeuralNetworks::Sigmoid->new;
 
 =head1 DESCRIPTION
 
@@ -20,7 +20,7 @@ A C<Data::Science::FromScratch::NeuralNetworks::Sigmoid> is a class for building
 
 =head2 sigmoids
 
-  $v = $sigmoid->sigmoids;
+  $v = $layer->sigmoids;
 
 =cut
 
@@ -32,7 +32,7 @@ has sigmoids => (
 
 =head2 forward
 
-  $v = $sigmoid->forward($input);
+  $v = $layer->forward($input);
 
 =cut
 
@@ -45,7 +45,7 @@ sub forward {
 
 =head2 backward
 
-  $v = $sigmoid->backward($gradient);
+  $v = $layer->backward($gradient);
 
 =cut
 

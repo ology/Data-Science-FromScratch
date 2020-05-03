@@ -10,7 +10,7 @@ extends 'Data::Science::FromScratch::NeuralNetworks::Loss';
 
   use Data::Science::FromScratch::NeuralNetworks::SSE;
 
-  my $sse = Data::Science::FromScratch::NeuralNetworks::SSE->new;
+  my $loss = Data::Science::FromScratch::NeuralNetworks::SSE->new;
 
 =head1 DESCRIPTION
 
@@ -20,7 +20,7 @@ A C<Data::Science::FromScratch::NeuralNetworks::SSE> is an class for computing l
 
 =head2 loss
 
-  $x = $sse->loss($predicted, $actual);
+  $x = $loss->loss($predicted, $actual);
 
 =cut
 
@@ -36,7 +36,7 @@ sub loss {
 
 =head2 gradient
 
-  $v = $sse->gradient($gradient);
+  $v = $loss->gradient($gradient);
 
 =cut
 
