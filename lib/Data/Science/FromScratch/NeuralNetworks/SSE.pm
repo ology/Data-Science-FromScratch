@@ -1,20 +1,20 @@
-package Data::Science::FromScratch::NNSSE;
+package Data::Science::FromScratch::NeuralNetworks::SSE;
 
 use Moo;
 use strictures 2;
 use namespace::clean;
 
-extends 'Data::Science::FromScratch::NNLoss';
+extends 'Data::Science::FromScratch::NeuralNetworks::Loss';
 
 =head1 SYNOPSIS
 
-  use Data::Science::FromScratch::NNSSE;
+  use Data::Science::FromScratch::NeuralNetworks::SSE;
 
-  my $sse = Data::Science::FromScratch::NNSSE->new;
+  my $sse = Data::Science::FromScratch::NeuralNetworks::SSE->new;
 
 =head1 DESCRIPTION
 
-A C<Data::Science::FromScratch::NNSSE> is an class for computing loss in neural networks.
+A C<Data::Science::FromScratch::NeuralNetworks::SSE> is an class for computing loss in neural networks.
 
 =head1 METHODS
 
@@ -53,6 +53,6 @@ sub gradient {
 
 =head1 SEE ALSO
 
-L<Data::Science::FromScratch::NNLoss>
+L<Data::Science::FromScratch::NeuralNetworks::Loss>
 
 =cut

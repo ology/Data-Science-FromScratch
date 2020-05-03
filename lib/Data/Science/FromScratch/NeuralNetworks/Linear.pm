@@ -1,20 +1,20 @@
-package Data::Science::FromScratch::NNLinear;
+package Data::Science::FromScratch::NeuralNetworks::Linear;
 
 use Moo;
 use strictures 2;
 use namespace::clean;
 
-extends 'Data::Science::FromScratch::NNLayer';
+extends 'Data::Science::FromScratch::NeuralNetworks::Layer';
 
 =head1 SYNOPSIS
 
-  use Data::Science::FromScratch::NNLinear;
+  use Data::Science::FromScratch::NeuralNetworks::Linear;
 
-  my $linear = Data::Science::FromScratch::NNLinear->new;
+  my $linear = Data::Science::FromScratch::NeuralNetworks::Linear->new;
 
 =head1 DESCRIPTION
 
-A C<Data::Science::FromScratch::NNLinear> is a class for building neural networks.
+A C<Data::Science::FromScratch::NeuralNetworks::Linear> is a class for building neural networks.
 
 =head1 ATTRIBUTES
 
@@ -184,6 +184,6 @@ sub grads {
 
 =head1 SEE ALSO
 
-L<Data::Science::FromScratch::NNLayer>
+L<Data::Science::FromScratch::NeuralNetworks::Layer>
 
 =cut

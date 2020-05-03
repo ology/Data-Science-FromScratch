@@ -1,4 +1,4 @@
-package Data::Science::FromScratch::NNLayer;
+package Data::Science::FromScratch::NeuralNetworks::Layer;
 
 use Data::Science::FromScratch;
 use Moo;
@@ -11,7 +11,7 @@ use namespace::clean;
 
 =head1 DESCRIPTION
 
-A C<Data::Science::FromScratch::NNLayer> is an abstract class for building neural networks.
+A C<Data::Science::FromScratch::NeuralNetworks::Layer> is an abstract class for building neural networks.
 
 =head1 ATTRIBUTES
 
@@ -80,10 +80,10 @@ sub grads {
 
 F<t/015-deep-learning.t>
 
-L<Data::Science::FromScratch::NNSigmoid>
+L<Data::Science::FromScratch::NeuralNetworks::Sigmoid>
 
-L<Data::Science::FromScratch::NNLinear>
+L<Data::Science::FromScratch::NeuralNetworks::Linear>
 
-L<Data::Science::FromScratch::NNSequential>
+L<Data::Science::FromScratch::NeuralNetworks::Sequential>
 
 =cut

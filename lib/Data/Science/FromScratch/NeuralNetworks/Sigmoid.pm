@@ -1,20 +1,20 @@
-package Data::Science::FromScratch::NNSigmoid;
+package Data::Science::FromScratch::NeuralNetworks::Sigmoid;
 
 use Moo;
 use strictures 2;
 use namespace::clean;
 
-extends 'Data::Science::FromScratch::NNLayer';
+extends 'Data::Science::FromScratch::NeuralNetworks::Layer';
 
 =head1 SYNOPSIS
 
-  use Data::Science::FromScratch::NNSigmoid;
+  use Data::Science::FromScratch::NeuralNetworks::Sigmoid;
 
-  my $sigmoid = Data::Science::FromScratch::NNSigmoid->new;
+  my $sigmoid = Data::Science::FromScratch::NeuralNetworks::Sigmoid->new;
 
 =head1 DESCRIPTION
 
-A C<Data::Science::FromScratch::NNSigmoid> is a class for building neural networks.
+A C<Data::Science::FromScratch::NeuralNetworks::Sigmoid> is a class for building neural networks.
 
 =head1 ATTRIBUTES
 
@@ -62,6 +62,6 @@ sub backward {
 
 =head1 SEE ALSO
 
-L<Data::Science::FromScratch::NNLayer>
+L<Data::Science::FromScratch::NeuralNetworks::Layer>
 
 =cut

@@ -1,20 +1,20 @@
-package Data::Science::FromScratch::NNGradientDescent;
+package Data::Science::FromScratch::NeuralNetworks::GradientDescent;
 
 use Moo;
 use strictures 2;
 use namespace::clean;
 
-extends 'Data::Science::FromScratch::NNOptimizer';
+extends 'Data::Science::FromScratch::NeuralNetworks::Optimizer';
 
 =head1 SYNOPSIS
 
-  use Data::Science::FromScratch::NNGradientDescent;
+  use Data::Science::FromScratch::NeuralNetworks::GradientDescent;
 
-  my $gd = Data::Science::FromScratch::NNGradientDescent->new;
+  my $gd = Data::Science::FromScratch::NeuralNetworks::GradientDescent->new;
 
 =head1 DESCRIPTION
 
-A C<Data::Science::FromScratch::NNGradientDescent> is an class for updating neural networks.
+A C<Data::Science::FromScratch::NeuralNetworks::GradientDescent> is an class for updating neural networks.
 
 =head1 ATTRIBUTES
 
@@ -53,6 +53,6 @@ sub step {
 
 =head1 SEE ALSO
 
-L<Data::Science::FromScratch::NNOptimizer>
+L<Data::Science::FromScratch::NeuralNetworks::Optimizer>
 
 =cut

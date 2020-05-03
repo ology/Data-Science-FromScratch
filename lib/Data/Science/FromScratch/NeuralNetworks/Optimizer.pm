@@ -1,4 +1,4 @@
-package Data::Science::FromScratch::NNLoss;
+package Data::Science::FromScratch::NeuralNetworks::Optimizer;
 
 use Data::Science::FromScratch;
 use Moo;
@@ -11,13 +11,13 @@ use namespace::clean;
 
 =head1 DESCRIPTION
 
-A C<Data::Science::FromScratch::NNLoss> is an abstract class for computing loss in neural networks.
+A C<Data::Science::FromScratch::NeuralNetworks::Optimizer> is a class for updating neural networks.
 
 =head1 ATTRIBUTES
 
 =head2 ds
 
-  $obj = $loss->ds;
+  $obj = $opt->ds;
 
 C<Data::Science::FromScratch> object
 
@@ -32,24 +32,14 @@ has ds => (
 
 =head1 METHODS
 
-=head2 loss
+=head2 step
 
-  $x = $loss->loss($predicted, $actual);
-
-=cut
-
-sub loss {
-    my ($self, $predicted, $actual) = @_;
-}
-
-=head2 gradient
-
-  $v = $loss->gradient($gradient);
+  $opt->step($layer);
 
 =cut
 
-sub gradient {
-    my ($self, $predicted, $actual) = @_;
+sub step {
+    my ($self, $layer) = @_;
 }
 
 1;
@@ -58,6 +48,6 @@ sub gradient {
 
 F<t/015-deep-learning.t>
 
-L<Data::Science::FromScratch::NNSSE>
+L<Data::Science::FromScratch::NeuralNetworks::GradientDescent>
 
 =cut
