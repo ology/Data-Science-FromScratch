@@ -17,11 +17,11 @@ print "Gathering messages...\n";
 
 my @messages;
 
+# Process the lines of each file
 for my $name (qw(kirk spock mccoy)) {
     my $file = $path . $name . '.txt';
 
-    my $content = read_text($file);
-
+    my $content   = read_text($file);
     my $sentences = get_sentences($content);
 
     for my $sentence (@$sentences) {
@@ -34,17 +34,17 @@ for my $name (qw(kirk spock mccoy)) {
         $sentence =~ s/\s*$//; # Trim whitespace
 
         next unless $sentence =~ /\w/;
-
     #    print $sentence, "\n\n";
 
+        # The processed messages are a list of 2-key hashrefs
         push @messages, { text => $sentence, is_spam => $name eq 'kirk' ? 1 : 0 };
     }
 }
 
+# Invoke the data science library
 my $ds = Data::Science::FromScratch->new;
 
 print "Training on messages...\n";
-
 $ds->train(@messages);
 
 print 'Kirk said ', $ds->spam_messages, " words.\n";
