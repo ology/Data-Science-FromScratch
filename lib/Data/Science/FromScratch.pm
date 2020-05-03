@@ -35,6 +35,9 @@ with 'Data::Science::FromScratch::DeepLearning';
 C<Data::Science::FromScratch> is a perl implementation of the python code from
 L<the book|https://www.oreilly.com/library/view/data-science-from/9781492041122/>.
 
+This code is not meant to be either fast or robust.  It is meant to illustrate
+data science algorithms.
+
 Please see individual role documentation for available methods and attributes.
 
 =cut
