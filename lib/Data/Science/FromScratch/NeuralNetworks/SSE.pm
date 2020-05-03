@@ -27,7 +27,7 @@ A C<Data::Science::FromScratch::NeuralNetworks::SSE> is an class for computing l
 sub loss {
     my ($self, $predicted, $actual) = @_;
     my $squared_errors = $self->ds->tensor_combine(
-        sub { my ($x, $y) = @_; return ($x - $y) ** 2 },
+        sub { ($predicted - $actual) ** 2 },
         $predicted,
         $actual
     );
