@@ -1,5 +1,6 @@
 package Data::Science::FromScratch::NeuralNetworks::Linear;
 
+use List::Util qw(sum0);
 use Moo;
 use strictures 2;
 use namespace::clean;
@@ -153,7 +154,7 @@ sub backward {
     $self->w_grad(\@w_grad);
     my @sum;
     for my $i (0 .. $self->input_dim - 1) {
-        push @sum, [map { $self->w->[$_][$i] * $gradient->[$_] } 0 .. $self->output_dim - 1];
+        push @sum, sum0(map { $self->w->[$_][$i] * $gradient->[$_] } 0 .. $self->output_dim - 1);
     }
     return \@sum;
 }
