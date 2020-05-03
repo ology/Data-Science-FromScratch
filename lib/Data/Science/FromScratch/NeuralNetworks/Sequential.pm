@@ -70,8 +70,7 @@ sub params {
     my ($self) = @_;
     my @params;
     for my $layer (@{ $self->layers }) {
-        push @params, @{ $layer->params }
-            if $layer->params;
+        push @params, @{ $layer->params };
     }
     return \@params;
 }
@@ -86,8 +85,7 @@ sub grads {
     my ($self) = @_;
     my @grads;
     for my $layer (reverse @{ $self->layers }) {
-        push @grads, @{ $layer->grads }
-            if $layer->grads;
+        push @grads, @{ $layer->grads };
     }
     return \@grads;
 }
