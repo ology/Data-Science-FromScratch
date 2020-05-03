@@ -39,6 +39,7 @@ This code is not meant to be either fast or robust.  It is meant to illustrate
 data science algorithms.
 
 Please see individual role documentation for available methods and attributes.
+The test files show their basic usage.
 
 =cut
 
