@@ -47,11 +47,13 @@ for my $name (qw(kirk spock mccoy)) {
 # Invoke the data science library
 my $ds = Data::Science::FromScratch->new;
 
-print "Training on messages...\n";
-$ds->train(@messages);
+my ($train, $test) = $ds->split_data(0.33, @messages);
 
-print 'Kirk said ', $ds->spam_messages, " words.\n";
-print 'Spock and McCoy said ', $ds->ham_messages, " words.\n";
+print "Training on messages...\n";
+$ds->train(@$train);
+
+print 'Kirk said ', $ds->spam_messages, " sentences.\n";
+print 'Spock and McCoy said ', $ds->ham_messages, " sentences.\n";
 
 print "Probability that Kirk said,\n";
 for my $text (
