@@ -27,7 +27,8 @@ Learning rate
 =cut
 
 has lr => (
-    is => 'ro',
+    is      => 'ro',
+    default => sub { 0.1 },
 );
 
 =head1 METHODS
