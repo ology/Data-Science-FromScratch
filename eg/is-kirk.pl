@@ -11,6 +11,7 @@ use Data::Science::FromScratch;
 use File::Slurper qw(read_text);
 use Lingua::EN::Sentence qw(get_sentences);
 
+# Provide a custom statement to process
 my $statement = shift || 'To be or not to be. That is the question.';
 
 # Unziped Star Trek scripts in this location
