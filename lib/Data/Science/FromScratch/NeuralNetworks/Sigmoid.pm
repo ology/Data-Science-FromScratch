@@ -52,7 +52,7 @@ sub forward {
 sub backward {
     my ($self, $gradient) = @_;
     return $self->ds->tensor_combine(
-        sub { my ($sig, $grad) = @_; return $sig * (1 - $sig) * $grad },
+        sub { my ($x, $y) = @_; return $x * (1 - $x) * $y },
         $self->sigmoids,
         $gradient
     );
