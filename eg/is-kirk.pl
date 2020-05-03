@@ -11,6 +11,8 @@ use Data::Science::FromScratch;
 use File::Slurper qw(read_text);
 use Lingua::EN::Sentence qw(get_sentences);
 
+my $statement = shift || 'To be or not to be. That is the question.';
+
 my $path = $ENV{HOME} . '/Documents/lit/Kirk-Spock-McCoy/';
 
 print "Gathering messages...\n";
@@ -57,7 +59,9 @@ for my $text (
     'Give me warp nine, Scotty.',                               # Fake Kirk
     'That is highly illogical.',                                # Fake Spock
     "He's dead, Jim.",                                          # Fake McCoy
+    $statement
 ) {
+    next unless $text;
     my $prediction = $ds->nb_predict($text);
     printf qq/\t%.4f <= "%s"\n/, $prediction, $text;
 }
