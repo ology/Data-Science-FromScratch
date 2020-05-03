@@ -42,7 +42,7 @@ $net = new_ok 'Data::Science::FromScratch::NeuralNetworks::Linear' => [
 ];
 my $got = $net->forward([0,0]);
 is scalar(@$got), $net->output_dim, 'forward';
-is_deeply $net->backward([0,0]), [[0], [0]], 'backward';
+is_deeply $net->backward([0,0]), [0,0], 'backward';
 
 use_ok 'Data::Science::FromScratch::NeuralNetworks::Sequential';
 
@@ -61,7 +61,7 @@ $net = new_ok 'Data::Science::FromScratch::NeuralNetworks::Sequential' => [
 ];
 $got = $net->forward([0,0]);
 is scalar(@$got), 1, 'forward';
-is_deeply $net->backward([0,0]), [[0], [0]], 'backward';
+is_deeply $net->backward([0,0]), [0,0], 'backward';
 
 use_ok 'Data::Science::FromScratch::NeuralNetworks::SSE';
 my $loss = new_ok 'Data::Science::FromScratch::NeuralNetworks::SSE';
