@@ -83,7 +83,7 @@ is $loss->loss([1,2,3], [10,20,30]), 9 ** 2 + 18 ** 2 + 27 ** 2, 'loss';
 is_deeply $loss->gradient([1,2,3], [10,20,30]), [-18,-36,-54], 'gradient';
 
 SKIP: {
-skip 'Broken algorithm. :\', 0;
+skip 'Broken algorithm. :(', 0;
 
 my @xs = ([0,0], [0,1], [1,0], [1,1]);
 my @ys = ( [0],   [1],   [1],   [0]);
