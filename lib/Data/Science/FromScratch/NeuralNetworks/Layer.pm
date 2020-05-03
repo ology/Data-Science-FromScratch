@@ -60,7 +60,7 @@ sub backward {
 
 sub params {
     my ($self) = @_;
-    return ();
+    return [];
 }
 
 =head2 grads
@@ -71,7 +71,7 @@ sub params {
 
 sub grads {
     my ($self) = @_;
-    return ();
+    return [];
 }
 
 1;
