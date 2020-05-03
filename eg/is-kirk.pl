@@ -11,7 +11,7 @@ use Data::Science::FromScratch;
 use File::Slurper qw(read_text);
 use Lingua::EN::Sentence qw(get_sentences);
 
-# How big should the traing set be?
+# How big should the training set be?
 my $split = shift || 0.4;
 # Probability threshold (confidence) that Kirk said it
 my $threshold = shift || .7;
