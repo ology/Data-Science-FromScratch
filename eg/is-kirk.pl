@@ -18,6 +18,16 @@ my $threshold = shift || .7;
 # Provide a custom statement to process
 my $statement = shift || 'To be or not to be. That is the question.';
 
+my @statements = (
+    'Shall we pick some flowers, Doctor?',                      # Kirk
+    'Vulcan has no moon, Miss Uhura.',                          # Spock
+    'Is that how you get girls to like you, by bribing them?',  # McCoy
+    'Give me warp nine, Scotty.',                               # Fake Kirk
+    'That is highly illogical.',                                # Fake Spock
+    "He's dead, Jim.",                                          # Fake McCoy
+    $statement
+);
+
 # Unziped Star Trek scripts in this location
 my $path = $ENV{HOME} . '/Documents/lit/Kirk-Spock-McCoy/';
 
@@ -60,15 +70,7 @@ print 'Kirk said ', $ds->spam_messages, " sentences.\n";
 print 'Spock and McCoy said ', $ds->ham_messages, " sentences.\n";
 
 print "Probability that Kirk said,\n";
-for my $text (
-    'Shall we pick some flowers, Doctor?',                      # Kirk
-    'Vulcan has no moon, Miss Uhura.',                          # Spock
-    'Is that how you get girls to like you, by bribing them?',  # McCoy
-    'Give me warp nine, Scotty.',                               # Fake Kirk
-    'That is highly illogical.',                                # Fake Spock
-    "He's dead, Jim.",                                          # Fake McCoy
-    $statement
-) {
+for my $text (@statements) {
     next unless $text;
     my $prediction = $ds->nb_predict($text);
     printf qq/\t%.4f = "%s"\n/, $prediction, $text;
