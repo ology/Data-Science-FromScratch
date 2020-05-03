@@ -43,7 +43,7 @@ sub step {
     my ($self, $layer) = @_;
     for my $i (0 .. @{ $layer->params } - 1) {
         $layer->params->[$i] = $self->ds->tensor_combine(
-            sub { $layer->params->[$i] - $layer->grads->[$i] * $self->lr },
+            sub { my ($x, $y) = @_; $x - $y * $self->lr },
             $layer->params->[$i],
             $layer->grads->[$i]
         );
