@@ -11,7 +11,7 @@ use namespace::clean;
 
 =head1 DESCRIPTION
 
-A C<Data::Science::FromScratch::Layer> is an abstract class for building neural networks.
+A C<Data::Science::FromScratch::NNLayer> is an abstract class for building neural networks.
 
 =head1 ATTRIBUTES
 
