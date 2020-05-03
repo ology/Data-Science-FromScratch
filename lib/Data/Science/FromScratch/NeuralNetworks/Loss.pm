@@ -60,4 +60,6 @@ F<t/015-deep-learning.t>
 
 L<Data::Science::FromScratch::NeuralNetworks::SSE>
 
+L<Moo>
+
 =cut

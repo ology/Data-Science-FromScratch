@@ -187,4 +187,8 @@ sub grads {
 
 L<Data::Science::FromScratch::NeuralNetworks::Layer>
 
+L<List::Util>
+
+L<Moo>
+
 =cut

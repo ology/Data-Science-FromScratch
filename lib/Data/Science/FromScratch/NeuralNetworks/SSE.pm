@@ -55,4 +55,6 @@ sub gradient {
 
 L<Data::Science::FromScratch::NeuralNetworks::Loss>
 
+L<Moo>
+
 =cut

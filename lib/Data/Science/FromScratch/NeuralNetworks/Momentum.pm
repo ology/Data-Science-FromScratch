@@ -88,4 +88,6 @@ sub step {
 
 L<Data::Science::FromScratch::NeuralNetworks::Optimizer>
 
+L<Moo>
+
 =cut

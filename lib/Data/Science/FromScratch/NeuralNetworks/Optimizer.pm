@@ -52,4 +52,6 @@ L<Data::Science::FromScratch::NeuralNetworks::GradientDescent>
 
 L<Data::Science::FromScratch::NeuralNetworks::Momentum>
 
+L<Moo>
+
 =cut

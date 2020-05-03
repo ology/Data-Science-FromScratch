@@ -86,4 +86,6 @@ L<Data::Science::FromScratch::NeuralNetworks::Linear>
 
 L<Data::Science::FromScratch::NeuralNetworks::Sequential>
 
+L<Moo>
+
 =cut

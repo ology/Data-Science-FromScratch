@@ -64,4 +64,6 @@ sub backward {
 
 L<Data::Science::FromScratch::NeuralNetworks::Layer>
 
+L<Moo>
+
 =cut
