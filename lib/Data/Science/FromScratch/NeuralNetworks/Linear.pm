@@ -133,7 +133,7 @@ has b_grad => (
 sub forward {
     my ($self, $input) = @_;
     $self->input($input);
-    return [map { $self->ds->vector_dot($input, $self->w->[$_]) } 0 .. $self->output_dim - 1];
+    return [map { $self->ds->vector_dot($input, $self->w->[$_]) + $self->b->[$_] } 0 .. $self->output_dim - 1];
 }
 
 =head2 backward
