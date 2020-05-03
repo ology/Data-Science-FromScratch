@@ -93,7 +93,7 @@ for my $i (@$test) {
     $fn += $false_neg;
     $tn += $true_neg;
 }
-print "Confusion matrix:\n",
+print "Confusion matrix (true_pos,false_pos,false_neg,true_neg):\n",
     join("\n", map { "\t$_ => $confusion_matrix{$_}" } sort keys %confusion_matrix),
     "\n";
 printf "Accuracy = %.4f\nPrecision = %.4f\nRecall = %.4f\nf1_score = %.4f\n",
