@@ -69,7 +69,7 @@ sub backward {
 sub params {
     my ($self) = @_;
     my @params;
-    for my $layer (reverse @{ $self->layers }) {
+    for my $layer (@{ $self->layers }) {
         push @params, @{ $layer->params }
             if $layer->params;
     }
