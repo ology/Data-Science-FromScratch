@@ -29,6 +29,9 @@ use strictures 2;
 
   $v = $ds->random_tensor(); #
 
+  $y = $ds->tanh(0); # 0
+  $y = $ds->tanh(1); # 0.7616
+
 =head1 METHODS
 
 =head2 tensor_shape
@@ -111,6 +114,8 @@ sub zeros_like {
 sub tensor_combine {
     my ($self, $fn, $t1, $t2) = @_;
     if ($self->is_1d($t1)) {
+#use Data::Dumper;warn(__PACKAGE__,' ',__LINE__," t1: ",Dumper$t1);
+#use Data::Dumper;warn(__PACKAGE__,' ',__LINE__," t2: ",Dumper$t2);
         return [map { $fn->($t1->[$_], $t2->[$_]) } 0 .. @$t1 - 1];
     }
     else {
@@ -173,6 +178,24 @@ sub random_tensor {
     else {
         die "Unknown init: $init";
     }
+}
+
+=head2 tanh
+
+  $y = $ds->tanh($x);
+
+=cut
+
+sub tanh {
+    my ($self, $x) = @_;
+    if ($x < -100) {
+        return -1;
+    }
+    elsif ($x > 100) {
+        return 1;
+    }
+    my $em2x = exp(-2 * $x);
+    return (1 - $em2x) / (1 + $em2x);
 }
 
 1;
