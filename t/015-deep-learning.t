@@ -111,4 +111,44 @@ is $ds->tanh(111), 1, 'tanh';
 $got = $ds->tanh(1);
 is sprintf('%.4f', $got), '0.7616', 'tanh';
 
+SKIP: {
+skip 'Broken algorithm. :(', 2;
+
+my @xs = ( map { $ds->binary_encode($_) } 101 .. 1023 );
+my @ys = ( map { $ds->fizz_buzz_encode($_) } 101 .. 1023 );
+
+my $num_hidden = 25;
+
+use_ok 'Data::Science::FromScratch::NeuralNetworks::Tanh';
+$net = new_ok 'Data::Science::FromScratch::NeuralNetworks::Sequential' => [
+    layers => [
+        Data::Science::FromScratch::NeuralNetworks::Linear->new(input_dim => 10, output_dim => $num_hidden, init => 'uniform'),
+        Data::Science::FromScratch::NeuralNetworks::Tanh->new,
+        Data::Science::FromScratch::NeuralNetworks::Linear->new(input_dim => $num_hidden, output_dim => 4, init => 'uniform'),
+        Data::Science::FromScratch::NeuralNetworks::Sigmoid->new,
+    ],
+];
+
+use_ok 'Data::Science::FromScratch::NeuralNetworks::GradientDescent';
+my $optimizer = new_ok 'Data::Science::FromScratch::NeuralNetworks::GradientDescent' => [
+    lr => 0.1,
+    mo => 0.9,
+];
+
+# $loss instantiated above
+
+for my $i (1 .. 1000) {
+    my $epoch_loss = 0;
+    for my $j (0 .. @xs - 1) {
+        my $predicted = $net->forward($xs[$j]);
+        $epoch_loss += $loss->loss($predicted, $ys[$j]);
+        my $gradient = $loss->gradient($predicted, $ys[$j]);
+        $net->backward($gradient);
+        $optimizer->step($net);
+    }
+    my $accuracy = $ds->fizz_buzz_accuracy(101, 1024, $net);
+    print "$i. Loss = $epoch_loss, Accuracy = $accuracy\n";
+}
+}
+
 done_testing();
