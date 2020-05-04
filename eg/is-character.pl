@@ -35,7 +35,6 @@ my $path = $ENV{HOME} . '/Documents/lit/Kirk-Spock-McCoy/';
 
 print "Gathering messages...\n";
 my @messages;
-my $name = ucfirst $who;
 
 # Process the lines of each file
 for my $i (qw(kirk spock mccoy)) {
@@ -68,6 +67,8 @@ my ($train, $test) = $ds->split_data($split, @messages);
 
 print "Training on messages...\n";
 $ds->train(@$train);
+
+my $name = ucfirst $who;
 
 print "$name said ", $ds->spam_messages, " sentences.\n";
 print "Not-$name said ", $ds->ham_messages, " sentences.\n";
