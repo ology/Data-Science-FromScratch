@@ -116,4 +116,10 @@ is_deeply $ds->fizz_buzz_encode(6), [0,1,0,0], 'fizz_buzz_encode';
 is_deeply $ds->fizz_buzz_encode(10), [0,0,1,0], 'fizz_buzz_encode';
 is_deeply $ds->fizz_buzz_encode(30), [0,0,0,1], 'fizz_buzz_encode';
 
+is_deeply $ds->binary_encode(0), [0,0,0,0,0,0,0,0,0,0], 'binary_encode';
+is_deeply $ds->binary_encode(1), [1,0,0,0,0,0,0,0,0,0], 'binary_encode';
+is_deeply $ds->binary_encode(10), [0,1,0,1,0,0,0,0,0,0], 'binary_encode';
+is_deeply $ds->binary_encode(101), [1,0,1,0,0,1,1,0,0,0], 'binary_encode';
+is_deeply $ds->binary_encode(999), [1,1,1,0,0,1,1,1,1,1], 'binary_encode';
+
 done_testing();

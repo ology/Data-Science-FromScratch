@@ -151,6 +151,22 @@ sub fizz_buzz_encode {
     }
 }
 
+=head2 binary_encode
+
+  $y = $ds->binary_encode($x);
+
+=cut
+
+sub binary_encode {
+    my ($self, $x) = @_;
+    my @binary;
+    for my $i (0 .. 9) {
+        push @binary, $x % 2;
+        $x = int($x / 2);
+    }
+    return \@binary;
+}
+
 1;
 __END__
 
