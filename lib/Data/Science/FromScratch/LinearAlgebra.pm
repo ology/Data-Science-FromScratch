@@ -26,6 +26,8 @@ use strictures 2;
 
   $y = $ds->distance([0,1], [1,1]); # 1
 
+  $y = $ds->squared_distance([0,0], [2,2]); # 8
+
   $v = $ds->shape([[1,2,3], [4,5,6]]); # [2,3]
 
   $v = $ds->get_row([[1,2,3], [4,5,6]], 0); # [1,2,3]
@@ -177,6 +179,17 @@ sub magnitude {
 sub distance {
     my ($self, @vectors) = @_;
     return $self->magnitude($self->vector_subtract(@vectors));
+}
+
+=head2 squared_distance
+
+  $y = $ds->squared_distance($vector1, $vector2);
+
+=cut
+
+sub squared_distance {
+    my ($self, @vectors) = @_;
+    return $self->sum_of_squares($self->vector_subtract(@vectors));
 }
 
 =head1 MATRIX METHODS
