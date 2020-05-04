@@ -72,6 +72,9 @@ ok $got->[-1][0] > 0 && $got->[-1][0] < 0.001, 'feed_forward';
 SKIP: {
 skip 'Long running test', 4;
 # XXX This test passes and fails intermittently. :\
+my $xs = [[0,0], [0,1], [1,0], [1,1]];
+my $ys = [ [0],   [1],   [1],   [0]];
+
 $network = [
     [
         [ rand, rand, rand ],
@@ -81,9 +84,6 @@ $network = [
         [ rand, rand, rand ],
     ],
 ];
-
-my $xs = [[0,0], [0,1], [1,0], [1,1]];
-my $ys = [ [0],   [1],   [1],   [0]];
 
 for my $i (1 .. 20_000) {
     for my $j (0 .. @$xs - 1) {
@@ -121,5 +121,7 @@ is_deeply $ds->binary_encode(1), [1,0,0,0,0,0,0,0,0,0], 'binary_encode';
 is_deeply $ds->binary_encode(10), [0,1,0,1,0,0,0,0,0,0], 'binary_encode';
 is_deeply $ds->binary_encode(101), [1,0,1,0,0,1,1,0,0,0], 'binary_encode';
 is_deeply $ds->binary_encode(999), [1,1,1,0,0,1,1,1,1,1], 'binary_encode';
+
+
 
 done_testing();
