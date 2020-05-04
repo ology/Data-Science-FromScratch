@@ -2,8 +2,8 @@
 use strict;
 use warnings;
 
-# Did Kirk say it? - Naive Bayes analysis of Kirk, Spock and McCoy lines.
-# Where spam is Kirk and ham is not Kirk.
+# Naive Bayes analysis of Kirk, Spock and McCoy lines.
+# Where spam is the lowercase given name (and ham is not).
 # Star Trek scripts used:
 # https://github.com/ology/Machine-Learning/blob/master/Kirk-Spock-McCoy.zip
 
@@ -11,6 +11,8 @@ use Data::Science::FromScratch;
 use File::Slurper qw(read_text);
 use Lingua::EN::Sentence qw(get_sentences);
 
+# Who are we interested in?
+my $who = shift || 'kirk';
 # How big should the training set be?
 my $split = shift || 0.33;
 # Probability threshold (confidence) that Kirk said it
@@ -33,10 +35,11 @@ my $path = $ENV{HOME} . '/Documents/lit/Kirk-Spock-McCoy/';
 
 print "Gathering messages...\n";
 my @messages;
+my $name = ucfirst $who;
 
 # Process the lines of each file
-for my $name (qw(kirk spock mccoy)) {
-    my $file = $path . $name . '.txt';
+for my $i (qw(kirk spock mccoy)) {
+    my $file = $path . $i . '.txt';
 
     my $content   = read_text($file);
     my $sentences = get_sentences($content);
@@ -54,7 +57,7 @@ for my $name (qw(kirk spock mccoy)) {
     #    print $sentence, "\n\n";
 
         # The processed messages are a list of 2-key hashrefs
-        push @messages, { text => $sentence, is_spam => $name eq 'kirk' ? 1 : 0 };
+        push @messages, { text => $sentence, is_spam => $i eq $who ? 1 : 0 };
     }
 }
 
@@ -66,10 +69,10 @@ my ($train, $test) = $ds->split_data($split, @messages);
 print "Training on messages...\n";
 $ds->train(@$train);
 
-print 'Kirk said ', $ds->spam_messages, " sentences.\n";
-print 'Spock and McCoy said ', $ds->ham_messages, " sentences.\n";
+print "$name said ", $ds->spam_messages, " sentences.\n";
+print "Not-$name said ", $ds->ham_messages, " sentences.\n";
 
-print "Probability that Kirk said,\n";
+print "Probability that $name said,\n";
 for my $text (@statements) {
     next unless $text;
     my $prediction = $ds->nb_predict($text);
