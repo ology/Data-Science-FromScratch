@@ -159,7 +159,6 @@ for my $i (1 .. 500) {
 }
 
 my $num_correct = 0;
-
 for my $i (1 .. 100) {
     my $x = $ds->binary_encode($i);
     my $predicted = $ds->argmax($ds->feed_forward($net, $x)->[-1]);
