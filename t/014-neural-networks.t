@@ -122,7 +122,6 @@ is_deeply $ds->binary_encode(10), [0,1,0,1,0,0,0,0,0,0], 'binary_encode';
 is_deeply $ds->binary_encode(101), [1,0,1,0,0,1,1,0,0,0], 'binary_encode';
 is_deeply $ds->binary_encode(999), [1,1,1,0,0,1,1,1,1,1], 'binary_encode';
 
-
 is $ds->argmax([0,-1]), 0, 'argmax';
 is $ds->argmax([-1,0]), 1, 'argmax';
 is $ds->argmax([-1,10,5,20,-3]), 3, 'argmax';
