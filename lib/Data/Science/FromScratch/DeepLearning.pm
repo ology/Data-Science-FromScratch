@@ -114,8 +114,6 @@ sub zeros_like {
 sub tensor_combine {
     my ($self, $fn, $t1, $t2) = @_;
     if ($self->is_1d($t1)) {
-#use Data::Dumper;warn(__PACKAGE__,' ',__LINE__," t1: ",Dumper$t1);
-#use Data::Dumper;warn(__PACKAGE__,' ',__LINE__," t2: ",Dumper$t2);
         return [map { $fn->($t1->[$_], $t2->[$_]) } 0 .. @$t1 - 1];
     }
     else {
