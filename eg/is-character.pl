@@ -13,7 +13,7 @@ use Lingua::EN::Sentence qw(get_sentences);
 
 # Who are we interested in?
 my $who = shift || 'kirk';
-# How big should the training set be?
+# How big should the training set be as a percent of the total?
 my $split = shift || 0.33;
 # Probability threshold (confidence) that the person of interest said it
 my $threshold = shift || .7;
@@ -53,7 +53,7 @@ for my $i (qw(kirk spock mccoy)) {
         $sentence =~ s/\s*$//; # Trim whitespace
 
         next unless $sentence =~ /\w/;
-    #    print $sentence, "\n\n";
+        #print $sentence, "\n\n";
 
         # The processed messages are a list of 2-key hashrefs
         push @messages, { text => $sentence, is_spam => $i eq $who ? 1 : 0 };
