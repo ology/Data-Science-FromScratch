@@ -93,11 +93,11 @@ for my $i (1 .. 3000) {
     for my $j (0 .. @xs - 1) {
         my $predicted = $net->forward($xs[$j]);
         $epoch_loss += $loss->loss($predicted, $ys[$j]);
-#warn(__PACKAGE__,' ',__LINE__," MARK: ",$epoch_loss,"\n");
         my $gradient = $loss->gradient($predicted, $ys[$j]);
         $net->backward($gradient);
         $optimizer->step($net);
     }
+    #print "Loss = $epoch_loss\n";
 }
 
 for my $param (@{ $net->params }) {
