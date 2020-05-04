@@ -25,6 +25,8 @@ use strictures 2;
 
   $v = $ds->sqerror_gradients(); #
 
+  $v = $ds->fizz_buzz_encode($x);
+
 =head1 METHODS
 
 =head2 step_function
@@ -125,6 +127,28 @@ sub sqerror_gradients {
         push @hidden_grads, \@grads;
     }
     return \@hidden_grads, \@output_grads;
+}
+
+=head2 fizz_buzz_encode
+
+  $v = $ds->fizz_buzz_encode($x);
+
+=cut
+
+sub fizz_buzz_encode {
+    my ($self, $x) = @_;
+    if ($x % 15 == 0) {
+        return [0,0,0,1];
+    }
+    elsif ($x % 5 == 0) {
+        return [0,0,1,0];
+    }
+    elsif ($x % 3 == 0) {
+        return [0,1,0,0];
+    }
+    else {
+        return [1,0,0,0];
+    }
 }
 
 1;

@@ -111,4 +111,9 @@ $got = $ds->feed_forward($network, [1,1]);
 ok $got->[-1][0] < 0.01, 'feed_forward';
 }
 
+is_deeply $ds->fizz_buzz_encode(2), [1,0,0,0], 'fizz_buzz_encode';
+is_deeply $ds->fizz_buzz_encode(6), [0,1,0,0], 'fizz_buzz_encode';
+is_deeply $ds->fizz_buzz_encode(10), [0,0,1,0], 'fizz_buzz_encode';
+is_deeply $ds->fizz_buzz_encode(30), [0,0,0,1], 'fizz_buzz_encode';
+
 done_testing();
