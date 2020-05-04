@@ -87,7 +87,7 @@ $network = [
 
 for my $i (1 .. 20_000) {
     for my $j (0 .. @$xs - 1) {
-        my $gradients = [ $ds->sqerror_gradients($network, $xs->[$j], $ys->[$j]) ];
+        my $gradients = $ds->sqerror_gradients($network, $xs->[$j], $ys->[$j]);
         my @step;
         for my $k (0 .. @$network - 1) {
             my @x;
@@ -123,5 +123,8 @@ is_deeply $ds->binary_encode(101), [1,0,1,0,0,1,1,0,0,0], 'binary_encode';
 is_deeply $ds->binary_encode(999), [1,1,1,0,0,1,1,1,1,1], 'binary_encode';
 
 
+is $ds->argmax([0,-1]), 0, 'argmax';
+is $ds->argmax([-1,0]), 1, 'argmax';
+is $ds->argmax([-1,10,5,20,-3]), 3, 'argmax';
 
 done_testing();
