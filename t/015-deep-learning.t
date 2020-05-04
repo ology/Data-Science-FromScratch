@@ -97,7 +97,7 @@ for my $i (1 .. 3000) {
         $net->backward($gradient);
         $optimizer->step($net);
     }
-    #print "$i. Loss = $epoch_loss\n";
+#    print "$i. Loss = $epoch_loss\n";
 }
 
 for my $param (@{ $net->params }) {
