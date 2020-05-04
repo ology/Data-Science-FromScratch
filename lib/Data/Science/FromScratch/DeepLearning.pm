@@ -34,7 +34,7 @@ use strictures 2;
 =head1 DESCRIPTION
 
 There is something amiss when running a NN with this module.  Comment-out the
-C<skip> block in L<the test|/"SEE ALSO"> to see the error that is generated.
+C<skip> blocks in L<the test|/"SEE ALSO"> to see the error that is generated.
 
 =head1 METHODS
 
