@@ -30,7 +30,7 @@ is $ds->magnitude([3,4]), 5, 'magnitude';
 is $ds->distance([0,1], [1,1]), 1, 'distance';
 
 is $ds->squared_distance([0,1], [1,1]), 1, 'squared_distance';
-is $ds->squared_distance([0,0], [2,2]), 1, 'squared_distance';
+is $ds->squared_distance([0,0], [2,2]), 8, 'squared_distance';
 
 # Matrix methods
 
