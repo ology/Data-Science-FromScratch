@@ -16,7 +16,7 @@ my $who = shift || 'kirk';
 # How big should the training set be as a percent of the total?
 my $split = shift || 0.33;
 # Probability threshold (confidence) that the person of interest said it
-my $threshold = shift || .7;
+my $threshold = shift || 0.7;
 # Provide a custom statement to process
 my $statement = shift || 'To be or not to be. That is the question.';
 
