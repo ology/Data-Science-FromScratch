@@ -24,13 +24,17 @@ use strictures 2;
   $v = $ds->tensor_combine(sub { shift() * shift() }, [1,2,3], [4,5,6]); # [4,10,18]
 
   $v = $ds->random_uniform(); #
-
   $v = $ds->random_normal(); #
 
   $v = $ds->random_tensor(); #
 
   $y = $ds->tanh(0); # 0
   $y = $ds->tanh(1); # 0.7616
+
+=head1 DESCRIPTION
+
+There is something amiss when running a NN with this module.  Comment-out the
+C<skip> block in L<the test|/"SEE ALSO"> to see the error that is generated.
 
 =head1 METHODS
 
