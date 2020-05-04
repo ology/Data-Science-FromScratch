@@ -1,5 +1,7 @@
 package Data::Science::FromScratch::NeuralNetworks;
 
+use List::MoreUtils qw(first_index);
+use List::Util qw(max);
 use Moo::Role;
 use Storable qw(dclone);
 use strictures 2;
@@ -28,6 +30,8 @@ use strictures 2;
   $v = $ds->fizz_buzz_encode(2); # [1,0,0,0]
 
   $y = $ds->binary_encode(1); # [1,0,0,0,0,0,0,0,0,0]
+
+  $y = $ds->argmax([-1,10,5,20,-3]); # 3
 
 =head1 METHODS
 
@@ -169,6 +173,18 @@ sub binary_encode {
     return \@binary;
 }
 
+=head2 argmax
+
+  $y = $ds->argmax($vector);
+
+=cut
+
+sub argmax {
+    my ($self, $vector) = @_;
+    my $max = max(@$vector);
+    return first_index { $_ == $max } @$vector;
+}
+
 1;
 __END__
 
@@ -193,6 +209,10 @@ L<Data::Science::FromScratch::NeuralNetworks::SSE>
 L<Data::Science::FromScratch::NeuralNetworks::Optimizer>
 
 L<Data::Science::FromScratch::NeuralNetworks::GradientDescent>
+
+L<List::Util>
+
+L<List::MoreUtils>
 
 L<Moo::Role>
 
