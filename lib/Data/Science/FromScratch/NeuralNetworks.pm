@@ -128,7 +128,7 @@ sub sqerror_gradients {
         my @grads = map { $hidden_deltas[$i] * $_ } @$input_vector, 1;
         push @hidden_grads, \@grads;
     }
-    return \@hidden_grads, \@output_grads;
+    return [ \@hidden_grads, \@output_grads ];
 }
 
 =head2 fizz_buzz_encode
