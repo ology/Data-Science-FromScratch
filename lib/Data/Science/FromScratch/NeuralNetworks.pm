@@ -28,6 +28,7 @@ use strictures 2;
   $v = $ds->sqerror_gradients(); #
 
   $v = $ds->fizz_buzz_encode(2); # [1,0,0,0]
+  $y = $ds->fizz_buzz_accuracy(); #
 
   $y = $ds->binary_encode(1); # [1,0,0,0,0,0,0,0,0,0]
 
@@ -155,6 +156,26 @@ sub fizz_buzz_encode {
     else {
         return [1,0,0,0];
     }
+}
+
+=head2 fizz_buzz_accuracy
+
+  $y = $ds->fizz_buzz_accuracy($low, $hi, $net);
+
+=cut
+
+sub fizz_buzz_accuracy {
+    my ($self, $low, $hi, $net) = @_;
+    my $num_correct = 0;
+    for my $i ($low .. $hi - 1) {
+        my $x = $self->binary_encode($i);
+        my $predicted = $self->argmax($net->forward($x));
+        my $actual = $self->argmax($self->fizz_buzz_encode($i));
+        if ($predicted == $actual) {
+            $num_correct++;
+        }
+    }
+    return $num_correct / ($hi - $low);
 }
 
 =head2 binary_encode
