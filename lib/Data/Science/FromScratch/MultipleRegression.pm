@@ -41,6 +41,12 @@ use strictures 2;
 
   $y = $ds->lasso_penalty([1,2,3,4,5], 0.5); # 7
 
+=head1 DESCRIPTION
+
+There is something amiss when running the C<least_squares_fit_ridge> method.
+Un-comment the bottom code in L<the test|/"SEE ALSO"> to see the error that is
+generated.
+
 =head1 METHODS
 
 =head2 mr_predict
