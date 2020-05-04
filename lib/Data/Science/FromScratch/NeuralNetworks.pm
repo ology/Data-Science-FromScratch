@@ -25,7 +25,9 @@ use strictures 2;
 
   $v = $ds->sqerror_gradients(); #
 
-  $v = $ds->fizz_buzz_encode($x);
+  $v = $ds->fizz_buzz_encode(2); # [1,0,0,0]
+
+  $y = $ds->binary_encode(1); # [1,0,0,0,0,0,0,0,0,0]
 
 =head1 METHODS
 
