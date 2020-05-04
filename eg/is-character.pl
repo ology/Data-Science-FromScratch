@@ -15,7 +15,7 @@ use Lingua::EN::Sentence qw(get_sentences);
 my $who = shift || 'kirk';
 # How big should the training set be?
 my $split = shift || 0.33;
-# Probability threshold (confidence) that Kirk said it
+# Probability threshold (confidence) that the person of interest said it
 my $threshold = shift || .7;
 # Provide a custom statement to process
 my $statement = shift || 'To be or not to be. That is the question.';
