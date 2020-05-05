@@ -74,7 +74,7 @@ Weights
 =cut
 
 has w => (
-    is      => 'ro',
+    is      => 'rw',
     lazy    => 1,
     builder => 1,
 );
@@ -103,7 +103,7 @@ Bias
 =cut
 
 has b => (
-    is      => 'ro',
+    is      => 'rw',
     lazy    => 1,
     builder => 1,
 );
@@ -162,11 +162,18 @@ sub backward {
 =head2 params
 
   $v = $layer->params;
+  $layer->params($i, $u);;
 
 =cut
 
 sub params {
-    my ($self) = @_;
+    my ($self, $i, $u) = @_;
+    if (defined $i && $u && $i == 0) {
+        $self->w($u);
+    }
+    elsif (defined $i && $u && $i == 1) {
+        $self->b($u);
+    }
     return [$self->w, $self->b];
 }
 
