@@ -71,15 +71,15 @@ sub _negative_log_likelihood {
 
 =head2 negative_log_gradient
 
-  $v = $ml->negative_log_gradient($u, $x, $beta);
+  $v = $ml->negative_log_gradient($m, $u, $beta);
 
 This method is suspect because the results from the book code are different.
 
 =cut
 
 sub negative_log_gradient {
-    my ($self, $u, $x, $beta) = @_;
-    my @nlg = map { $self->_negative_log_gradient($u->[$_], $x->[$_], $beta) } 0 .. @$u - 1;
+    my ($self, $m, $u, $beta) = @_;
+    my @nlg = map { $self->_negative_log_gradient($m->[$_], $u->[$_], $beta) } 0 .. @$m - 1;
     return $self->vector_sum(@nlg);
 }
 
