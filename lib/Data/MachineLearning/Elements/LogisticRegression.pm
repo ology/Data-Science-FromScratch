@@ -75,12 +75,6 @@ sub _negative_log_likelihood {
 
 =cut
 
-sub negative_log_gradient {
-    my ($self, $m, $u, $beta) = @_;
-    my @nlg = map { $self->_negative_log_gradient($m->[$_], $u->[$_], $beta) } 0 .. @$m - 1;
-    return $self->vector_sum(@nlg);
-}
-
 sub _negative_log_partial {
     my ($self, $u, $x, $beta, $j) = @_;
     return -($x - $self->logistic($self->vector_dot($u, $beta))) * $u->[$j];
@@ -89,6 +83,12 @@ sub _negative_log_partial {
 sub _negative_log_gradient {
     my ($self, $u, $x, $beta) = @_;
     return [ map { $self->_negative_log_partial($u, $x, $beta, $_) } 0 .. @$beta - 1 ];
+}
+
+sub negative_log_gradient {
+    my ($self, $m, $u, $beta) = @_;
+    my @nlg = map { $self->_negative_log_gradient($m->[$_], $u->[$_], $beta) } 0 .. @$m - 1;
+    return $self->vector_sum(@nlg);
 }
 
 1;
