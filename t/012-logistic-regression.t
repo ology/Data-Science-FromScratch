@@ -49,7 +49,6 @@ my @beta_unscaled = [
 ];
 
 my ($true_pos, $false_pos, $tru_neg, $false_neg) = (0, 0, 0, 0);
-
 for my $i (0 .. @$x_test - 1) {
     my $prediction = $ml->logistic($ml->vector_dot($beta, $x_test->[$i]));
     if ($y_test->[$i] == 1 && $prediction >= 0.5) {
@@ -65,7 +64,6 @@ for my $i (0 .. @$x_test - 1) {
         $tru_neg++;
     }
 }
-
 my $precision = $true_pos / ($true_pos + $false_pos);
 is sprintf('%.4f', $precision), '0.2121', 'precision';
 my $recall = $true_pos / ($true_pos + $false_neg);
