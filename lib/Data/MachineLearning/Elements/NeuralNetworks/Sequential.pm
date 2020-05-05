@@ -85,7 +85,7 @@ sub grads {
     my ($self) = @_;
     my @grads;
     for my $layer (reverse @{ $self->layers }) {
-        push @grads, @{ $layer->grads };
+        unshift @grads, @{ $layer->grads };
     }
     return \@grads;
 }
