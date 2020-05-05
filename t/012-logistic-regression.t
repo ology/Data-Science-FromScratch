@@ -47,9 +47,9 @@ my @beta_unscaled = [
     $beta->[1] / $y->[1],
     $beta->[2] / $y->[2],
 ];
-is sprintf('%.4f', $beta_unscaled[0]), '8.9272', 'beta';
-is sprintf('%.4f', $beta_unscaled[1]), '1.6482', 'beta';
-is sprintf('%.4f', $beta_unscaled[2]), '-0.0003', 'beta';
+is sprintf('%.4f', $beta_unscaled[0]), '8.9272', 'beta_unscaled';
+is sprintf('%.4f', $beta_unscaled[1]), '1.6482', 'beta_unscaled';
+is sprintf('%.4f', $beta_unscaled[2]), '-0.0003', 'beta_unscaled';
 
 my ($true_pos, $false_pos, $tru_neg, $false_neg) = (0, 0, 0, 0);
 for my $i (0 .. @$x_test - 1) {
