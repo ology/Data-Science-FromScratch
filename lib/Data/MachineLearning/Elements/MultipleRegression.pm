@@ -223,23 +223,23 @@ sub sqerror_ridge_gradient {
 
 =head2 least_squares_fit_ridge
 
-  $v = $ml->least_squares_fit_ridge($x, $y, $alpha, $rate, $num_steps, $batch_size);
+  $v = $ml->least_squares_fit_ridge($m, $u, $alpha, $rate, $num_steps, $batch_size);
 
 =cut
 
 sub least_squares_fit_ridge {
-    my ($self, $x, $y, $alpha, $rate, $num_steps, $batch_size) = @_;
+    my ($self, $m, $u, $alpha, $rate, $num_steps, $batch_size) = @_;
     $rate ||= 0.001;
     $num_steps ||= 1000;
     $batch_size ||= 1;
-    my $guess = [ map { rand } @{ $x->[0] } ];
+    my $guess = [ map { rand } @{ $m->[0] } ];
     for my $n (1 .. $num_steps) {
-        for (my $i = 0; $i < @$x; $i += $batch_size) {
+        for (my $i = 0; $i < @$m; $i += $batch_size) {
             # Either increment or use array size for end
             my $end = $i + $batch_size - 1;
-            $end = $end < @$x ? $end : @$x - 1;
-            my @batch_xs = @$x[$i .. $end];
-            my @batch_ys = @$y[$i .. $end];
+            $end = $end < @$m ? $end : @$m - 1;
+            my @batch_xs = @$m[$i .. $end];
+            my @batch_ys = @$u[$i .. $end];
             my @error_grad = map { $self->sqerror_ridge_gradient($batch_xs[$_], $batch_ys[$_], $guess, $alpha) } 0 .. @batch_xs - 1;
             my $gradient = $self->vector_mean(@error_grad);
             $guess = $self->gradient_step($guess, $gradient, -$rate);
