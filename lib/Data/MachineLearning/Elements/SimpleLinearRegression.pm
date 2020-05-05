@@ -29,31 +29,31 @@ use Statistics::Basic qw(mean);
 
 =head2 lr_predict
 
-  $y = $ml->lr_predict($alpha, $beta, $x_i);
+  $y = $ml->lr_predict($alpha, $beta, $x);
 
 =cut
 
 sub lr_predict {
-    my ($self, $alpha, $beta, $x_i) = @_;
-    return $beta * $x_i + $alpha;
+    my ($self, $alpha, $beta, $x) = @_;
+    return $beta * $x + $alpha;
 }
 
 =head2 lr_error
 
-  $y = $ml->lr_error($alpha, $beta, $x_i, $y_i);
+  $z = $ml->lr_error($alpha, $beta, $x, $y);
 
 Actual value: B<y_i>
 
 =cut
 
 sub lr_error {
-    my ($self, $alpha, $beta, $x_i, $y_i) = @_;
-    return $self->lr_predict($alpha, $beta, $x_i) - $y_i;
+    my ($self, $alpha, $beta, $x, $y) = @_;
+    return $self->lr_predict($alpha, $beta, $x) - $y;
 }
 
 =head2 sum_of_sqerrors
 
-  $y = $ml->sum_of_sqerrors($alpha, $beta, $x, $y);
+  $z = $ml->sum_of_sqerrors($alpha, $beta, $x, $y);
 
 =cut
 
@@ -89,7 +89,7 @@ sub total_sum_of_squares {
 
 =head2 r_squared
 
-  $y = $ml->r_squared($alpha, $beta, $x, $y);
+  $z = $ml->r_squared($alpha, $beta, $x, $y);
 
 "Coefficient of determination"
 
