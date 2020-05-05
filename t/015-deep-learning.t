@@ -26,6 +26,11 @@ is_deeply $ml->zeros_like([[1,2],[3,4]]), [[0,0],[0,0]], 'zeros_like';
 is_deeply $ml->tensor_combine(sub { shift() + shift() }, [1,2,3], [4,5,6]), [5,7,9], 'tensor_combine';
 is_deeply $ml->tensor_combine(sub { shift() * shift() }, [1,2,3], [4,5,6]), [4,10,18], 'tensor_combine';
 
+my $got = $ml->random_uniform([2,3,4]);
+is scalar(@$got), 2, 'random_uniform';
+is scalar(@{ $got->[0] }), 3, 'random_uniform';
+is scalar(@{ $got->[0][0] }), 4, 'random_uniform';
+
 is_deeply $ml->tensor_shape($ml->random_uniform([2,3,4])), [2,3,4], 'random_uniform';
 is_deeply $ml->tensor_shape($ml->random_normal([5,6], 10)), [5,6], 'random_normal';
 
@@ -40,7 +45,7 @@ $net = new_ok 'Data::MachineLearning::Elements::NeuralNetworks::Linear' => [
     input_dim  => 2,
     output_dim => 1,
 ];
-my $got = $net->forward([0,0]);
+$got = $net->forward([0,0]);
 is scalar(@$got), $net->output_dim, 'forward';
 is_deeply $net->backward([0,0]), [0,0], 'backward';
 
