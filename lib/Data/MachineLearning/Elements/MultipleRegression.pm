@@ -100,8 +100,6 @@ sub sqerror_gradient {
 
 "In practice, you wouldn't estimate a linear regression using gradient descent..."
 
-This method is suspect because the results from the book code are different.
-
 =cut
 
 sub mr_least_squares_fit {
@@ -227,8 +225,6 @@ sub sqerror_ridge_gradient {
 =head2 least_squares_fit_ridge
 
   $v = $ml->least_squares_fit_ridge($x, $y, $alpha, $rate, $num_steps, $batch_size);
-
-This method is suspect because the results from the book code are different.
 
 =cut
 
