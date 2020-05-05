@@ -42,11 +42,11 @@ is sprintf('%.4f', $beta->[2]), '-4.4698', 'beta';
 is sprintf('%.4f', $loss), '39.9635', 'loss';
 
 my ($x, $y) = $ml->scale(@xs);
-my @beta_unscaled = [
+my @beta_unscaled = (
     $beta->[0] - $beta->[1] * $x->[1] / $y->[1] - $beta->[2] * $x->[2] / $y->[2],
     $beta->[1] / $y->[1],
     $beta->[2] / $y->[2],
-];
+);
 is sprintf('%.4f', $beta_unscaled[0]), '8.9272', 'beta_unscaled';
 is sprintf('%.4f', $beta_unscaled[1]), '1.6482', 'beta_unscaled';
 is sprintf('%.4f', $beta_unscaled[2]), '-0.0003', 'beta_unscaled';
@@ -68,9 +68,9 @@ for my $i (0 .. @$x_test - 1) {
     }
 }
 my $precision = $true_pos / ($true_pos + $false_pos);
-is sprintf('%.4f', $precision), '0.2121', 'precision';
+is sprintf('%.4f', $precision), '0.7500', 'precision';
 my $recall = $true_pos / ($true_pos + $false_neg);
-is sprintf('%.4f', $recall), '1.0000', 'recall';
+is sprintf('%.4f', $recall), '0.8000', 'recall';
 }
 
 done_testing();
