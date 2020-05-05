@@ -43,9 +43,8 @@ use strictures 2;
 
 =head1 DESCRIPTION
 
-There is something amiss when running the C<least_squares_fit_ridge> method.
-Un-comment the bottom code in L<the test|/"SEE ALSO"> to see the error that is
-generated.
+There is something amiss when running this.  Comment the skip code in
+L<the test|/"SEE ALSO"> to see the error that is generated.
 
 =head1 METHODS
 
