@@ -1,6 +1,6 @@
 package Data::MachineLearning::Elements;
 
-# ABSTRACT: Perl implementation of code from the book
+# ABSTRACT: Perl implementation of code from the book "Data Science from Scratch"
 
 our $VERSION = '0.0100';
 
