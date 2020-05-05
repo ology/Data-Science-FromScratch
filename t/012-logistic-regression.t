@@ -39,7 +39,7 @@ for my $i (1 .. 5000) {
 is sprintf('%.4f', $beta->[0]), '-2.0239', 'beta';
 is sprintf('%.4f', $beta->[1]), '4.6930', 'beta';
 is sprintf('%.4f', $beta->[2]), '-4.4698', 'beta';
-is sprintf('%.4f', $loss), '39.9630', 'loss';
+is sprintf('%.4f', $loss), '39.9635', 'loss';
 
 my ($x, $y) = $ml->scale(@xs);
 my @beta_unscaled = [
