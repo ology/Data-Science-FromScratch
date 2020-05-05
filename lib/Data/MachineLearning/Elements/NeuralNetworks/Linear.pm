@@ -168,10 +168,10 @@ sub backward {
 
 sub params {
     my ($self, $i, $u) = @_;
-    if (defined $i && $u && $i == 0) {
+    if ($u && defined $i && $i == 0) {
         $self->w($u);
     }
-    elsif (defined $i && $u && $i == 1) {
+    elsif ($u && defined $i && $i == 1) {
         $self->b($u);
     }
     return [$self->w, $self->b];
