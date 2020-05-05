@@ -23,10 +23,10 @@ use strictures 2;
 
   $v = $ml->tensor_combine(sub { shift() * shift() }, [1,2,3], [4,5,6]); # [4,10,18]
 
-  $v = $ml->random_uniform(); #
-  $v = $ml->random_normal(); #
+  $v = $ml->random_uniform([1,2,3]); #
+  $v = $ml->random_normal([1,2,3]); #
 
-  $v = $ml->random_tensor(); #
+  $v = $ml->random_tensor([1,2,3], 'uniform'); #
 
   $y = $ml->tanh(0); # 0
   $y = $ml->tanh(1); # 0.7616
