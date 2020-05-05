@@ -31,6 +31,11 @@ is scalar(@$got), 2, 'random_uniform';
 is scalar(@{ $got->[0] }), 3, 'random_uniform';
 is scalar(@{ $got->[0][0] }), 4, 'random_uniform';
 
+$got = $ml->random_tensor([2,3,4], 'uniform');
+is scalar(@$got), 2, 'random_tensor';
+is scalar(@{ $got->[0] }), 3, 'random_tensor';
+is scalar(@{ $got->[0][0] }), 4, 'random_tensor';
+
 is_deeply $ml->tensor_shape($ml->random_uniform([2,3,4])), [2,3,4], 'random_uniform';
 is_deeply $ml->tensor_shape($ml->random_normal([5,6], 10)), [5,6], 'random_normal';
 
