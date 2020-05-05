@@ -51,46 +51,46 @@ generated.
 
 =head2 mr_predict
 
-  $y = $ml->mr_predict($v, $beta);
+  $y = $ml->mr_predict($u, $beta);
 
 =cut
 
 sub mr_predict {
-    my ($self, $v, $beta) = @_;
-    return $self->vector_dot($v, $beta);
+    my ($self, $u, $beta) = @_;
+    return $self->vector_dot($u, $beta);
 }
 
 =head2 mr_error
 
-  $y = $ml->mr_error($v, $y, $beta);
+  $y = $ml->mr_error($u, $x, $beta);
 
 =cut
 
 sub mr_error {
-    my ($self, $v, $y, $beta) = @_;
-    return $self->mr_predict($v, $beta) - $y;
+    my ($self, $u, $x, $beta) = @_;
+    return $self->mr_predict($u, $beta) - $x;
 }
 
 =head2 squared_error
 
-  $y = $ml->squared_error($v, $y, $beta);
+  $y = $ml->squared_error($u, $x, $beta);
 
 =cut
 
 sub squared_error {
-    my ($self, $v, $y, $beta) = @_;
-    return $self->mr_error($v, $y, $beta) ** 2;
+    my ($self, $u, $x, $beta) = @_;
+    return $self->mr_error($u, $x, $beta) ** 2;
 }
 
 =head2 sqerror_gradient
 
-  $v = $ml->sqerror_gradient($u, $y, $beta);
+  $v = $ml->sqerror_gradient($u, $x, $beta);
 
 =cut
 
 sub sqerror_gradient {
-    my ($self, $u, $y, $beta) = @_;
-    my $error = $self->mr_error($u, $y, $beta);
+    my ($self, $u, $x, $beta) = @_;
+    my $error = $self->mr_error($u, $x, $beta);
     return [ map { 2 * $error * $_ } @$u ];
 }
 
