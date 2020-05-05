@@ -4,9 +4,9 @@ use warnings;
 
 use Test::More;
 
-use_ok 'Data::Science::FromScratch';
+use_ok 'Data::MachineLearning::Elements';
 
-my $ds = new_ok 'Data::Science::FromScratch';
+my $ds = new_ok 'Data::MachineLearning::Elements';
 
 is $ds->entropy([1]), 0, 'entropy';
 is $ds->entropy([0.5, 0.5]), 1, 'entropy';

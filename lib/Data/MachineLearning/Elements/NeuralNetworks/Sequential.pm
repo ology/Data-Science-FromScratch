@@ -1,4 +1,4 @@
-package Data::Science::FromScratch::NeuralNetworks::Sequential;
+package Data::MachineLearning::Elements::NeuralNetworks::Sequential;
 
 use Moo;
 use strictures 2;
@@ -7,13 +7,13 @@ use namespace::clean;
 
 =head1 SYNOPSIS
 
-  use Data::Science::FromScratch::NeuralNetworks::Sequential;
+  use Data::MachineLearning::Elements::NeuralNetworks::Sequential;
 
-  my $layer = Data::Science::FromScratch::NeuralNetworks::Sequential->new;
+  my $layer = Data::MachineLearning::Elements::NeuralNetworks::Sequential->new;
 
 =head1 DESCRIPTION
 
-A C<Data::Science::FromScratch::NeuralNetworks::Sequential> is a class for building neural networks.
+A C<Data::MachineLearning::Elements::NeuralNetworks::Sequential> is a class for building neural networks.
 
 =head1 ATTRIBUTES
 
@@ -94,7 +94,7 @@ sub grads {
 
 =head1 SEE ALSO
 
-L<Data::Science::FromScratch::NeuralNetworks::Layer>
+L<Data::MachineLearning::Elements::NeuralNetworks::Layer>
 
 L<Moo>
 

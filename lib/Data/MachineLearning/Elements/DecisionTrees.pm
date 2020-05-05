@@ -1,4 +1,4 @@
-package Data::Science::FromScratch::DecisionTrees;
+package Data::MachineLearning::Elements::DecisionTrees;
 
 use List::Util qw(min sum0);
 use Moo::Role;
@@ -6,9 +6,9 @@ use strictures 2;
 
 =head1 SYNOPSIS
 
-  use Data::Science::FromScratch;
+  use Data::MachineLearning::Elements;
 
-  my $ds = Data::Science::FromScratch->new;
+  my $ds = Data::MachineLearning::Elements->new;
 
   my $y = $ds->entropy([0.25, 0.75]); # 0.8113
 
@@ -175,7 +175,7 @@ __END__
 
 =head1 SEE ALSO
 
-L<Data::Science::FromScratch>
+L<Data::MachineLearning::Elements>
 
 F<t/013-decision-trees.t>
 

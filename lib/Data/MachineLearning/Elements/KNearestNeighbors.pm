@@ -1,13 +1,13 @@
-package Data::Science::FromScratch::KNearestNeighbors;
+package Data::MachineLearning::Elements::KNearestNeighbors;
 
 use Moo::Role;
 use strictures 2;
 
 =head1 SYNOPSIS
 
-  use Data::Science::FromScratch;
+  use Data::MachineLearning::Elements;
 
-  my $ds = Data::Science::FromScratch->new;
+  my $ds = Data::MachineLearning::Elements->new;
 
   my $y = $ds->majority_vote(qw(a b c b a)); # b
 
@@ -64,7 +64,7 @@ __END__
 
 =head1 SEE ALSO
 
-L<Data::Science::FromScratch>
+L<Data::MachineLearning::Elements>
 
 F<t/008-k-nearest-neighbors.t>
 

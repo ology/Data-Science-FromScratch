@@ -1,4 +1,4 @@
-package Data::Science::FromScratch::NeuralNetworks;
+package Data::MachineLearning::Elements::NeuralNetworks;
 
 use List::MoreUtils qw(first_index);
 use List::Util qw(max);
@@ -8,9 +8,9 @@ use strictures 2;
 
 =head1 SYNOPSIS
 
-  use Data::Science::FromScratch;
+  use Data::MachineLearning::Elements;
 
-  my $ds = Data::Science::FromScratch->new;
+  my $ds = Data::MachineLearning::Elements->new;
 
   my $y = $ds->step_function(-1); # 0
   $y = $ds->step_function(1); # 1
@@ -211,25 +211,25 @@ __END__
 
 =head1 SEE ALSO
 
-L<Data::Science::FromScratch>
+L<Data::MachineLearning::Elements>
 
 F<t/014-neural-networks.t>
 
-L<Data::Science::FromScratch::NeuralNetworks::Layer>
+L<Data::MachineLearning::Elements::NeuralNetworks::Layer>
 
-L<Data::Science::FromScratch::NeuralNetworks::Linear>
+L<Data::MachineLearning::Elements::NeuralNetworks::Linear>
 
-L<Data::Science::FromScratch::NeuralNetworks::Sigmoid>
+L<Data::MachineLearning::Elements::NeuralNetworks::Sigmoid>
 
-L<Data::Science::FromScratch::NeuralNetworks::Sequential>
+L<Data::MachineLearning::Elements::NeuralNetworks::Sequential>
 
-L<Data::Science::FromScratch::NeuralNetworks::Loss>
+L<Data::MachineLearning::Elements::NeuralNetworks::Loss>
 
-L<Data::Science::FromScratch::NeuralNetworks::SSE>
+L<Data::MachineLearning::Elements::NeuralNetworks::SSE>
 
-L<Data::Science::FromScratch::NeuralNetworks::Optimizer>
+L<Data::MachineLearning::Elements::NeuralNetworks::Optimizer>
 
-L<Data::Science::FromScratch::NeuralNetworks::GradientDescent>
+L<Data::MachineLearning::Elements::NeuralNetworks::GradientDescent>
 
 L<List::Util>
 

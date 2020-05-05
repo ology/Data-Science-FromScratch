@@ -6,9 +6,9 @@ use Test::More;
 
 use List::Util qw(sum0);
 
-use_ok 'Data::Science::FromScratch';
+use_ok 'Data::MachineLearning::Elements';
 
-my $ds = new_ok 'Data::Science::FromScratch';
+my $ds = new_ok 'Data::MachineLearning::Elements';
 
 my $got = $ds->tokenize('Little Mary had a little lamb.');
 is_deeply $got, [qw(a had lamb little mary)], 'tokenize';

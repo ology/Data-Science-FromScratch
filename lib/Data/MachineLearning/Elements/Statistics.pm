@@ -1,4 +1,4 @@
-package Data::Science::FromScratch::Statistics;
+package Data::MachineLearning::Elements::Statistics;
 
 use List::Util qw(max min sum0);
 use Moo::Role;
@@ -6,9 +6,9 @@ use strictures 2;
 
 =head1 SYNOPSIS
 
-  use Data::Science::FromScratch;
+  use Data::MachineLearning::Elements;
 
-  my $ds = Data::Science::FromScratch->new;
+  my $ds = Data::MachineLearning::Elements->new;
 
   my $y = $ds->mean(1,2,3); # 6 / 3
 
@@ -202,7 +202,7 @@ __END__
 
 =head1 SEE ALSO
 
-L<Data::Science::FromScratch>
+L<Data::MachineLearning::Elements>
 
 F<t/002-statistics.t>
 

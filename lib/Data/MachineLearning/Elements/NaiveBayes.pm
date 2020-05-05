@@ -1,4 +1,4 @@
-package Data::Science::FromScratch::NaiveBayes;
+package Data::MachineLearning::Elements::NaiveBayes;
 
 use Lingua::EN::Tokenizer::Offsets qw(get_tokens);
 use Moo::Role;
@@ -6,9 +6,9 @@ use strictures 2;
 
 =head1 SYNOPSIS
 
-  use Data::Science::FromScratch;
+  use Data::MachineLearning::Elements;
 
-  my $ds = Data::Science::FromScratch->new;
+  my $ds = Data::MachineLearning::Elements->new;
 
   my $v = $ds->tokenize('Little Mary had a little lamb.'); # [a, had, lamb, little, mary]
 
@@ -164,7 +164,7 @@ __END__
 
 =head1 SEE ALSO
 
-L<Data::Science::FromScratch>
+L<Data::MachineLearning::Elements>
 
 F<t/009-naive-bayes.t>
 

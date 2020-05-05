@@ -4,9 +4,9 @@ use warnings;
 
 use Test::More;
 
-use_ok 'Data::Science::FromScratch';
+use_ok 'Data::MachineLearning::Elements';
 
-my $ds = new_ok 'Data::Science::FromScratch';
+my $ds = new_ok 'Data::MachineLearning::Elements';
 
 is_deeply $ds->tensor_shape([1,2,3]), [3], 'tensor_shape';
 is_deeply $ds->tensor_shape([[1,2],[3,4],[5,6]]), [3,2], 'tensor_shape';
@@ -29,14 +29,14 @@ is_deeply $ds->tensor_combine(sub { shift() * shift() }, [1,2,3], [4,5,6]), [4,1
 is_deeply $ds->tensor_shape($ds->random_uniform([2,3,4])), [2,3,4], 'random_uniform';
 is_deeply $ds->tensor_shape($ds->random_normal([5,6], 10)), [5,6], 'random_normal';
 
-use_ok 'Data::Science::FromScratch::NeuralNetworks::Sigmoid';
-my $net = new_ok 'Data::Science::FromScratch::NeuralNetworks::Sigmoid';
+use_ok 'Data::MachineLearning::Elements::NeuralNetworks::Sigmoid';
+my $net = new_ok 'Data::MachineLearning::Elements::NeuralNetworks::Sigmoid';
 is_deeply $net->forward([0,0,0]), [0.5,0.5,0.5], 'forward';
 is_deeply $net->backward([0,0,0]), [0,0,0], 'backward';
 is_deeply $net->backward([1,2,3]), [0.25,0.5,0.75], 'backward';
 
-use_ok 'Data::Science::FromScratch::NeuralNetworks::Linear';
-$net = new_ok 'Data::Science::FromScratch::NeuralNetworks::Linear' => [
+use_ok 'Data::MachineLearning::Elements::NeuralNetworks::Linear';
+$net = new_ok 'Data::MachineLearning::Elements::NeuralNetworks::Linear' => [
     input_dim  => 2,
     output_dim => 1,
 ];
@@ -44,27 +44,27 @@ my $got = $net->forward([0,0]);
 is scalar(@$got), $net->output_dim, 'forward';
 is_deeply $net->backward([0,0]), [0,0], 'backward';
 
-use_ok 'Data::Science::FromScratch::NeuralNetworks::Sequential';
+use_ok 'Data::MachineLearning::Elements::NeuralNetworks::Sequential';
 
-$net = new_ok 'Data::Science::FromScratch::NeuralNetworks::Sequential' => [
+$net = new_ok 'Data::MachineLearning::Elements::NeuralNetworks::Sequential' => [
     layers => [
-        Data::Science::FromScratch::NeuralNetworks::Sigmoid->new,
+        Data::MachineLearning::Elements::NeuralNetworks::Sigmoid->new,
     ],
 ];
 is_deeply $net->forward([0,0]), [0.5,0.5], 'forward';
 is_deeply $net->backward([0,0]), [0,0], 'backward';
 
-$net = new_ok 'Data::Science::FromScratch::NeuralNetworks::Sequential' => [
+$net = new_ok 'Data::MachineLearning::Elements::NeuralNetworks::Sequential' => [
     layers => [
-        Data::Science::FromScratch::NeuralNetworks::Linear->new(input_dim => 2, output_dim => 1),
+        Data::MachineLearning::Elements::NeuralNetworks::Linear->new(input_dim => 2, output_dim => 1),
     ],
 ];
 $got = $net->forward([0,0]);
 is scalar(@$got), 1, 'forward';
 is_deeply $net->backward([0,0]), [0,0], 'backward';
 
-use_ok 'Data::Science::FromScratch::NeuralNetworks::SSE';
-my $loss = new_ok 'Data::Science::FromScratch::NeuralNetworks::SSE';
+use_ok 'Data::MachineLearning::Elements::NeuralNetworks::SSE';
+my $loss = new_ok 'Data::MachineLearning::Elements::NeuralNetworks::SSE';
 
 is $loss->loss([1,2,3], [10,20,30]), 9 ** 2 + 18 ** 2 + 27 ** 2, 'loss';
 is_deeply $loss->gradient([1,2,3], [10,20,30]), [-18,-36,-54], 'gradient';
@@ -72,16 +72,16 @@ is_deeply $loss->gradient([1,2,3], [10,20,30]), [-18,-36,-54], 'gradient';
 SKIP: {
 skip 'Broken algorithm. :(', 3;
 
-$net = new_ok 'Data::Science::FromScratch::NeuralNetworks::Sequential' => [
+$net = new_ok 'Data::MachineLearning::Elements::NeuralNetworks::Sequential' => [
     layers => [
-        Data::Science::FromScratch::NeuralNetworks::Linear->new(input_dim => 2, output_dim => 2),
-        Data::Science::FromScratch::NeuralNetworks::Sigmoid->new,
-        Data::Science::FromScratch::NeuralNetworks::Linear->new(input_dim => 2, output_dim => 1),
+        Data::MachineLearning::Elements::NeuralNetworks::Linear->new(input_dim => 2, output_dim => 2),
+        Data::MachineLearning::Elements::NeuralNetworks::Sigmoid->new,
+        Data::MachineLearning::Elements::NeuralNetworks::Linear->new(input_dim => 2, output_dim => 1),
     ],
 ];
 
-use_ok 'Data::Science::FromScratch::NeuralNetworks::GradientDescent';
-my $optimizer = new_ok 'Data::Science::FromScratch::NeuralNetworks::GradientDescent' => [
+use_ok 'Data::MachineLearning::Elements::NeuralNetworks::GradientDescent';
+my $optimizer = new_ok 'Data::MachineLearning::Elements::NeuralNetworks::GradientDescent' => [
     lr => 0.1,
 ];
 
@@ -119,18 +119,18 @@ my @ys = ( map { $ds->fizz_buzz_encode($_) } 101 .. 1023 );
 
 my $num_hidden = 25;
 
-use_ok 'Data::Science::FromScratch::NeuralNetworks::Tanh';
-$net = new_ok 'Data::Science::FromScratch::NeuralNetworks::Sequential' => [
+use_ok 'Data::MachineLearning::Elements::NeuralNetworks::Tanh';
+$net = new_ok 'Data::MachineLearning::Elements::NeuralNetworks::Sequential' => [
     layers => [
-        Data::Science::FromScratch::NeuralNetworks::Linear->new(input_dim => 10, output_dim => $num_hidden, init => 'uniform'),
-        Data::Science::FromScratch::NeuralNetworks::Tanh->new,
-        Data::Science::FromScratch::NeuralNetworks::Linear->new(input_dim => $num_hidden, output_dim => 4, init => 'uniform'),
-        Data::Science::FromScratch::NeuralNetworks::Sigmoid->new,
+        Data::MachineLearning::Elements::NeuralNetworks::Linear->new(input_dim => 10, output_dim => $num_hidden, init => 'uniform'),
+        Data::MachineLearning::Elements::NeuralNetworks::Tanh->new,
+        Data::MachineLearning::Elements::NeuralNetworks::Linear->new(input_dim => $num_hidden, output_dim => 4, init => 'uniform'),
+        Data::MachineLearning::Elements::NeuralNetworks::Sigmoid->new,
     ],
 ];
 
-use_ok 'Data::Science::FromScratch::NeuralNetworks::GradientDescent';
-my $optimizer = new_ok 'Data::Science::FromScratch::NeuralNetworks::GradientDescent' => [
+use_ok 'Data::MachineLearning::Elements::NeuralNetworks::GradientDescent';
+my $optimizer = new_ok 'Data::MachineLearning::Elements::NeuralNetworks::GradientDescent' => [
     lr => 0.1,
     mo => 0.9,
 ];

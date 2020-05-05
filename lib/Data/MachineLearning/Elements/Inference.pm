@@ -1,13 +1,13 @@
-package Data::Science::FromScratch::Inference;
+package Data::MachineLearning::Elements::Inference;
 
 use Moo::Role;
 use strictures 2;
 
 =head1 SYNOPSIS
 
-  use Data::Science::FromScratch;
+  use Data::MachineLearning::Elements;
 
-  my $ds = Data::Science::FromScratch->new;
+  my $ds = Data::MachineLearning::Elements->new;
 
   my $v = $ds->normal_approximation_to_binomial(100, 0.5); # [50,5]
 
@@ -154,7 +154,7 @@ __END__
 
 =head1 SEE ALSO
 
-L<Data::Science::FromScratch>
+L<Data::MachineLearning::Elements>
 
 F<t/004-inference.t>
 

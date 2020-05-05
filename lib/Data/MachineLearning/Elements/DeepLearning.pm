@@ -1,4 +1,4 @@
-package Data::Science::FromScratch::DeepLearning;
+package Data::MachineLearning::Elements::DeepLearning;
 
 use List::Util qw(sum0);
 use Moo::Role;
@@ -7,9 +7,9 @@ use strictures 2;
 
 =head1 SYNOPSIS
 
-  use Data::Science::FromScratch;
+  use Data::MachineLearning::Elements;
 
-  my $ds = Data::Science::FromScratch->new;
+  my $ds = Data::MachineLearning::Elements->new;
 
   my $v = $ds->tensor_shape([1,2,3]); # [3]
 
@@ -205,7 +205,7 @@ __END__
 
 =head1 SEE ALSO
 
-L<Data::Science::FromScratch>
+L<Data::MachineLearning::Elements>
 
 F<t/015-deep-learning.t>
 

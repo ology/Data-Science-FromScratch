@@ -4,9 +4,9 @@ use warnings;
 
 use Test::More;
 
-use_ok 'Data::Science::FromScratch';
+use_ok 'Data::MachineLearning::Elements';
 
-my $ds = new_ok 'Data::Science::FromScratch';
+my $ds = new_ok 'Data::MachineLearning::Elements';
 
 is $ds->uniform_cdf(-1), 0, 'uniform_cdf';
 is $ds->uniform_cdf(0), 0, 'uniform_cdf';

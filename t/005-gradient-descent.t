@@ -5,9 +5,9 @@ use warnings;
 use Test::More;
 use Statistics::Distribution::Generator qw(uniform);
 
-use_ok 'Data::Science::FromScratch';
+use_ok 'Data::MachineLearning::Elements';
 
-my $ds = new_ok 'Data::Science::FromScratch';
+my $ds = new_ok 'Data::MachineLearning::Elements';
 
 my $lower_slope     = 19.9;
 my $upper_slope     = 20.1;

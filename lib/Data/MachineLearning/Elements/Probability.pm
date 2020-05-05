@@ -1,4 +1,4 @@
-package Data::Science::FromScratch::Probability;
+package Data::MachineLearning::Elements::Probability;
 
 use Math::Erf::Approx 'erf';
 use Math::Trig ':pi';
@@ -7,9 +7,9 @@ use strictures 2;
 
 =head1 SYNOPSIS
 
-  use Data::Science::FromScratch;
+  use Data::MachineLearning::Elements;
 
-  my $ds = Data::Science::FromScratch->new;
+  my $ds = Data::MachineLearning::Elements->new;
 
   my $y = $ds->uniform_cdf(0); # 0
   $y = $ds->uniform_cdf(0.5); # 0.5
@@ -139,7 +139,7 @@ __END__
 
 =head1 SEE ALSO
 
-L<Data::Science::FromScratch>
+L<Data::MachineLearning::Elements>
 
 F<t/003-probability.t>
 

@@ -4,9 +4,9 @@ use warnings;
 
 use Test::More;
 
-use_ok 'Data::Science::FromScratch';
+use_ok 'Data::MachineLearning::Elements';
 
-my $ds = new_ok 'Data::Science::FromScratch';
+my $ds = new_ok 'Data::MachineLearning::Elements';
 
 my @data = ([-3, -1, 1], [-1, 0, 1], [1, 1, 1]);
 

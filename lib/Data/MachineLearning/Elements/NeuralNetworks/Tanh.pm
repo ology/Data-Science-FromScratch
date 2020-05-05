@@ -1,20 +1,20 @@
-package Data::Science::FromScratch::NeuralNetworks::Tanh;
+package Data::MachineLearning::Elements::NeuralNetworks::Tanh;
 
 use Moo;
 use strictures 2;
 use namespace::clean;
 
-extends 'Data::Science::FromScratch::NeuralNetworks::Layer';
+extends 'Data::MachineLearning::Elements::NeuralNetworks::Layer';
 
 =head1 SYNOPSIS
 
-  use Data::Science::FromScratch::NeuralNetworks::Tanh;
+  use Data::MachineLearning::Elements::NeuralNetworks::Tanh;
 
-  my $layer = Data::Science::FromScratch::NeuralNetworks::Tanh->new;
+  my $layer = Data::MachineLearning::Elements::NeuralNetworks::Tanh->new;
 
 =head1 DESCRIPTION
 
-A C<Data::Science::FromScratch::NeuralNetworks::Tanh> is a class for building neural networks.
+A C<Data::MachineLearning::Elements::NeuralNetworks::Tanh> is a class for building neural networks.
 
 =head1 ATTRIBUTES
 
@@ -62,6 +62,6 @@ sub backward {
 
 =head1 SEE ALSO
 
-L<Data::Science::FromScratch::NeuralNetworks::Layer>
+L<Data::MachineLearning::Elements::NeuralNetworks::Layer>
 
 =cut

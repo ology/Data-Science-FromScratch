@@ -1,4 +1,4 @@
-package Data::Science::FromScratch::LinearAlgebra;
+package Data::MachineLearning::Elements::LinearAlgebra;
 
 use List::Util qw(all);
 use Moo::Role;
@@ -6,9 +6,9 @@ use strictures 2;
 
 =head1 SYNOPSIS
 
-  use Data::Science::FromScratch;
+  use Data::MachineLearning::Elements;
 
-  my $ds = Data::Science::FromScratch->new;
+  my $ds = Data::MachineLearning::Elements->new;
 
   my $v = $ds->vector_sum([1,2,3], [4,5,6]); # [5,7,9]
 
@@ -257,7 +257,7 @@ __END__
 
 =head1 SEE ALSO
 
-L<Data::Science::FromScratch>
+L<Data::MachineLearning::Elements>
 
 F<t/001-linear-algebra.t>
 

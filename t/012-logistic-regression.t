@@ -4,9 +4,9 @@ use warnings;
 
 use Test::More;
 
-use_ok 'Data::Science::FromScratch';
+use_ok 'Data::MachineLearning::Elements';
 
-my $ds = new_ok 'Data::Science::FromScratch';
+my $ds = new_ok 'Data::MachineLearning::Elements';
 
 my $got = $ds->logistic(-10);
 is sprintf('%.4f', $got), '0.0000', 'logistic';

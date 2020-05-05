@@ -1,4 +1,4 @@
-package Data::Science::FromScratch::SimpleLinearRegression;
+package Data::MachineLearning::Elements::SimpleLinearRegression;
 
 use List::Util qw(sum0);
 use Moo::Role;
@@ -7,9 +7,9 @@ use Statistics::Basic qw(mean);
 
 =head1 SYNOPSIS
 
-  use Data::Science::FromScratch;
+  use Data::MachineLearning::Elements;
 
-  my $ds = Data::Science::FromScratch->new;
+  my $ds = Data::MachineLearning::Elements->new;
 
   my $y = $ds->lr_predict(0.5, 0.5, 0.5); # 0.75
 
@@ -105,7 +105,7 @@ __END__
 
 =head1 SEE ALSO
 
-L<Data::Science::FromScratch>
+L<Data::MachineLearning::Elements>
 
 F<t/010-simple-linear-regression.t>
 

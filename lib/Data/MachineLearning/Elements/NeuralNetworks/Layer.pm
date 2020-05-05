@@ -1,6 +1,6 @@
-package Data::Science::FromScratch::NeuralNetworks::Layer;
+package Data::MachineLearning::Elements::NeuralNetworks::Layer;
 
-use Data::Science::FromScratch;
+use Data::MachineLearning::Elements;
 use Moo;
 use strictures 2;
 use namespace::clean;
@@ -11,7 +11,7 @@ use namespace::clean;
 
 =head1 DESCRIPTION
 
-A C<Data::Science::FromScratch::NeuralNetworks::Layer> is an abstract class for building neural networks.
+A C<Data::MachineLearning::Elements::NeuralNetworks::Layer> is an abstract class for building neural networks.
 
 =head1 ATTRIBUTES
 
@@ -19,7 +19,7 @@ A C<Data::Science::FromScratch::NeuralNetworks::Layer> is an abstract class for 
 
   $obj = $layer->ds;
 
-C<Data::Science::FromScratch> object
+C<Data::MachineLearning::Elements> object
 
 =cut
 
@@ -27,7 +27,7 @@ has ds => (
     is        => 'ro',
     lazy      => 1,
     init_args => undef,
-    default   => sub { Data::Science::FromScratch->new },
+    default   => sub { Data::MachineLearning::Elements->new },
 );
 
 =head1 METHODS
@@ -80,11 +80,11 @@ sub grads {
 
 F<t/015-deep-learning.t>
 
-L<Data::Science::FromScratch::NeuralNetworks::Sigmoid>
+L<Data::MachineLearning::Elements::NeuralNetworks::Sigmoid>
 
-L<Data::Science::FromScratch::NeuralNetworks::Linear>
+L<Data::MachineLearning::Elements::NeuralNetworks::Linear>
 
-L<Data::Science::FromScratch::NeuralNetworks::Sequential>
+L<Data::MachineLearning::Elements::NeuralNetworks::Sequential>
 
 L<Moo>
 

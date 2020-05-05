@@ -1,4 +1,4 @@
-package Data::Science::FromScratch::MachineLearning;
+package Data::MachineLearning::Elements::MachineLearning;
 
 use List::Util qw(shuffle);
 use Moo::Role;
@@ -6,9 +6,9 @@ use strictures 2;
 
 =head1 SYNOPSIS
 
-  use Data::Science::FromScratch;
+  use Data::MachineLearning::Elements;
 
-  my $ds = Data::Science::FromScratch->new;
+  my $ds = Data::MachineLearning::Elements->new;
 
   my @x_data = (1,2,3,4,5,6);
   my @y_data = (2,4,6,8,10,12);
@@ -108,7 +108,7 @@ __END__
 
 =head1 SEE ALSO
 
-L<Data::Science::FromScratch>
+L<Data::MachineLearning::Elements>
 
 F<t/007-machine-learning.t>
 

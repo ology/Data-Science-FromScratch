@@ -1,4 +1,4 @@
-package Data::Science::FromScratch::LogisticRegression;
+package Data::MachineLearning::Elements::LogisticRegression;
 
 use List::Util qw(sum0);
 use Moo::Role;
@@ -6,9 +6,9 @@ use strictures 2;
 
 =head1 SYNOPSIS
 
-  use Data::Science::FromScratch;
+  use Data::MachineLearning::Elements;
 
-  my $ds = Data::Science::FromScratch->new;
+  my $ds = Data::MachineLearning::Elements->new;
 
   $y = $ds->logistic(0); # 0.5
 
@@ -93,7 +93,7 @@ __END__
 
 =head1 SEE ALSO
 
-L<Data::Science::FromScratch>
+L<Data::MachineLearning::Elements>
 
 F</t/012-logistic-regression.t>
 

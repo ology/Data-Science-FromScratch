@@ -1,21 +1,21 @@
-package Data::Science::FromScratch::NeuralNetworks::Relu;
+package Data::MachineLearning::Elements::NeuralNetworks::Relu;
 
 use List::Util qw(max);
 use Moo;
 use strictures 2;
 use namespace::clean;
 
-extends 'Data::Science::FromScratch::NeuralNetworks::Layer';
+extends 'Data::MachineLearning::Elements::NeuralNetworks::Layer';
 
 =head1 SYNOPSIS
 
-  use Data::Science::FromScratch::NeuralNetworks::Relu;
+  use Data::MachineLearning::Elements::NeuralNetworks::Relu;
 
-  my $layer = Data::Science::FromScratch::NeuralNetworks::Relu->new;
+  my $layer = Data::MachineLearning::Elements::NeuralNetworks::Relu->new;
 
 =head1 DESCRIPTION
 
-A C<Data::Science::FromScratch::NeuralNetworks::Relu> is a class for building neural networks.
+A C<Data::MachineLearning::Elements::NeuralNetworks::Relu> is a class for building neural networks.
 
 =head1 ATTRIBUTES
 
@@ -62,7 +62,7 @@ sub backward {
 
 =head1 SEE ALSO
 
-L<Data::Science::FromScratch::NeuralNetworks::Layer>
+L<Data::MachineLearning::Elements::NeuralNetworks::Layer>
 
 L<List::Util>
 

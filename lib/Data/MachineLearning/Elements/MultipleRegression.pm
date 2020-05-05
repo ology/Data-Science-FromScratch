@@ -1,4 +1,4 @@
-package Data::Science::FromScratch::MultipleRegression;
+package Data::MachineLearning::Elements::MultipleRegression;
 
 use List::Util qw(sum0);
 use Moo::Role;
@@ -7,9 +7,9 @@ use strictures 2;
 
 =head1 SYNOPSIS
 
-  use Data::Science::FromScratch;
+  use Data::MachineLearning::Elements;
 
-  my $ds = Data::Science::FromScratch->new;
+  my $ds = Data::MachineLearning::Elements->new;
 
   my $y = $ds->mr_predict([1,2,3], [4,4,4]); # 24
 
@@ -269,7 +269,7 @@ __END__
 
 =head1 SEE ALSO
 
-L<Data::Science::FromScratch>
+L<Data::MachineLearning::Elements>
 
 F<t/011-multiple-regression.t>
 

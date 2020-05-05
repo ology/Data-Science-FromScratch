@@ -1,4 +1,4 @@
-package Data::Science::FromScratch::WorkingWithData;
+package Data::MachineLearning::Elements::WorkingWithData;
 
 use Moo::Role;
 use Storable qw(dclone);
@@ -6,9 +6,9 @@ use strictures 2;
 
 =head1 SYNOPSIS
 
-  use Data::Science::FromScratch;
+  use Data::MachineLearning::Elements;
 
-  my $ds = Data::Science::FromScratch->new;
+  my $ds = Data::MachineLearning::Elements->new;
 
   my ($means, $stddevs) = $ds->scale([-3,-1,1], [-1,0,1], [1,1,1]); # [-1,0,1], [2,1,0]
 
@@ -58,7 +58,7 @@ __END__
 
 =head1 SEE ALSO
 
-L<Data::Science::FromScratch>
+L<Data::MachineLearning::Elements>
 
 L<t/006-working-with-data.t>
 

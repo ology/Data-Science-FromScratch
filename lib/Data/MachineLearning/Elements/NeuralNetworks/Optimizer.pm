@@ -1,6 +1,6 @@
-package Data::Science::FromScratch::NeuralNetworks::Optimizer;
+package Data::MachineLearning::Elements::NeuralNetworks::Optimizer;
 
-use Data::Science::FromScratch;
+use Data::MachineLearning::Elements;
 use Moo;
 use strictures 2;
 use namespace::clean;
@@ -11,7 +11,7 @@ use namespace::clean;
 
 =head1 DESCRIPTION
 
-A C<Data::Science::FromScratch::NeuralNetworks::Optimizer> is a class for updating neural networks.
+A C<Data::MachineLearning::Elements::NeuralNetworks::Optimizer> is a class for updating neural networks.
 
 =head1 ATTRIBUTES
 
@@ -19,7 +19,7 @@ A C<Data::Science::FromScratch::NeuralNetworks::Optimizer> is a class for updati
 
   $obj = $optimizer->ds;
 
-C<Data::Science::FromScratch> object
+C<Data::MachineLearning::Elements> object
 
 =cut
 
@@ -27,7 +27,7 @@ has ds => (
     is        => 'ro',
     lazy      => 1,
     init_args => undef,
-    default   => sub { Data::Science::FromScratch->new },
+    default   => sub { Data::MachineLearning::Elements->new },
 );
 
 =head1 METHODS
@@ -48,9 +48,9 @@ sub step {
 
 F<t/015-deep-learning.t>
 
-L<Data::Science::FromScratch::NeuralNetworks::GradientDescent>
+L<Data::MachineLearning::Elements::NeuralNetworks::GradientDescent>
 
-L<Data::Science::FromScratch::NeuralNetworks::Momentum>
+L<Data::MachineLearning::Elements::NeuralNetworks::Momentum>
 
 L<Moo>
 

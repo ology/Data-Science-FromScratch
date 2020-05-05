@@ -1,4 +1,4 @@
-package Data::Science::FromScratch::GradientDescent;
+package Data::MachineLearning::Elements::GradientDescent;
 
 use Iterator::Simple qw(iterator);
 use Moo::Role;
@@ -6,9 +6,9 @@ use strictures 2;
 
 =head1 SYNOPSIS
 
-  use Data::Science::FromScratch;
+  use Data::MachineLearning::Elements;
 
-  my $ds = Data::Science::FromScratch->new;
+  my $ds = Data::MachineLearning::Elements->new;
 
   my $v = $ds->gradient_step(); #
 
@@ -94,7 +94,7 @@ __END__
 
 =head1 SEE ALSO
 
-L<Data::Science::FromScratch>
+L<Data::MachineLearning::Elements>
 
 F<t/005-gradient-descent.t>
 

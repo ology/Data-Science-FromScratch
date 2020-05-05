@@ -6,9 +6,9 @@ use Test::More;
 
 use List::SomeUtils qw(zip);
 
-use_ok 'Data::Science::FromScratch';
+use_ok 'Data::MachineLearning::Elements';
 
-my $ds = new_ok 'Data::Science::FromScratch';
+my $ds = new_ok 'Data::MachineLearning::Elements';
 
 my @data1 = (1,2,3);
 my @data2 = (4,4,4);

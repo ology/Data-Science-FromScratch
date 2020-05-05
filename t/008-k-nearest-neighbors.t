@@ -6,9 +6,9 @@ use Test::More;
 
 use Data::Dataset::Classic::Iris;
 
-use_ok 'Data::Science::FromScratch';
+use_ok 'Data::MachineLearning::Elements';
 
-my $ds = new_ok 'Data::Science::FromScratch';
+my $ds = new_ok 'Data::MachineLearning::Elements';
 
 my @labels = qw(a b c b a);
 

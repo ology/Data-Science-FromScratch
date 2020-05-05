@@ -1,20 +1,20 @@
-package Data::Science::FromScratch::NeuralNetworks::Momentum;
+package Data::MachineLearning::Elements::NeuralNetworks::Momentum;
 
 use Moo;
 use strictures 2;
 use namespace::clean;
 
-extends 'Data::Science::FromScratch::NeuralNetworks::Optimizer';
+extends 'Data::MachineLearning::Elements::NeuralNetworks::Optimizer';
 
 =head1 SYNOPSIS
 
-  use Data::Science::FromScratch::NeuralNetworks::Momentum;
+  use Data::MachineLearning::Elements::NeuralNetworks::Momentum;
 
-  my $optimizer = Data::Science::FromScratch::NeuralNetworks::Momentum->new;
+  my $optimizer = Data::MachineLearning::Elements::NeuralNetworks::Momentum->new;
 
 =head1 DESCRIPTION
 
-A C<Data::Science::FromScratch::NeuralNetworks::Momentum> is an class for updating neural networks.
+A C<Data::MachineLearning::Elements::NeuralNetworks::Momentum> is an class for updating neural networks.
 
 =head1 ATTRIBUTES
 
@@ -86,7 +86,7 @@ sub step {
 
 =head1 SEE ALSO
 
-L<Data::Science::FromScratch::NeuralNetworks::Optimizer>
+L<Data::MachineLearning::Elements::NeuralNetworks::Optimizer>
 
 L<Moo>
 

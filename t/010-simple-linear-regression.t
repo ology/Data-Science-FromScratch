@@ -6,9 +6,9 @@ use Test::More;
 
 use List::Util qw(sum0);
 
-use_ok 'Data::Science::FromScratch';
+use_ok 'Data::MachineLearning::Elements';
 
-my $ds = new_ok 'Data::Science::FromScratch';
+my $ds = new_ok 'Data::MachineLearning::Elements';
 
 my ($x, $y) = (0.5, 0.5);
 my @data1 = (0.1, 0.5, 0.8);
