@@ -23,7 +23,7 @@ use strictures 2;
   $y = $ml->normal_cdf(0, 0, 1); # 0.5
   $y = $ml->normal_cdf(1, 0, 1); # 0.8411
 
-  #$y = inverse_normal_cdf($n, $mu, $sigma, $tolerance); # TODO
+  $y = inverse_normal_cdf(); #
 
   $y = $ml->bernouli_trial(0.5); # 0 or 1
 
