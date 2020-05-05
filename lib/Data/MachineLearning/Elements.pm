@@ -28,7 +28,7 @@ with 'Data::MachineLearning::Elements::DeepLearning';
 
   use Data::MachineLearning::Elements;
 
-  my $ds = Data::MachineLearning::Elements->new;
+  my $ml = Data::MachineLearning::Elements->new;
 
 =head1 DESCRIPTION
 

@@ -9,27 +9,27 @@ use Statistics::Basic qw(mean);
 
   use Data::MachineLearning::Elements;
 
-  my $ds = Data::MachineLearning::Elements->new;
+  my $ml = Data::MachineLearning::Elements->new;
 
-  my $y = $ds->lr_predict(0.5, 0.5, 0.5); # 0.75
+  my $y = $ml->lr_predict(0.5, 0.5, 0.5); # 0.75
 
-  $y = $ds->lr_error(0.5, 0.5, 0.5, 0.4); # 0.35
+  $y = $ml->lr_error(0.5, 0.5, 0.5, 0.4); # 0.35
 
-  $y = $ds->sum_of_sqerrors(0.5, 0.5,
+  $y = $ml->sum_of_sqerrors(0.5, 0.5,
     [0.1, 0.5, 0.8], [0.2, 0.4, 0.7]); # 0.285
 
-  my ($alpha, $beta) = $ds->lr_least_squares_fit(
+  my ($alpha, $beta) = $ml->lr_least_squares_fit(
     [0.1, 0.5, 0.8], [0.2, 0.4, 0.7]); # 0.1054, 0.7027
 
-  $y = $ds->total_sum_of_squares([1 .. 10]); # 82.5
+  $y = $ml->total_sum_of_squares([1 .. 10]); # 82.5
 
-  $y = $ds->r_squared(); #
+  $y = $ml->r_squared(); #
 
 =head1 METHODS
 
 =head2 lr_predict
 
-  $y = $ds->lr_predict($alpha, $beta, $x_i);
+  $y = $ml->lr_predict($alpha, $beta, $x_i);
 
 =cut
 
@@ -40,7 +40,7 @@ sub lr_predict {
 
 =head2 lr_error
 
-  $y = $ds->lr_error($alpha, $beta, $x_i, $y_i);
+  $y = $ml->lr_error($alpha, $beta, $x_i, $y_i);
 
 Actual value: B<y_i>
 
@@ -53,7 +53,7 @@ sub lr_error {
 
 =head2 sum_of_sqerrors
 
-  $y = $ds->sum_of_sqerrors($alpha, $beta, $x, $y);
+  $y = $ml->sum_of_sqerrors($alpha, $beta, $x, $y);
 
 =cut
 
@@ -65,7 +65,7 @@ sub sum_of_sqerrors {
 
 =head2 lr_least_squares_fit
 
-  ($alpha, $beta) = $ds->lr_least_squares_fit($x, $y);
+  ($alpha, $beta) = $ml->lr_least_squares_fit($x, $y);
 
 =cut
 
@@ -78,7 +78,7 @@ sub lr_least_squares_fit {
 
 =head2 total_sum_of_squares
 
-  $y = $ds->total_sum_of_squares($v);
+  $y = $ml->total_sum_of_squares($v);
 
 =cut
 
@@ -89,7 +89,7 @@ sub total_sum_of_squares {
 
 =head2 r_squared
 
-  $y = $ds->r_squared($alpha, $beta, $x, $y);
+  $y = $ml->r_squared($alpha, $beta, $x, $y);
 
 "Coefficient of determination"
 

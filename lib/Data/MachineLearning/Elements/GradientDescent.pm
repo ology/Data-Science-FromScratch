@@ -8,21 +8,21 @@ use strictures 2;
 
   use Data::MachineLearning::Elements;
 
-  my $ds = Data::MachineLearning::Elements->new;
+  my $ml = Data::MachineLearning::Elements->new;
 
-  my $v = $ds->gradient_step(); #
+  my $v = $ml->gradient_step(); #
 
-  $v = $ds->doubled_gradient(); #
+  $v = $ml->doubled_gradient(); #
 
-  $v = $ds->linear_gradient(); #
+  $v = $ml->linear_gradient(); #
 
-  $v = $ds->minibatches(); #
+  $v = $ml->minibatches(); #
 
 =head1 METHODS
 
 =head2 gradient_step
 
-  $v = $ds->gradient_step($vector, $gradient, $step_size);
+  $v = $ml->gradient_step($vector, $gradient, $step_size);
 
 =cut
 
@@ -36,7 +36,7 @@ sub gradient_step {
 
 =head2 doubled_gradient
 
-  $v = $ds->doubled_gradient($vector);
+  $v = $ml->doubled_gradient($vector);
 
 The book calls this method "sum_of_squares_gradient."  But that can't
 be correct, since there is no summing and no squaring in the
@@ -54,7 +54,7 @@ sub doubled_gradient {
 
 =head2 linear_gradient
 
-  $v = $ds->linear_gradient($x, $y, $theta);
+  $v = $ml->linear_gradient($x, $y, $theta);
 
 =cut
 
@@ -68,7 +68,7 @@ sub linear_gradient {
 
 =head2 minibatches
 
-  $v = $ds->minibatches($dataset, $batch_size);
+  $v = $ml->minibatches($dataset, $batch_size);
 
 TODO: shuffle
 

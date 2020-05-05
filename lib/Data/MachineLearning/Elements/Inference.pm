@@ -7,26 +7,26 @@ use strictures 2;
 
   use Data::MachineLearning::Elements;
 
-  my $ds = Data::MachineLearning::Elements->new;
+  my $ml = Data::MachineLearning::Elements->new;
 
-  my $v = $ds->normal_approximation_to_binomial(100, 0.5); # [50,5]
+  my $v = $ml->normal_approximation_to_binomial(100, 0.5); # [50,5]
 
-  my $y = $ds->normal_probability_below(-1, 0, 1); # 0.1589
-  $y = $ds->normal_probability_above(-1, 0, 1); # 0.8411
-  $y = $ds->normal_probability_between(-1, 0, 0, 1); # 0.3411
-  $y = $ds->normal_probability_outside(-1, 0, 0, 1); # 0.6589
+  my $y = $ml->normal_probability_below(-1, 0, 1); # 0.1589
+  $y = $ml->normal_probability_above(-1, 0, 1); # 0.8411
+  $y = $ml->normal_probability_between(-1, 0, 0, 1); # 0.3411
+  $y = $ml->normal_probability_outside(-1, 0, 0, 1); # 0.6589
 
-  $y = $ds->normal_upper_bound(0.05, 0, 1); # -1.6431
-  $y = $ds->normal_lower_bound(0.05, 0, 1); # 1.6431
-  $v = $ds->normal_two_sided_bounds(0.05, 0, 1); # [-0.0632, 0.0632]
+  $y = $ml->normal_upper_bound(0.05, 0, 1); # -1.6431
+  $y = $ml->normal_lower_bound(0.05, 0, 1); # 1.6431
+  $v = $ml->normal_two_sided_bounds(0.05, 0, 1); # [-0.0632, 0.0632]
 
-  $y = $ds->two_sided_p_value(1, 0, 1); # 0.3178
+  $y = $ml->two_sided_p_value(1, 0, 1); # 0.3178
 
 =head1 METHODS
 
 =head2 normal_approximation_to_binomial
 
-  $y = $ds->normal_approximation_to_binomial($n, $p);
+  $y = $ml->normal_approximation_to_binomial($n, $p);
 
 =cut
 
@@ -39,7 +39,7 @@ sub normal_approximation_to_binomial {
 
 =head2 normal_probability_below
 
-  $y = $ds->normal_probability_below($lo, $mu, $sigma);
+  $y = $ml->normal_probability_below($lo, $mu, $sigma);
 
 =cut
 
@@ -50,7 +50,7 @@ sub normal_probability_below {
 
 =head2 normal_probability_above
 
-  $y = $ds->normal_probability_above($lo, $mu, $sigma);
+  $y = $ml->normal_probability_above($lo, $mu, $sigma);
 
 =cut
 
@@ -63,7 +63,7 @@ sub normal_probability_above {
 
 =head2 normal_probability_between
 
-  $y = $ds->normal_probability_between($lo, $hi, $mu, $sigma);
+  $y = $ml->normal_probability_between($lo, $hi, $mu, $sigma);
 
 =cut
 
@@ -76,7 +76,7 @@ sub normal_probability_between {
 
 =head2 normal_probability_outside
 
-  $y = $ds->normal_probability_outside($lo, $hi, $mu, $sigma);
+  $y = $ml->normal_probability_outside($lo, $hi, $mu, $sigma);
 
 =cut
 
@@ -89,7 +89,7 @@ sub normal_probability_outside {
 
 =head2 normal_upper_bound
 
-  $y = $ds->normal_upper_bound($probability, $mu, $sigma);
+  $y = $ml->normal_upper_bound($probability, $mu, $sigma);
 
 =cut
 
@@ -102,7 +102,7 @@ sub normal_upper_bound {
 
 =head2 normal_lower_bound
 
-  $y = $ds->normal_lower_bound($probability, $mu, $sigma);
+  $y = $ml->normal_lower_bound($probability, $mu, $sigma);
 
 =cut
 
@@ -115,7 +115,7 @@ sub normal_lower_bound {
 
 =head2 normal_two_sided_bounds
 
-  $v = $ds->normal_two_sided_bounds($probability, $mu, $sigma);
+  $v = $ml->normal_two_sided_bounds($probability, $mu, $sigma);
 
 =cut
 
@@ -131,7 +131,7 @@ sub normal_two_sided_bounds {
 
 =head2 two_sided_p_value
 
-  $v = $ds->two_sided_p_value($n, $mu, $sigma);
+  $v = $ml->two_sided_p_value($n, $mu, $sigma);
 
 =cut
 

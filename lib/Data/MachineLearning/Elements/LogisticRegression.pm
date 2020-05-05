@@ -8,21 +8,21 @@ use strictures 2;
 
   use Data::MachineLearning::Elements;
 
-  my $ds = Data::MachineLearning::Elements->new;
+  my $ml = Data::MachineLearning::Elements->new;
 
-  $y = $ds->logistic(0); # 0.5
+  $y = $ml->logistic(0); # 0.5
 
-  $y = $ds->logistic_prime(0); 0.25
+  $y = $ml->logistic_prime(0); 0.25
 
-  $y = $ds->negative_log_likelihood(); #
+  $y = $ml->negative_log_likelihood(); #
 
-  $v = $ds->negative_log_gradient(); #
+  $v = $ml->negative_log_gradient(); #
 
 =head1 METHODS
 
 =head2 logistic
 
-  $y = $ds->logistic($x);
+  $y = $ml->logistic($x);
 
 =cut
 
@@ -33,7 +33,7 @@ sub logistic {
 
 =head2 logistic_prime
 
-  $y = $ds->logistic_prime($x);
+  $y = $ml->logistic_prime($x);
 
 =cut
 
@@ -45,7 +45,7 @@ sub logistic_prime {
 
 =head2 negative_log_likelihood
 
-  $y = $ds->negative_log_likelihood($u, $x, $beta);
+  $y = $ml->negative_log_likelihood($u, $x, $beta);
 
 =cut
 
@@ -66,7 +66,7 @@ sub _negative_log_likelihood {
 
 =head2 negative_log_gradient
 
-  $v = $ds->negative_log_gradient($u, $x, $beta);
+  $v = $ml->negative_log_gradient($u, $x, $beta);
 
 This method is suspect because the results from the book code are different.
 

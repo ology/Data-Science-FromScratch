@@ -8,29 +8,29 @@ use strictures 2;
 
   use Data::MachineLearning::Elements;
 
-  my $ds = Data::MachineLearning::Elements->new;
+  my $ml = Data::MachineLearning::Elements->new;
 
-  my $y = $ds->entropy([0.25, 0.75]); # 0.8113
+  my $y = $ml->entropy([0.25, 0.75]); # 0.8113
 
-  my $v = $ds->class_probablities(['a','b']); # [0.5, 0.5]
+  my $v = $ml->class_probablities(['a','b']); # [0.5, 0.5]
 
-  $y = $ds->data_entropy([0,1]); # 1
+  $y = $ml->data_entropy([0,1]); # 1
 
-  $y = $ds->partition_entropy(); #
+  $y = $ml->partition_entropy(); #
 
-  my %h = $ds->partition_by(); #
+  my %h = $ml->partition_by(); #
 
-  $y = $ds->partition_entropy_by(); #
+  $y = $ml->partition_entropy_by(); #
 
-  $v = $ds->classify($tree, $input); #
+  $v = $ml->classify($tree, $input); #
 
-  my $h = $ds->build_tree_id3(); #
+  my $h = $ml->build_tree_id3(); #
 
 =head1 METHODS
 
 =head2 entropy
 
-  $y = $ds->entropy($probablities);
+  $y = $ml->entropy($probablities);
 
 =cut
 
@@ -46,7 +46,7 @@ sub _log2 {
 
 =head2 class_probablities
 
-  $y = $ds->class_probablities($labels);
+  $y = $ml->class_probablities($labels);
 
 =cut
 
@@ -61,7 +61,7 @@ sub class_probablities {
 
 =head2 data_entropy
 
-  $y = $ds->data_entropy($labels);
+  $y = $ml->data_entropy($labels);
 
 =cut
 
@@ -72,7 +72,7 @@ sub data_entropy {
 
 =head2 partition_entropy
 
-  $y = $ds->partition_entropy($subsets);
+  $y = $ml->partition_entropy($subsets);
 
 =cut
 
@@ -84,7 +84,7 @@ sub partition_entropy {
 
 =head2 partition_by
 
-  %h = $ds->partition_by($inputs, $attribute);
+  %h = $ml->partition_by($inputs, $attribute);
 
 =cut
 
@@ -99,7 +99,7 @@ sub partition_by {
 
 =head2 partition_entropy_by
 
-  $y = $ds->partition_entropy_by($inputs, $attribute, $label_attr);
+  $y = $ml->partition_entropy_by($inputs, $attribute, $label_attr);
 
 =cut
 
@@ -115,7 +115,7 @@ sub partition_entropy_by {
 
 =head2 classify
 
-  $y = $ds->classify($tree, $input);
+  $y = $ml->classify($tree, $input);
 
 =cut
 
@@ -134,7 +134,7 @@ sub classify {
 
 =head2 build_tree_id3
 
-  $h = $ds->build_tree_id3($inputs, $split_attributes, $target_attribute);
+  $h = $ml->build_tree_id3($inputs, $split_attributes, $target_attribute);
 
 =cut
 

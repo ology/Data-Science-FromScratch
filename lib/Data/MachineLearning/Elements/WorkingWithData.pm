@@ -8,17 +8,17 @@ use strictures 2;
 
   use Data::MachineLearning::Elements;
 
-  my $ds = Data::MachineLearning::Elements->new;
+  my $ml = Data::MachineLearning::Elements->new;
 
-  my ($means, $stddevs) = $ds->scale([-3,-1,1], [-1,0,1], [1,1,1]); # [-1,0,1], [2,1,0]
+  my ($means, $stddevs) = $ml->scale([-3,-1,1], [-1,0,1], [1,1,1]); # [-1,0,1], [2,1,0]
 
-  my @v = $ds->rescale([-3,-1,1], [-1,0,1], [1,1,1]); # [-1,-1,1], [0,0,1], [1,1,1]
+  my @v = $ml->rescale([-3,-1,1], [-1,0,1], [1,1,1]); # [-1,-1,1], [0,0,1], [1,1,1]
 
 =head1 METHODS
 
 =head2 scale
 
-  ($means, $stddevs) = $ds->scale(@data);
+  ($means, $stddevs) = $ml->scale(@data);
 
 =cut
 
@@ -35,7 +35,7 @@ sub scale {
 
 =head2 rescale
 
-  @v = $ds->rescale(@data);
+  @v = $ml->rescale(@data);
 
 =cut
 

@@ -9,27 +9,27 @@ use strictures 2;
 
   use Data::MachineLearning::Elements;
 
-  my $ds = Data::MachineLearning::Elements->new;
+  my $ml = Data::MachineLearning::Elements->new;
 
-  my $v = $ds->tensor_shape([1,2,3]); # [3]
+  my $v = $ml->tensor_shape([1,2,3]); # [3]
 
-  my $y = $ds->is_1d([1,2,3]); # 1
+  my $y = $ml->is_1d([1,2,3]); # 1
 
-  $y = $ds->tensor_sum([1,2,3]); # 6
+  $y = $ml->tensor_sum([1,2,3]); # 6
 
-  $v = $ds->tensor_apply(sub { shift() + 1 }, [1,2,3]); # [2,3,4]
+  $v = $ml->tensor_apply(sub { shift() + 1 }, [1,2,3]); # [2,3,4]
 
-  $v = $ds->zeros_like([1,2,3]); # [0,0,0]
+  $v = $ml->zeros_like([1,2,3]); # [0,0,0]
 
-  $v = $ds->tensor_combine(sub { shift() * shift() }, [1,2,3], [4,5,6]); # [4,10,18]
+  $v = $ml->tensor_combine(sub { shift() * shift() }, [1,2,3], [4,5,6]); # [4,10,18]
 
-  $v = $ds->random_uniform(); #
-  $v = $ds->random_normal(); #
+  $v = $ml->random_uniform(); #
+  $v = $ml->random_normal(); #
 
-  $v = $ds->random_tensor(); #
+  $v = $ml->random_tensor(); #
 
-  $y = $ds->tanh(0); # 0
-  $y = $ds->tanh(1); # 0.7616
+  $y = $ml->tanh(0); # 0
+  $y = $ml->tanh(1); # 0.7616
 
 =head1 DESCRIPTION
 
@@ -40,7 +40,7 @@ C<skip> blocks in L<the test|/"SEE ALSO"> to see the error that is generated.
 
 =head2 tensor_shape
 
-  $v = $ds->tensor_shape($tensor);
+  $v = $ml->tensor_shape($tensor);
 
 =cut
 
@@ -57,7 +57,7 @@ sub tensor_shape {
 
 =head2 is_1d
 
-  $y = $ds->is_1d($tensor);
+  $y = $ml->is_1d($tensor);
 
 =cut
 
@@ -68,7 +68,7 @@ sub is_1d {
 
 =head2 tensor_sum
 
-  $y = $ds->tensor_sum($tensor);
+  $y = $ml->tensor_sum($tensor);
 
 =cut
 
@@ -84,7 +84,7 @@ sub tensor_sum {
 
 =head2 tensor_apply
 
-  $v = $ds->tensor_apply($fn, $tensor);
+  $v = $ml->tensor_apply($fn, $tensor);
 
 =cut
 
@@ -100,7 +100,7 @@ sub tensor_apply {
 
 =head2 zeros_like
 
-  $v = $ds->zeros_like($tensor);
+  $v = $ml->zeros_like($tensor);
 
 =cut
 
@@ -111,7 +111,7 @@ sub zeros_like {
 
 =head2 tensor_combine
 
-  $v = $ds->tensor_combine($fn, $t1, $t2);
+  $v = $ml->tensor_combine($fn, $t1, $t2);
 
 =cut
 
@@ -127,7 +127,7 @@ sub tensor_combine {
 
 =head2 random_uniform
 
-  $v = $ds->random_uniform($dims);
+  $v = $ml->random_uniform($dims);
 
 =cut
 
@@ -143,7 +143,7 @@ sub random_uniform {
 
 =head2 random_normal
 
-  $v = $ds->random_normal($dims, $mean, $variance);
+  $v = $ml->random_normal($dims, $mean, $variance);
 
 =cut
 
@@ -161,7 +161,7 @@ sub random_normal {
 
 =head2 random_tensor
 
-  $v = $ds->random_tensor($dims, $init);
+  $v = $ml->random_tensor($dims, $init);
 
 =cut
 
@@ -184,7 +184,7 @@ sub random_tensor {
 
 =head2 tanh
 
-  $y = $ds->tanh($x);
+  $y = $ml->tanh($x);
 
 =cut
 

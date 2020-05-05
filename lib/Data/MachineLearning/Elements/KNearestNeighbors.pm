@@ -7,17 +7,17 @@ use strictures 2;
 
   use Data::MachineLearning::Elements;
 
-  my $ds = Data::MachineLearning::Elements->new;
+  my $ml = Data::MachineLearning::Elements->new;
 
-  my $y = $ds->majority_vote(qw(a b c b a)); # b
+  my $y = $ml->majority_vote(qw(a b c b a)); # b
 
-  $y = $ds->knn_classify(); #
+  $y = $ml->knn_classify(); #
 
 =head1 METHODS
 
 =head2 majority_vote
 
-  $y = $ds->majority_vote(@labels);
+  $y = $ml->majority_vote(@labels);
 
 =cut
 
@@ -39,7 +39,7 @@ sub majority_vote {
 
 =head2 knn_classify
 
-  $y = $ds->knn_classify($k, $labeled_points, $new_point);
+  $y = $ml->knn_classify($k, $labeled_points, $new_point);
 
 Where B<k> is an integer, B<labeled_points> is a list of hash
 references,

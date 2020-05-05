@@ -8,11 +8,11 @@ use Data::Dataset::Classic::Iris;
 
 use_ok 'Data::MachineLearning::Elements';
 
-my $ds = new_ok 'Data::MachineLearning::Elements';
+my $ml = new_ok 'Data::MachineLearning::Elements';
 
 my @labels = qw(a b c b a);
 
-is $ds->majority_vote(@labels), 'b', 'majority_vote';
+is $ml->majority_vote(@labels), 'b', 'majority_vote';
 
 # Create [ { point => [sepal_length, sepal_width, petal_length, petal_width], label => species } ] array rows
 my $iris = Data::Dataset::Classic::Iris::get();
@@ -27,14 +27,14 @@ for my $i (0 .. @{ $iris->{species} } - 1) {
     };
 }
 
-my ($train, $test) = $ds->split_data(0.70, @iris_data);
+my ($train, $test) = $ml->split_data(0.70, @iris_data);
 is @$train, 0.7 * 150, 'split_data';
 is @$test, 0.3 * 150, 'split_data';
 
 my %confusion_matrix;
 my $num_correct = 0;
 for my $i (@$test) {
-    my $predicted = $ds->knn_classify(5, $train, $i->{point});
+    my $predicted = $ml->knn_classify(5, $train, $i->{point});
     my $actual = $i->{label};
     $num_correct++
         if $predicted eq $actual;

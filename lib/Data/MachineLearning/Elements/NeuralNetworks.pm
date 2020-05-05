@@ -10,35 +10,35 @@ use strictures 2;
 
   use Data::MachineLearning::Elements;
 
-  my $ds = Data::MachineLearning::Elements->new;
+  my $ml = Data::MachineLearning::Elements->new;
 
-  my $y = $ds->step_function(-1); # 0
-  $y = $ds->step_function(1); # 1
+  my $y = $ml->step_function(-1); # 0
+  $y = $ml->step_function(1); # 1
 
-  $y = $ds->perceptron_output([2,2], -3, [0,1]); # 0
-  $y = $ds->perceptron_output([2,2], -1, [0,1]); # 1
-  $y = $ds->perceptron_output([-2], 1, [0]); # 1
+  $y = $ml->perceptron_output([2,2], -3, [0,1]); # 0
+  $y = $ml->perceptron_output([2,2], -1, [0,1]); # 1
+  $y = $ml->perceptron_output([-2], 1, [0]); # 1
 
-  $y = $ds->sigmoid(-5); # 0.0067
+  $y = $ml->sigmoid(-5); # 0.0067
 
-  $y = $ds->neuron_output(); #
+  $y = $ml->neuron_output(); #
 
-  my $v = $ds->feed_forward(); #
+  my $v = $ml->feed_forward(); #
 
-  $v = $ds->sqerror_gradients(); #
+  $v = $ml->sqerror_gradients(); #
 
-  $v = $ds->fizz_buzz_encode(2); # [1,0,0,0]
-  $y = $ds->fizz_buzz_accuracy(); #
+  $v = $ml->fizz_buzz_encode(2); # [1,0,0,0]
+  $y = $ml->fizz_buzz_accuracy(); #
 
-  $y = $ds->binary_encode(1); # [1,0,0,0,0,0,0,0,0,0]
+  $y = $ml->binary_encode(1); # [1,0,0,0,0,0,0,0,0,0]
 
-  $y = $ds->argmax([-1,10,5,20,-3]); # 3
+  $y = $ml->argmax([-1,10,5,20,-3]); # 3
 
 =head1 METHODS
 
 =head2 step_function
 
-  $y = $ds->step_function($x);
+  $y = $ml->step_function($x);
 
 =cut
 
@@ -49,7 +49,7 @@ sub step_function {
 
 =head2 perceptron_output
 
-  $y = $ds->perceptron_output($weights, $bias, $u);
+  $y = $ml->perceptron_output($weights, $bias, $u);
 
 =cut
 
@@ -61,7 +61,7 @@ sub perceptron_output {
 
 =head2 sigmoid
 
-  $y = $ds->sigmoid($t);
+  $y = $ml->sigmoid($t);
 
 =cut
 
@@ -72,7 +72,7 @@ sub sigmoid {
 
 =head2 neuron_output
 
-  $y = $ds->neuron_output($weights, $inputs);
+  $y = $ml->neuron_output($weights, $inputs);
 
 =cut
 
@@ -83,7 +83,7 @@ sub neuron_output {
 
 =head2 feed_forward
 
-  $v = $ds->feed_forward($neural_network, $input_vector);
+  $v = $ml->feed_forward($neural_network, $input_vector);
 
 =cut
 
@@ -102,7 +102,7 @@ sub feed_forward {
 
 =head2 sqerror_gradients
 
-  $y = $ds->sqerror_gradients($network, $input_vector, $target_vector);
+  $y = $ml->sqerror_gradients($network, $input_vector, $target_vector);
 
 =cut
 
@@ -138,7 +138,7 @@ sub sqerror_gradients {
 
 =head2 fizz_buzz_encode
 
-  $v = $ds->fizz_buzz_encode($x);
+  $v = $ml->fizz_buzz_encode($x);
 
 =cut
 
@@ -160,7 +160,7 @@ sub fizz_buzz_encode {
 
 =head2 fizz_buzz_accuracy
 
-  $y = $ds->fizz_buzz_accuracy($low, $hi, $net);
+  $y = $ml->fizz_buzz_accuracy($low, $hi, $net);
 
 =cut
 
@@ -180,7 +180,7 @@ sub fizz_buzz_accuracy {
 
 =head2 binary_encode
 
-  $y = $ds->binary_encode($x);
+  $y = $ml->binary_encode($x);
 
 =cut
 
@@ -196,7 +196,7 @@ sub binary_encode {
 
 =head2 argmax
 
-  $y = $ds->argmax($vector);
+  $y = $ml->argmax($vector);
 
 =cut
 

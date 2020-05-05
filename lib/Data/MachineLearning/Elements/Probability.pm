@@ -9,31 +9,31 @@ use strictures 2;
 
   use Data::MachineLearning::Elements;
 
-  my $ds = Data::MachineLearning::Elements->new;
+  my $ml = Data::MachineLearning::Elements->new;
 
-  my $y = $ds->uniform_cdf(0); # 0
-  $y = $ds->uniform_cdf(0.5); # 0.5
-  $y = $ds->uniform_cdf(1); # 1
+  my $y = $ml->uniform_cdf(0); # 0
+  $y = $ml->uniform_cdf(0.5); # 0.5
+  $y = $ml->uniform_cdf(1); # 1
 
-  $y = $ds->normal_pdf(-1, 0, 1); # 0.2420
-  $y = $ds->normal_pdf(0, 0, 1); # 0.3989
-  $y = $ds->normal_pdf(1, 0, 1); # 0.2420
+  $y = $ml->normal_pdf(-1, 0, 1); # 0.2420
+  $y = $ml->normal_pdf(0, 0, 1); # 0.3989
+  $y = $ml->normal_pdf(1, 0, 1); # 0.2420
 
-  $y = $ds->normal_cdf(-1, 0, 1); # 0.1589
-  $y = $ds->normal_cdf(0, 0, 1); # 0.5
-  $y = $ds->normal_cdf(1, 0, 1); # 0.8411
+  $y = $ml->normal_cdf(-1, 0, 1); # 0.1589
+  $y = $ml->normal_cdf(0, 0, 1); # 0.5
+  $y = $ml->normal_cdf(1, 0, 1); # 0.8411
 
   #$y = inverse_normal_cdf($n, $mu, $sigma, $tolerance); # TODO
 
-  $y = $ds->bernouli_trial(0.5); # 0 or 1
+  $y = $ml->bernouli_trial(0.5); # 0 or 1
 
-  $y = $ds->binomial(100, 0.5); # Greater than or equal to 0
+  $y = $ml->binomial(100, 0.5); # Greater than or equal to 0
 
 =head1 METHODS
 
 =head2 uniform_cdf
 
-  $y = $ds->uniform_cdf($n);
+  $y = $ml->uniform_cdf($n);
 
 "Cumulative distribution function"
 
@@ -48,7 +48,7 @@ sub uniform_cdf {
 
 =head2 normal_pdf
 
-  $y = $ds->normal_pdf($n, $mu, $sigma);
+  $y = $ml->normal_pdf($n, $mu, $sigma);
 
 "Probability density function"
 
@@ -65,7 +65,7 @@ sub normal_pdf {
 
 =head2 normal_cdf
 
-  $y = $ds->normal_cdf($n, $mu, $sigma);
+  $y = $ml->normal_cdf($n, $mu, $sigma);
 
 =cut
 
@@ -78,7 +78,7 @@ sub normal_cdf {
 
 =head2 inverse_normal_cdf
 
-  $y = $ds->inverse_normal_cdf($n, $mu, $sigma, $tolerance);
+  $y = $ml->inverse_normal_cdf($n, $mu, $sigma, $tolerance);
 
 =cut
 
@@ -109,7 +109,7 @@ sub inverse_normal_cdf {
 
 =head2 bernouli_trial
 
-  $y = $ds->bernouli_trial($n);
+  $y = $ml->bernouli_trial($n);
 
 =cut
 
@@ -120,7 +120,7 @@ sub bernouli_trial {
 
 =head2 binomial
 
-  $y = $ds->binomial($n, $p);
+  $y = $ml->binomial($n, $p);
 
 B<$n> C<bernouli_trial>s of B<$p>.
 

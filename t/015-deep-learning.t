@@ -6,28 +6,28 @@ use Test::More;
 
 use_ok 'Data::MachineLearning::Elements';
 
-my $ds = new_ok 'Data::MachineLearning::Elements';
+my $ml = new_ok 'Data::MachineLearning::Elements';
 
-is_deeply $ds->tensor_shape([1,2,3]), [3], 'tensor_shape';
-is_deeply $ds->tensor_shape([[1,2],[3,4],[5,6]]), [3,2], 'tensor_shape';
+is_deeply $ml->tensor_shape([1,2,3]), [3], 'tensor_shape';
+is_deeply $ml->tensor_shape([[1,2],[3,4],[5,6]]), [3,2], 'tensor_shape';
 
-ok $ds->is_1d([1,2,3]), 'is_1d';
-ok ! $ds->is_1d([[1,2],[3,4]]), 'is_1d';
+ok $ml->is_1d([1,2,3]), 'is_1d';
+ok ! $ml->is_1d([[1,2],[3,4]]), 'is_1d';
 
-is $ds->tensor_sum([1,2,3]), 6, 'tensor_sum';
-is $ds->tensor_sum([[1,2],[3,4]]), 10, 'tensor_sum';
+is $ml->tensor_sum([1,2,3]), 6, 'tensor_sum';
+is $ml->tensor_sum([[1,2],[3,4]]), 10, 'tensor_sum';
 
-is_deeply $ds->tensor_apply(sub { shift() + 1 }, [1,2,3]), [2,3,4], 'tensor_apply';
-is_deeply $ds->tensor_apply(sub { 2 * shift() }, [[1,2],[3,4]]), [[2,4], [6,8]], 'tensor_apply';
+is_deeply $ml->tensor_apply(sub { shift() + 1 }, [1,2,3]), [2,3,4], 'tensor_apply';
+is_deeply $ml->tensor_apply(sub { 2 * shift() }, [[1,2],[3,4]]), [[2,4], [6,8]], 'tensor_apply';
 
-is_deeply $ds->zeros_like([1,2,3]), [0,0,0], 'zeros_like';
-is_deeply $ds->zeros_like([[1,2],[3,4]]), [[0,0],[0,0]], 'zeros_like';
+is_deeply $ml->zeros_like([1,2,3]), [0,0,0], 'zeros_like';
+is_deeply $ml->zeros_like([[1,2],[3,4]]), [[0,0],[0,0]], 'zeros_like';
 
-is_deeply $ds->tensor_combine(sub { shift() + shift() }, [1,2,3], [4,5,6]), [5,7,9], 'tensor_combine';
-is_deeply $ds->tensor_combine(sub { shift() * shift() }, [1,2,3], [4,5,6]), [4,10,18], 'tensor_combine';
+is_deeply $ml->tensor_combine(sub { shift() + shift() }, [1,2,3], [4,5,6]), [5,7,9], 'tensor_combine';
+is_deeply $ml->tensor_combine(sub { shift() * shift() }, [1,2,3], [4,5,6]), [4,10,18], 'tensor_combine';
 
-is_deeply $ds->tensor_shape($ds->random_uniform([2,3,4])), [2,3,4], 'random_uniform';
-is_deeply $ds->tensor_shape($ds->random_normal([5,6], 10)), [5,6], 'random_normal';
+is_deeply $ml->tensor_shape($ml->random_uniform([2,3,4])), [2,3,4], 'random_uniform';
+is_deeply $ml->tensor_shape($ml->random_normal([5,6], 10)), [5,6], 'random_normal';
 
 use_ok 'Data::MachineLearning::Elements::NeuralNetworks::Sigmoid';
 my $net = new_ok 'Data::MachineLearning::Elements::NeuralNetworks::Sigmoid';
@@ -105,17 +105,17 @@ use Data::Dumper;warn(__PACKAGE__,' ',__LINE__," MARK: ",Dumper$param);
 }
 }
 
-is $ds->tanh(-111), -1, 'tanh';
-is $ds->tanh(0), 0, 'tanh';
-is $ds->tanh(111), 1, 'tanh';
-$got = $ds->tanh(1);
+is $ml->tanh(-111), -1, 'tanh';
+is $ml->tanh(0), 0, 'tanh';
+is $ml->tanh(111), 1, 'tanh';
+$got = $ml->tanh(1);
 is sprintf('%.4f', $got), '0.7616', 'tanh';
 
 SKIP: {
 skip 'Broken algorithm. :(', 2;
 
-my @xs = ( map { $ds->binary_encode($_) } 101 .. 1023 );
-my @ys = ( map { $ds->fizz_buzz_encode($_) } 101 .. 1023 );
+my @xs = ( map { $ml->binary_encode($_) } 101 .. 1023 );
+my @ys = ( map { $ml->fizz_buzz_encode($_) } 101 .. 1023 );
 
 my $num_hidden = 25;
 
@@ -146,7 +146,7 @@ for my $i (1 .. 1000) {
         $net->backward($gradient);
         $optimizer->step($net);
     }
-    my $accuracy = $ds->fizz_buzz_accuracy(101, 1024, $net);
+    my $accuracy = $ml->fizz_buzz_accuracy(101, 1024, $net);
     print "$i. Loss = $epoch_loss, Accuracy = $accuracy\n";
 }
 }

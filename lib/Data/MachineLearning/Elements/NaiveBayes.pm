@@ -8,13 +8,13 @@ use strictures 2;
 
   use Data::MachineLearning::Elements;
 
-  my $ds = Data::MachineLearning::Elements->new;
+  my $ml = Data::MachineLearning::Elements->new;
 
-  my $v = $ds->tokenize('Little Mary had a little lamb.'); # [a, had, lamb, little, mary]
+  my $v = $ml->tokenize('Little Mary had a little lamb.'); # [a, had, lamb, little, mary]
 
-  $ds->train(@messages);
+  $ml->train(@messages);
 
-  my $y = $ds->nb_predict('little lamb');
+  my $y = $ml->nb_predict('little lamb');
 
 =head1 ATTRIBUTES
 
@@ -78,7 +78,7 @@ has ham_messages => (
 
 =head2 tokenize
 
-  $v = $ds->tokenize($string);
+  $v = $ml->tokenize($string);
 
 =cut
 
@@ -93,7 +93,7 @@ sub tokenize {
 
 =head2 train
 
-  $ds->train(@messages);
+  $ml->train(@messages);
 
 Where the B<messages> are a list of hash references,
 
@@ -133,7 +133,7 @@ sub _probabilities {
 
 =head2 nb_predict
 
-  $y = $ds->nb_predict($text);
+  $y = $ml->nb_predict($text);
 
 =cut
 

@@ -8,26 +8,26 @@ use strictures 2;
 
   use Data::MachineLearning::Elements;
 
-  my $ds = Data::MachineLearning::Elements->new;
+  my $ml = Data::MachineLearning::Elements->new;
 
   my @x_data = (1,2,3,4,5,6);
   my @y_data = (2,4,6,8,10,12);
 
-  my ($train, $test) = $ds->split_data(0.5, @x_data); # 3-element vectors
+  my ($train, $test) = $ml->split_data(0.5, @x_data); # 3-element vectors
 
-  my ($x_train, $x_test, $y_train, $y_test) = $ds->train_test_split(\@x_data, \@y_data, 0.5);
+  my ($x_train, $x_test, $y_train, $y_test) = $ml->train_test_split(\@x_data, \@y_data, 0.5);
     # 3-element vectors
 
-  my $y = $ds->accuracy(70, 4930, 13930, 981070); # 0.9811
-  $y = $ds->precision(70, 4930, 13930, 981070); # 0.0140
-  $y = $ds->recall(70, 4930, 13930, 981070); # 0.0050
-  $y = $ds->f1_score(70, 4930, 13930, 981070); # 0.0074
+  my $y = $ml->accuracy(70, 4930, 13930, 981070); # 0.9811
+  $y = $ml->precision(70, 4930, 13930, 981070); # 0.0140
+  $y = $ml->recall(70, 4930, 13930, 981070); # 0.0050
+  $y = $ml->f1_score(70, 4930, 13930, 981070); # 0.0074
 
 =head1 METHODS
 
 =head2 split_data
 
-  ($train, $test) = $ds->split_data($probability, @data);
+  ($train, $test) = $ml->split_data($probability, @data);
 
 =cut
 
@@ -40,7 +40,7 @@ sub split_data {
 
 =head2 train_test_split
 
-  ($x_train, $x_test, $y_train, $y_test) = $ds->train_test_split(\@x_data, \@y_data, $probability);
+  ($x_train, $x_test, $y_train, $y_test) = $ml->train_test_split(\@x_data, \@y_data, $probability);
 
 =cut
 
@@ -57,7 +57,7 @@ sub train_test_split {
 
 =head2 accuracy
 
-  $y = $ds->accuracy($true_pos, $false_pos, $false_neg, $true_neg);
+  $y = $ml->accuracy($true_pos, $false_pos, $false_neg, $true_neg);
 
 =cut
 
@@ -70,7 +70,7 @@ sub accuracy {
 
 =head2 precision
 
-  $y = $ds->precision($true_pos, $false_pos, $false_neg, $true_neg);
+  $y = $ml->precision($true_pos, $false_pos, $false_neg, $true_neg);
 
 =cut
 
@@ -81,7 +81,7 @@ sub precision {
 
 =head2 recall
 
-  $y = $ds->recall($true_pos, $false_pos, $false_neg, $true_neg);
+  $y = $ml->recall($true_pos, $false_pos, $false_neg, $true_neg);
 
 =cut
 
@@ -92,7 +92,7 @@ sub recall {
 
 =head2 f1_score
 
-  $y = $ds->f1_score($true_pos, $false_pos, $false_neg, $true_neg);
+  $y = $ml->f1_score($true_pos, $false_pos, $false_neg, $true_neg);
 
 =cut
 

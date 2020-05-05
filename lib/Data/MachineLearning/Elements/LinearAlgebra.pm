@@ -8,33 +8,33 @@ use strictures 2;
 
   use Data::MachineLearning::Elements;
 
-  my $ds = Data::MachineLearning::Elements->new;
+  my $ml = Data::MachineLearning::Elements->new;
 
-  my $v = $ds->vector_sum([1,2,3], [4,5,6]); # [5,7,9]
+  my $v = $ml->vector_sum([1,2,3], [4,5,6]); # [5,7,9]
 
-  $v = $ds->vector_subtract([5,7,9], [4,5,6]); # [1,2,3]
+  $v = $ml->vector_subtract([5,7,9], [4,5,6]); # [1,2,3]
 
-  $v = $ds->scalar_multiply(2, [1,2,3]); # [2,4,6]
+  $v = $ml->scalar_multiply(2, [1,2,3]); # [2,4,6]
 
-  $v = $ds->vector_mean([1,2], [3,4], [5,6]); # [3,4]
+  $v = $ml->vector_mean([1,2], [3,4], [5,6]); # [3,4]
 
-  my $y = $ds->vector_dot([1,2,3], [4,5,6]); # 32
+  my $y = $ml->vector_dot([1,2,3], [4,5,6]); # 32
 
-  $y = $ds->sum_of_squares([1,2,3]); # 14
+  $y = $ml->sum_of_squares([1,2,3]); # 14
 
-  $y = $ds->magnitude([3,4]); # 5
+  $y = $ml->magnitude([3,4]); # 5
 
-  $y = $ds->distance([0,1], [1,1]); # 1
+  $y = $ml->distance([0,1], [1,1]); # 1
 
-  $y = $ds->squared_distance([0,0], [2,2]); # 8
+  $y = $ml->squared_distance([0,0], [2,2]); # 8
 
-  $v = $ds->shape([[1,2,3], [4,5,6]]); # [2,3]
+  $v = $ml->shape([[1,2,3], [4,5,6]]); # [2,3]
 
-  $v = $ds->get_row([[1,2,3], [4,5,6]], 0); # [1,2,3]
-  $v = $ds->get_col([[1,2,3], [4,5,6]], 0); # [1,4]
+  $v = $ml->get_row([[1,2,3], [4,5,6]], 0); # [1,2,3]
+  $v = $ml->get_col([[1,2,3], [4,5,6]], 0); # [1,4]
 
-  my $m = $ds->make_matrix(2, 3, sub { 0 }); # [[0,0,0], [0,0,0]]
-  $m = $ds->make_matrix(3, 3, sub { my ($i, $j) = @_; return $i == $j ? 1 : 0 });
+  my $m = $ml->make_matrix(2, 3, sub { 0 }); # [[0,0,0], [0,0,0]]
+  $m = $ml->make_matrix(3, 3, sub { my ($i, $j) = @_; return $i == $j ? 1 : 0 });
      # [[1,0,0], [0,1,0], [0,0,1]]
 
 
@@ -42,7 +42,7 @@ use strictures 2;
 
 =head2 vector_sum
 
-  $v = $ds->vector_sum(@vectors);
+  $v = $ml->vector_sum(@vectors);
 
 =cut
 
@@ -68,7 +68,7 @@ sub vector_sum {
 
 =head2 vector_subtract
 
-  $v = $ds->vector_subtract(@vectors);
+  $v = $ml->vector_subtract(@vectors);
 
 =cut
 
@@ -94,7 +94,7 @@ sub vector_subtract {
 
 =head2 scalar_multiply
 
-  $v = $ds->scalar_multiply($n, $vector);
+  $v = $ml->scalar_multiply($n, $vector);
 
 =cut
 
@@ -109,7 +109,7 @@ sub scalar_multiply {
 
 =head2 vector_mean
 
-  $v = $ds->vector_mean(@vectors);
+  $v = $ml->vector_mean(@vectors);
 
 Compute the componentwise means of a list of vectors.
 
@@ -124,7 +124,7 @@ sub vector_mean {
 
 =head2 vector_dot
 
-  $y = $ds->vector_dot(@vectors);
+  $y = $ml->vector_dot(@vectors);
 
 =cut
 
@@ -150,7 +150,7 @@ sub vector_dot {
 
 =head2 sum_of_squares
 
-  $y = $ds->sum_of_squares($vector);
+  $y = $ml->sum_of_squares($vector);
 
 =cut
 
@@ -161,7 +161,7 @@ sub sum_of_squares {
 
 =head2 magnitude
 
-  $y = $ds->magnitude($vector);
+  $y = $ml->magnitude($vector);
 
 =cut
 
@@ -172,7 +172,7 @@ sub magnitude {
 
 =head2 distance
 
-  $y = $ds->distance($vector1, $vector2);
+  $y = $ml->distance($vector1, $vector2);
 
 =cut
 
@@ -183,7 +183,7 @@ sub distance {
 
 =head2 squared_distance
 
-  $y = $ds->squared_distance($vector1, $vector2);
+  $y = $ml->squared_distance($vector1, $vector2);
 
 =cut
 
@@ -196,7 +196,7 @@ sub squared_distance {
 
 =head2 shape
 
-  $v = $ds->shape($matrix);
+  $v = $ml->shape($matrix);
 
 =cut
 
@@ -209,7 +209,7 @@ sub shape {
 
 =head2 get_row
 
-  $v = $ds->get_row($matrix, $i);
+  $v = $ml->get_row($matrix, $i);
 
 =cut
 
@@ -220,7 +220,7 @@ sub get_row {
 
 =head2 get_col
 
-  $v = $ds->get_col($matrix, $i);
+  $v = $ml->get_col($matrix, $i);
 
 =cut
 
@@ -235,7 +235,7 @@ sub get_col {
 
 =head2 make_matrix
 
-  $m = $ds->make_matrix($rows, $cols, $entry_fn);
+  $m = $ml->make_matrix($rows, $cols, $entry_fn);
 
 =cut
 

@@ -9,37 +9,37 @@ use strictures 2;
 
   use Data::MachineLearning::Elements;
 
-  my $ds = Data::MachineLearning::Elements->new;
+  my $ml = Data::MachineLearning::Elements->new;
 
-  my $y = $ds->mr_predict([1,2,3], [4,4,4]); # 24
+  my $y = $ml->mr_predict([1,2,3], [4,4,4]); # 24
 
-  $y = $ds->mr_error([1,2,3], 30, [4,4,4]); # -6
+  $y = $ml->mr_error([1,2,3], 30, [4,4,4]); # -6
 
-  $y = $ds->squared_error([1,2,3], 30, [4,4,4]); # 36
+  $y = $ml->squared_error([1,2,3], 30, [4,4,4]); # 36
 
-  my $v = $ds->sqerror_gradient([1,2,3], 30, [4,4,4]); # [-12, -24, -36]
+  my $v = $ml->sqerror_gradient([1,2,3], 30, [4,4,4]); # [-12, -24, -36]
 
-  $v = $ds->mr_least_squares_fit(); #
+  $v = $ml->mr_least_squares_fit(); #
 
-  $y = $ds->multiple_r_squared(); #
+  $y = $ml->multiple_r_squared(); #
 
-  $v = $ds->bootstrap_sample([1,2,3,4,5]); # [5,2,4,2,5] for example
+  $v = $ml->bootstrap_sample([1,2,3,4,5]); # [5,2,4,2,5] for example
 
-  $v = $ds->bootstrap_statistic([1,2,3,4,5], 100); # [4,3,5,2,...
+  $v = $ml->bootstrap_statistic([1,2,3,4,5], 100); # [4,3,5,2,...
 
-  $y = $ds->p_value(30.58, 1.27); # < 0.001
+  $y = $ml->p_value(30.58, 1.27); # < 0.001
 
-  $y = $ds->ridge_penalty([1,2,3,4,5], 0.5); # 27
+  $y = $ml->ridge_penalty([1,2,3,4,5], 0.5); # 27
 
-  $y = $ds->squared_error_ridge(); #
+  $y = $ml->squared_error_ridge(); #
 
-  $v = $ds->ridge_penalty_gradient(); #
+  $v = $ml->ridge_penalty_gradient(); #
 
-  $v = $ds->sqerror_ridge_gradient(); #
+  $v = $ml->sqerror_ridge_gradient(); #
 
-  $v = $ds->least_squares_fit_ridge(); #
+  $v = $ml->least_squares_fit_ridge(); #
 
-  $y = $ds->lasso_penalty([1,2,3,4,5], 0.5); # 7
+  $y = $ml->lasso_penalty([1,2,3,4,5], 0.5); # 7
 
 =head1 DESCRIPTION
 
@@ -51,7 +51,7 @@ generated.
 
 =head2 mr_predict
 
-  $y = $ds->mr_predict($v, $beta);
+  $y = $ml->mr_predict($v, $beta);
 
 =cut
 
@@ -62,7 +62,7 @@ sub mr_predict {
 
 =head2 mr_error
 
-  $y = $ds->mr_error($v, $y, $beta);
+  $y = $ml->mr_error($v, $y, $beta);
 
 =cut
 
@@ -73,7 +73,7 @@ sub mr_error {
 
 =head2 squared_error
 
-  $y = $ds->squared_error($v, $y, $beta);
+  $y = $ml->squared_error($v, $y, $beta);
 
 =cut
 
@@ -84,7 +84,7 @@ sub squared_error {
 
 =head2 sqerror_gradient
 
-  $v = $ds->sqerror_gradient($u, $y, $beta);
+  $v = $ml->sqerror_gradient($u, $y, $beta);
 
 =cut
 
@@ -96,7 +96,7 @@ sub sqerror_gradient {
 
 =head2 mr_least_squares_fit
 
-  $v = $ds->mr_least_squares_fit($x, $y, $rate, $num_steps, $batch_size);
+  $v = $ml->mr_least_squares_fit($x, $y, $rate, $num_steps, $batch_size);
 
 "In practice, you wouldn't estimate a linear regression using gradient descent..."
 
@@ -127,7 +127,7 @@ sub mr_least_squares_fit {
 
 =head2 multiple_r_squared
 
-  $y = $ds->multiple_r_squared($u, $v, $beta);
+  $y = $ml->multiple_r_squared($u, $v, $beta);
 
 =cut
 
@@ -139,7 +139,7 @@ sub multiple_r_squared {
 
 =head2 bootstrap_sample
 
-  $v = $ds->bootstrap_sample($u);
+  $v = $ml->bootstrap_sample($u);
 
 =cut
 
@@ -150,7 +150,7 @@ sub bootstrap_sample {
 
 =head2 bootstrap_statistic
 
-  $v = $ds->bootstrap_statistic($u, $num_samples);
+  $v = $ml->bootstrap_statistic($u, $num_samples);
 
 TODO: Handle additional statistical functions (C<$stats_fn>).
 
@@ -163,7 +163,7 @@ sub bootstrap_statistic {
 
 =head2 p_value
 
-  $y = $ds->p_value($beta_hat_j, $sigma_hat_j);
+  $y = $ml->p_value($beta_hat_j, $sigma_hat_j);
 
 =cut
 
@@ -179,7 +179,7 @@ sub p_value {
 
 =head2 ridge_penalty
 
-  $y = $ds->ridge_penalty($u, $alpha);
+  $y = $ml->ridge_penalty($u, $alpha);
 
 =cut
 
@@ -190,7 +190,7 @@ sub ridge_penalty {
 
 =head2 squared_error_ridge
 
-  $y = $ds->squared_error_ridge($u, $v, $beta, $alpha);
+  $y = $ml->squared_error_ridge($u, $v, $beta, $alpha);
 
 =cut
 
@@ -201,7 +201,7 @@ sub squared_error_ridge {
 
 =head2 ridge_penalty_gradient
 
-  $v = $ds->ridge_penalty_gradient($u, $alpha);
+  $v = $ml->ridge_penalty_gradient($u, $alpha);
 
 =cut
 
@@ -212,7 +212,7 @@ sub ridge_penalty_gradient {
 
 =head2 sqerror_ridge_gradient
 
-  $v = $ds->sqerror_ridge_gradient($u, $y, $beta, $alpha);
+  $v = $ml->sqerror_ridge_gradient($u, $y, $beta, $alpha);
 
 =cut
 
@@ -226,7 +226,7 @@ sub sqerror_ridge_gradient {
 
 =head2 least_squares_fit_ridge
 
-  $v = $ds->least_squares_fit_ridge($x, $y, $alpha, $rate, $num_steps, $batch_size);
+  $v = $ml->least_squares_fit_ridge($x, $y, $alpha, $rate, $num_steps, $batch_size);
 
 This method is suspect because the results from the book code are different.
 
@@ -255,7 +255,7 @@ sub least_squares_fit_ridge {
 
 =head2 lasso_penalty
 
-  $y = $ds->lasso_penalty($u, $alpha);
+  $y = $ml->lasso_penalty($u, $alpha);
 
 =cut
 

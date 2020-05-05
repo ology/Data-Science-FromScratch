@@ -8,43 +8,43 @@ use strictures 2;
 
   use Data::MachineLearning::Elements;
 
-  my $ds = Data::MachineLearning::Elements->new;
+  my $ml = Data::MachineLearning::Elements->new;
 
-  my $y = $ds->mean(1,2,3); # 6 / 3
+  my $y = $ml->mean(1,2,3); # 6 / 3
 
-  $y = $ds->median(1,10,2,9,5); # 5
-  $y = $ds->median(1,9,2,10); # (2 + 9) / 2
+  $y = $ml->median(1,10,2,9,5); # 5
+  $y = $ml->median(1,9,2,10); # (2 + 9) / 2
 
   my @data = (1,1, 2,2,2, 3,3,3,3, 4,4,4,4,4, 5,5,5,5,5,5, 6,6,6,6,6,6);
   my @data2 = (4,4, 5,5,5, 6,6,6,6, 7,7,7,7,7, 8,8,8,8,8,8, 9,9,9,9,9,9);
 
-  $y = $ds->quantile(0.10, @data); # 2
-  $y = $ds->quantile(0.25, @data); # 3
-  $y = $ds->quantile(0.50, @data); # 4 (median)
-  $y = $ds->quantile(0.75, @data); # 5
-  $y = $ds->quantile(0.90, @data); # 6
+  $y = $ml->quantile(0.10, @data); # 2
+  $y = $ml->quantile(0.25, @data); # 3
+  $y = $ml->quantile(0.50, @data); # 4 (median)
+  $y = $ml->quantile(0.75, @data); # 5
+  $y = $ml->quantile(0.90, @data); # 6
 
-  my $v = $ds->mode(@data); # [5,6]
+  my $v = $ml->mode(@data); # [5,6]
 
-  $y = $ds->data_range(@data); # 5
+  $y = $ml->data_range(@data); # 5
 
-  $v = $ds->de_mean(1,2,3); # [-1,0,1]
+  $v = $ml->de_mean(1,2,3); # [-1,0,1]
 
-  $y = $ds->variance(@data); # 2.5538
+  $y = $ml->variance(@data); # 2.5538
 
-  $y = $ds->standard_deviation(@data); # 1.5981
+  $y = $ml->standard_deviation(@data); # 1.5981
 
-  $y = $ds->interquartile_range(@data); # 2
+  $y = $ml->interquartile_range(@data); # 2
 
-  $y = $ds->covariance(\@data, \@data2); # 2.5538
+  $y = $ml->covariance(\@data, \@data2); # 2.5538
 
-  $y = $ds->correlation(\@data, \@data2); # 0.2474
+  $y = $ml->correlation(\@data, \@data2); # 0.2474
 
 =head1 METHODS
 
 =head2 mean
 
-  $y = $ds->mean(@data);
+  $y = $ml->mean(@data);
 
 =cut
 
@@ -55,7 +55,7 @@ sub mean {
 
 =head2 median
 
-  $y = $ds->median(@data);
+  $y = $ml->median(@data);
 
 =cut
 
@@ -75,7 +75,7 @@ sub median {
 
 =head2 quantile
 
-  $y = $ds->quantile($percentile, @data);
+  $y = $ml->quantile($percentile, @data);
 
 =cut
 
@@ -88,7 +88,7 @@ sub quantile {
 
 =head2 mode
 
-  $v = $ds->mode(@data);
+  $v = $ml->mode(@data);
 
 =cut
 
@@ -103,7 +103,7 @@ sub mode {
 
 =head2 data_range
 
-  $y = $ds->data_range(@data);
+  $y = $ml->data_range(@data);
 
 =cut
 
@@ -114,7 +114,7 @@ sub data_range {
 
 =head2 de_mean
 
-  $v = $ds->de_mean(@data);
+  $v = $ml->de_mean(@data);
 
 Translate data by sutbtracting its mean from each element, so the result has C<mean=0>.
 
@@ -128,7 +128,7 @@ sub de_mean {
 
 =head2 variance
 
-  $y = $ds->variance(@data);
+  $y = $ml->variance(@data);
 
 =cut
 
@@ -142,7 +142,7 @@ sub variance {
 
 =head2 standard_deviation
 
-  $y = $ds->standard_deviation(@data);
+  $y = $ml->standard_deviation(@data);
 
 =cut
 
@@ -153,7 +153,7 @@ sub standard_deviation {
 
 =head2 interquartile_range
 
-  $y = $ds->interquartile_range(@data);
+  $y = $ml->interquartile_range(@data);
 
 =cut
 
@@ -164,7 +164,7 @@ sub interquartile_range {
 
 =head2 covariance
 
-  $y = $ds->covariance(\@data1, \@data2);
+  $y = $ml->covariance(\@data1, \@data2);
 
 =cut
 
@@ -179,7 +179,7 @@ sub covariance {
 
 =head2 correlation
 
-  $y = $ds->correlation(\@data1, \@data2);
+  $y = $ml->correlation(\@data1, \@data2);
 
 =cut
 
