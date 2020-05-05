@@ -15,15 +15,15 @@ A C<Data::MachineLearning::Elements::NeuralNetworks::Loss> is an abstract class 
 
 =head1 ATTRIBUTES
 
-=head2 ds
+=head2 ml
 
-  $obj = $loss->ds;
+  $obj = $loss->ml;
 
 C<Data::MachineLearning::Elements> object
 
 =cut
 
-has ds => (
+has ml => (
     is        => 'ro',
     lazy      => 1,
     init_args => undef,

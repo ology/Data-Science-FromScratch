@@ -65,16 +65,16 @@ has updates => (
 sub step {
     my ($self, $layer) = @_;
     unless ($self->updates) {
-        my $updates = [map { $self->ds->zeros_like($_) } @{ $layer->grads }];
+        my $updates = [map { $self->ml->zeros_like($_) } @{ $layer->grads }];
         $self->updates($updates);
     }
     for my $i (0 .. @{ $self->updates } - 1) {
-        $self->updates->[$i] = $self->ds->tensor_combine(
+        $self->updates->[$i] = $self->ml->tensor_combine(
             sub { my ($x, $y) = @_; return $self->mo * $x + (1 - $self->mo) * $y },
             $self->updates->[$i],
             $layer->grads->[$i]
         );
-        $layer->params->[$i] = $self->ds->tensor_combine(
+        $layer->params->[$i] = $self->ml->tensor_combine(
             sub { my ($x, $y) = @_; return $x - $self->lr * $y },
             $layer->params->[$i],
             $self->updates->[$i]

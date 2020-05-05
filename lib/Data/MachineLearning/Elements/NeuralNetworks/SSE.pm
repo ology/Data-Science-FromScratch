@@ -26,12 +26,12 @@ A C<Data::MachineLearning::Elements::NeuralNetworks::SSE> is an class for comput
 
 sub loss {
     my ($self, $predicted, $actual) = @_;
-    my $squared_errors = $self->ds->tensor_combine(
+    my $squared_errors = $self->ml->tensor_combine(
         sub { my ($x, $y) = @_; ($x - $y) ** 2 },
         $predicted,
         $actual
     );
-    return $self->ds->tensor_sum($squared_errors);
+    return $self->ml->tensor_sum($squared_errors);
 }
 
 =head2 gradient
@@ -42,7 +42,7 @@ sub loss {
 
 sub gradient {
     my ($self, $predicted, $actual) = @_;
-    return $self->ds->tensor_combine(
+    return $self->ml->tensor_combine(
         sub { my ($x, $y) = @_; 2 * ($x - $y) },
         $predicted,
         $actual

@@ -38,7 +38,7 @@ has tanh => (
 
 sub forward {
     my ($self, $input) = @_;
-    my $tanh = $self->ds->tensor_apply(sub { $self->ds->tanh(shift()) }, $input);
+    my $tanh = $self->ml->tensor_apply(sub { $self->ml->tanh(shift()) }, $input);
     $self->tanh($tanh);
     return $self->tanh;
 }
@@ -51,7 +51,7 @@ sub forward {
 
 sub backward {
     my ($self, $gradient) = @_;
-    return $self->ds->tensor_combine(
+    return $self->ml->tensor_combine(
         sub { my ($x, $y) = @_; (1 - $x ** 2) * $y },
         $self->tanh,
         $gradient

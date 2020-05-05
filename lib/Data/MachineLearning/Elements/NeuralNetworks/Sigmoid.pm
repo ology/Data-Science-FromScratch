@@ -38,7 +38,7 @@ has sigmoids => (
 
 sub forward {
     my ($self, $input) = @_;
-    my $sigmoids = $self->ds->tensor_apply(sub { $self->ds->sigmoid(shift()) }, $input);
+    my $sigmoids = $self->ml->tensor_apply(sub { $self->ml->sigmoid(shift()) }, $input);
     $self->sigmoids($sigmoids);
     return $self->sigmoids;
 }
@@ -51,7 +51,7 @@ sub forward {
 
 sub backward {
     my ($self, $gradient) = @_;
-    return $self->ds->tensor_combine(
+    return $self->ml->tensor_combine(
         sub { my ($x, $y) = @_; $x * (1 - $x) * $y },
         $self->sigmoids,
         $gradient

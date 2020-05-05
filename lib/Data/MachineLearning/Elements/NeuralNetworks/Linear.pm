@@ -81,7 +81,7 @@ has w => (
 
 sub _build_w {
     my ($self) = @_;
-    return $self->ds->random_tensor([ $self->output_dim, $self->input_dim ], $self->init);
+    return $self->ml->random_tensor([ $self->output_dim, $self->input_dim ], $self->init);
 }
 
 =head2 w_grad
@@ -110,7 +110,7 @@ has b => (
 
 sub _build_b {
     my ($self) = @_;
-    return $self->ds->random_tensor([ $self->output_dim ], $self->init);
+    return $self->ml->random_tensor([ $self->output_dim ], $self->init);
 }
 
 =head2 b_grad
@@ -134,7 +134,7 @@ has b_grad => (
 sub forward {
     my ($self, $input) = @_;
     $self->input($input);
-    return [map { $self->ds->vector_dot($input, $self->w->[$_]) + $self->b->[$_] } 0 .. $self->output_dim - 1];
+    return [map { $self->ml->vector_dot($input, $self->w->[$_]) + $self->b->[$_] } 0 .. $self->output_dim - 1];
 }
 
 =head2 backward

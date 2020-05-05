@@ -40,7 +40,7 @@ has input => (
 sub forward {
     my ($self, $input) = @_;
     $self->input($input);
-    return $self->ds->tensor_apply(sub { max(shift(), 0) }, $input);
+    return $self->ml->tensor_apply(sub { max(shift(), 0) }, $input);
 }
 
 =head2 backward
@@ -51,7 +51,7 @@ sub forward {
 
 sub backward {
     my ($self, $gradient) = @_;
-    return $self->ds->tensor_combine(
+    return $self->ml->tensor_combine(
         sub { my ($x, $y) = @_; $x > 0 ? $y : 0 },
         $self->input,
         $gradient
