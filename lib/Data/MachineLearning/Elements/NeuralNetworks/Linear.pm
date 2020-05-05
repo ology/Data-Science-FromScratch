@@ -162,7 +162,7 @@ sub backward {
 =head2 params
 
   $v = $layer->params;
-  $layer->params($i, $u);;
+  $layer->params($i, $u);
 
 =cut
 
