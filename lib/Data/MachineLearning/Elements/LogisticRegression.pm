@@ -50,13 +50,13 @@ sub logistic_prime {
 
 =head2 negative_log_likelihood
 
-  $y = $ml->negative_log_likelihood($u, $x, $beta);
+  $y = $ml->negative_log_likelihood($u, $v, $beta);
 
 =cut
 
 sub negative_log_likelihood {
-    my ($self, $u, $x, $beta) = @_;
-    return sum0(map { $self->_negative_log_likelihood($u->[$_], $x->[$_], $beta) } 0 .. @$u - 1);
+    my ($self, $u, $v, $beta) = @_;
+    return sum0(map { $self->_negative_log_likelihood($u->[$_], $v->[$_], $beta) } 0 .. @$u - 1);
 }
 
 sub _negative_log_likelihood {
