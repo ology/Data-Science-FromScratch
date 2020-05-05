@@ -52,16 +52,16 @@ sub vector_sum {
         unless all { @{ $vectors[0] } == @$_ } @vectors;
     my @v;
     for my $i (0 .. @{ $vectors[0] } - 1) {
-        my $res;
+        my $x;
         for my $v (@vectors) {
-            if ($res) {
-                $res += $v->[$i];
+            if ($x) {
+                $x += $v->[$i];
             }
             else {
-                $res = $v->[$i];
+                $x = $v->[$i];
             }
         }
-        push @v, $res;
+        push @v, $x;
     }
     return \@v;
 }
@@ -78,16 +78,16 @@ sub vector_subtract {
         unless all { @{ $vectors[0] } == @$_ } @vectors;
     my @v;
     for my $i (0 .. @{ $vectors[0] } - 1) {
-        my $res;
+        my $x;
         for my $v (@vectors) {
-            if ($res) {
-                $res -= $v->[$i];
+            if ($x) {
+                $x -= $v->[$i];
             }
             else {
-                $res = $v->[$i];
+                $x = $v->[$i];
             }
         }
-        push @v, $res;
+        push @v, $x;
     }
     return \@v;
 }
@@ -134,16 +134,16 @@ sub vector_dot {
         unless all { @{ $vectors[0] } == @$_ } @vectors;
     my $dot;
     for my $i (0 .. @{ $vectors[0] } - 1) {
-        my $res;
+        my $x;
         for my $v (@vectors) {
-            if ($res) {
-                $res *= $v->[$i];
+            if ($x) {
+                $x *= $v->[$i];
             }
             else {
-                $res = $v->[$i];
+                $x = $v->[$i];
             }
         }
-        $dot += $res;
+        $dot += $x;
     }
     return $dot;
 }
