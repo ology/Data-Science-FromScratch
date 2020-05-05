@@ -18,6 +18,11 @@ use strictures 2;
 
   $v = $ml->negative_log_gradient(); #
 
+=head1 DESCRIPTION
+
+There is something amiss when running this.  Comment the skip code in
+L<the test|/"SEE ALSO"> to see the error that is generated.
+
 =head1 METHODS
 
 =head2 logistic
