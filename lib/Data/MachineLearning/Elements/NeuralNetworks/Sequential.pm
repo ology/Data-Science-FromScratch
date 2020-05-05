@@ -67,10 +67,10 @@ sub backward {
 =cut
 
 sub params {
-    my ($self) = @_;
+    my $self = shift;
     my @params;
     for my $layer (@{ $self->layers }) {
-        push @params, @{ $layer->params };
+        push @params, @{ $layer->params(@_) };
     }
     return \@params;
 }
