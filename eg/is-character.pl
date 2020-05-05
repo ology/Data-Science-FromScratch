@@ -7,7 +7,7 @@ use warnings;
 # Star Trek scripts used:
 # https://github.com/ology/Machine-Learning/blob/master/Kirk-Spock-McCoy.zip
 
-use Data::Science::FromScratch;
+use Data::MachineLearning::Elements;
 use File::Slurper qw(read_text);
 use Lingua::EN::Sentence qw(get_sentences);
 
@@ -61,22 +61,22 @@ for my $i (qw(kirk spock mccoy)) {
 }
 
 # Invoke the data science library
-my $ds = Data::Science::FromScratch->new;
+my $ml = Data::MachineLearning::Elements->new;
 
-my ($train, $test) = $ds->split_data($split, @messages);
+my ($train, $test) = $ml->split_data($split, @messages);
 
 print "Training on messages...\n";
-$ds->train(@$train);
+$ml->train(@$train);
 
 my $name = ucfirst $who;
 
-print "$name said ", $ds->spam_messages, " sentences.\n";
-print "Not-$name said ", $ds->ham_messages, " sentences.\n";
+print "$name said ", $ml->spam_messages, " sentences.\n";
+print "Not-$name said ", $ml->ham_messages, " sentences.\n";
 
 print "Probability that $name said,\n";
 for my $text (@statements) {
     next unless $text;
-    my $prediction = $ds->nb_predict($text);
+    my $prediction = $ml->nb_predict($text);
     printf qq/\t%.4f = "%s"\n/, $prediction, $text;
 }
 
@@ -85,7 +85,7 @@ my ($tp, $fp, $fn, $tn) = (0,0,0,0);
 my %confusion_matrix;
 
 for my $i (@$test) {
-    my $predicted = $ds->nb_predict($i->{text});
+    my $predicted = $ml->nb_predict($i->{text});
 
     my $true_pos  =  $i->{is_spam} && $predicted >= $threshold ? 1 : 0;
     my $false_pos = !$i->{is_spam} && $predicted >= $threshold ? 1 : 0;
@@ -104,7 +104,7 @@ print "Confusion matrix (true_pos,false_pos,false_neg,true_neg):\n",
     join("\n", map { "\t$_ => $confusion_matrix{$_}" } sort keys %confusion_matrix),
     "\n";
 printf "Accuracy = %.4f\nPrecision = %.4f\nRecall = %.4f\nf1_score = %.4f\n",
-    $ds->accuracy($tp, $fp, $fn, $tn),
-    $ds->precision($tp, $fp, $fn, $tn),
-    $ds->recall($tp, $fp, $fn, $tn),
-    $ds->f1_score($tp, $fp, $fn, $tn);
+    $ml->accuracy($tp, $fp, $fn, $tn),
+    $ml->precision($tp, $fp, $fn, $tn),
+    $ml->recall($tp, $fp, $fn, $tn),
+    $ml->f1_score($tp, $fp, $fn, $tn);
