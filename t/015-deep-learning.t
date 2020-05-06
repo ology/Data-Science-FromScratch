@@ -84,9 +84,9 @@ skip 'Broken algorithm. :(', 3;
 
 $net = new_ok 'Data::MachineLearning::Elements::NeuralNetworks::Sequential' => [
     layers => [
-        Data::MachineLearning::Elements::NeuralNetworks::Linear->new(input_dim => 2, output_dim => 2),
+        Data::MachineLearning::Elements::NeuralNetworks::Linear->new(input_dim => 2, output_dim => 2, id => 1),
         Data::MachineLearning::Elements::NeuralNetworks::Sigmoid->new,
-        Data::MachineLearning::Elements::NeuralNetworks::Linear->new(input_dim => 2, output_dim => 1),
+        Data::MachineLearning::Elements::NeuralNetworks::Linear->new(input_dim => 2, output_dim => 1, id => 2),
     ],
 ];
 
@@ -107,7 +107,7 @@ for my $i (1 .. 3000) {
         $net->backward($gradient);
         $optimizer->step($net);
     }
-#    print "$i. Loss = $epoch_loss\n";
+    print "$i. Loss = $epoch_loss\n";
 }
 
 for my $param (@{ $net->params }) {
