@@ -25,6 +25,7 @@ is_deeply $ml->zeros_like([[1,2],[3,4]]), [[0,0],[0,0]], 'zeros_like';
 
 is_deeply $ml->tensor_combine(sub { shift() + shift() }, [1,2,3], [4,5,6]), [5,7,9], 'tensor_combine';
 is_deeply $ml->tensor_combine(sub { shift() * shift() }, [1,2,3], [4,5,6]), [4,10,18], 'tensor_combine';
+is_deeply $ml->tensor_combine(sub { shift() + shift() }, [[1,2],[3,4]], [[0,0],[0,0]]), [[1,2],[3,4]], 'tensor_combine';
 
 my $got = $ml->random_uniform([2,3,4]);
 is scalar(@$got), 2, 'random_uniform';
