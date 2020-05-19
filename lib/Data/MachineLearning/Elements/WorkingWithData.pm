@@ -17,7 +17,7 @@ use strictures 2;
 
   my $v = $ml->vector_de_mean([1,2], [3,4], [5,6]); # [[-2,-2], [0,0], [2,2]]
 
-  $v = $ml->direction([1,2,3]); #
+  $v = $ml->direction([1,2,3]); # [0.5774...
 
   my $y = $ml->directional_variance([[1,2], [3,4]], [-1,-1]); # 29
 
