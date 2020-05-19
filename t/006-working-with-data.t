@@ -33,4 +33,7 @@ is $data2[0][0], 1, 'rescale';
 is sprintf('%.4f', $data2[0][1]), '-1.5095', 'rescale';
 is sprintf('%.4f', $data2[0][2]), '-1.2036', 'rescale';
 
+my $got = $ml->vector_de_mean([1,2], [3,4], [5,6]);
+is_deeply $got, [[-2,-2], [0,0], [2,2]], 'vector_de_mean';
+
 done_testing();
