@@ -46,4 +46,8 @@ is $got, 29, 'directional_variance';
 $got = $ml->directional_variance([[1,2], [3,4]], [-1,-1]);
 is $got, 29, 'directional_variance';
 
+$got = $ml->directional_variance_gradient([[1,2], [3,4]], [1,1]);
+is sprintf('%.4f', $got->[0]), '33.9411', 'directional_variance_gradient';
+is sprintf('%.4f', $got->[1]), '48.0833', 'directional_variance_gradient';
+
 done_testing();
