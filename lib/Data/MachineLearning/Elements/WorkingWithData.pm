@@ -19,7 +19,7 @@ use strictures 2;
 
   $v = $ml->direction([1,2,3]); #
 
-  my $y = $ml->directional_variance(); #
+  my $y = $ml->directional_variance([[1,2], [3,4]], [-1,-1]); # 29
 
 =head1 METHODS
 
