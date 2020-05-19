@@ -21,7 +21,9 @@ use strictures 2;
 
   my $y = $ml->directional_variance([[1,2], [3,4]], [1,1]); # 29
 
-  $v = $ml->directional_variance_gradient([[1,2], [3,4]], [1,1]); #
+  $v = $ml->directional_variance_gradient(); #
+
+  $v = $ml->first_principle_component(); #
 
 =head1 METHODS
 
@@ -112,6 +114,26 @@ sub directional_variance_gradient {
         push @grad, sum0(map { 2 * $self->vector_dot($_, $dir) * $_->[$i] } @$m);
     }
     return \@grad;
+}
+
+=head2 first_principle_component
+
+  $v = $ml->first_principle_component($m, $n, $step_size);
+
+=cut
+
+sub first_principle_component {
+    my ($self, $m, $n, $step_size) = @_;
+
+    my $guess = [ map { 1 } @{ $m->[0] } ];
+
+    for (1 .. $n) {
+        my $dv = $self->directional_variance($m, $guess);
+        my $gradient = $self->directional_variance_gradient($m, $guess);
+        $guess = $self->gradient_step($guess, $gradient, $step_size);
+    }
+
+    return $self->direction($guess);
 }
 
 1;
