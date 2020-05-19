@@ -16,6 +16,8 @@ use strictures 2;
 
   my $v = $ml->vector_de_mean([1,2], [3,4], [5,6]); # [[-2,-2], [0,0], [2,2]]
 
+  $v = $ml->direction([1,2,3]); #
+
 =head1 METHODS
 
 =head2 scale
@@ -65,6 +67,18 @@ sub vector_de_mean {
     my ($self, @data) = @_;
     my $mean = $self->vector_mean(@data);
     return [ map { $self->vector_subtract($_, $mean) } @data ];
+}
+
+=head2 direction
+
+  $v = $ml->direction($u);
+
+=cut
+
+sub direction {
+    my ($self, $u) = @_;
+    my $mag = $self->magnitude($u);
+    return [ map { $_ / $mag } @$u ];
 }
 
 1;
