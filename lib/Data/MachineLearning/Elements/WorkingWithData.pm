@@ -1,5 +1,6 @@
 package Data::MachineLearning::Elements::WorkingWithData;
 
+use List::Util qw(sum0);
 use Moo::Role;
 use Storable qw(dclone);
 use strictures 2;
@@ -17,6 +18,8 @@ use strictures 2;
   my $v = $ml->vector_de_mean([1,2], [3,4], [5,6]); # [[-2,-2], [0,0], [2,2]]
 
   $v = $ml->direction([1,2,3]); #
+
+  my $y = $ml->directional_variance(); #
 
 =head1 METHODS
 
@@ -79,6 +82,18 @@ sub direction {
     my ($self, $u) = @_;
     my $mag = $self->magnitude($u);
     return [ map { $_ / $mag } @$u ];
+}
+
+=head2 directional_variance
+
+  $y = $ml->directional_variance($m, $u);
+
+=cut
+
+sub directional_variance {
+    my ($self, $m, $u) = @_;
+    my $dir = $self->direction($u);
+    return sum0(map { $self->vector_dot($_, $dir) ** 2 } @$m);
 }
 
 1;
