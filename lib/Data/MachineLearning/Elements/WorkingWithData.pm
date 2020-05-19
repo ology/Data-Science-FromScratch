@@ -14,6 +14,8 @@ use strictures 2;
 
   my @v = $ml->rescale([-3,-1,1], [-1,0,1], [1,1,1]); # [-1,-1,1], [0,0,1], [1,1,1]
 
+  my $v = $ml->vector_de_mean([1,2], [3,4], [5,6]); # [[-2,-2], [0,0], [2,2]]
+
 =head1 METHODS
 
 =head2 scale
@@ -51,6 +53,18 @@ sub rescale {
         }
     }
     return @$rescaled;
+}
+
+=head2 vector_de_mean
+
+  $v = $ml->vector_de_mean(@data);
+
+=cut
+
+sub vector_de_mean {
+    my ($self, @data) = @_;
+    my $mean = $self->vector_mean(@data);
+    return [ map { $self->vector_subtract($_, $mean) } @data ];
 }
 
 1;
