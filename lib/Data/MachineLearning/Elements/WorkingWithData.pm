@@ -19,7 +19,9 @@ use strictures 2;
 
   $v = $ml->direction([1,2,3]); # [0.5774...
 
-  my $y = $ml->directional_variance([[1,2], [3,4]], [-1,-1]); # 29
+  my $y = $ml->directional_variance([[1,2], [3,4]], [1,1]); # 29
+
+  $v = $ml->directional_variance_gradient([[1,2], [3,4]], [1,1]); #
 
 =head1 METHODS
 
@@ -96,6 +98,22 @@ sub directional_variance {
     return sum0(map { $self->vector_dot($_, $dir) ** 2 } @$m);
 }
 
+=head2 directional_variance_gradient
+
+  $v = $ml->directional_variance_gradient($m, $u);
+
+=cut
+
+sub directional_variance_gradient {
+    my ($self, $m, $u) = @_;
+    my $dir = $self->direction($u);
+    my @grad;
+    for my $i (0 .. @$u - 1) {
+        push @grad, sum0(map { 2 * $self->vector_dot($_, $dir) * $_->[$i] } @$m);
+    }
+    return \@grad;
+}
+
 1;
 __END__
 
@@ -105,6 +123,10 @@ L<Data::MachineLearning::Elements>
 
 L<t/006-working-with-data.t>
 
+L<List::Util>
+
 L<Moo::Role>
+
+L<Storable>
 
 =cut
