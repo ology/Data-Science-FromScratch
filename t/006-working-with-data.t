@@ -41,4 +41,9 @@ is sprintf('%.4f', $got->[0]), '0.5774', 'direction';
 is sprintf('%.4f', $got->[1]), '0.5774', 'direction';
 is sprintf('%.4f', $got->[2]), '0.5774', 'direction';
 
+$got = $ml->directional_variance([[1,2], [3,4]], [1,1]);
+is $got, 29, 'directional_variance';
+$got = $ml->directional_variance([[1,2], [3,4]], [-1,-1]);
+is $got, 29, 'directional_variance';
+
 done_testing();
