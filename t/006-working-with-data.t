@@ -36,4 +36,9 @@ is sprintf('%.4f', $data2[0][2]), '-1.2036', 'rescale';
 my $got = $ml->vector_de_mean([1,2], [3,4], [5,6]);
 is_deeply $got, [[-2,-2], [0,0], [2,2]], 'vector_de_mean';
 
+$got = $ml->direction([1,1,1]);
+is sprintf('%.4f', $got->[0]), '0.5774', 'direction';
+is sprintf('%.4f', $got->[1]), '0.5774', 'direction';
+is sprintf('%.4f', $got->[2]), '0.5774', 'direction';
+
 done_testing();
